@@ -1,0 +1,5 @@
+Tech Gadgets Shop
+Electronics marketplace with detailed specifications and customer reviews
+WooCommerce
+Stripe Payments
+Inventory System

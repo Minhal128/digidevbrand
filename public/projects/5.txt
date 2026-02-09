@@ -1,0 +1,5 @@
+HealthCare Portal
+Secure medical appointment system with patient records and automated scheduling
+Next.js
+PostgreSQL
+Security

@@ -1,0 +1,5 @@
+Love Lula
+Beautiful e-commerce beauty platform with advanced product filtering and personalized recommendations
+Shopify
+React
+Node.js

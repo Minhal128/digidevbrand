@@ -1,0 +1,190 @@
+/* Custom ChatBot Styling */
+
+/* Smooth animations */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes floatUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideUp {
+  animation: slideUp 0.4s ease-out;
+}
+
+.animate-shimmer {
+  animation: shimmer 3s infinite;
+  background-size: 1000px 100%;
+}
+
+/* Chatbot Container Customization */
+.rcb-chat-container {
+  background: linear-gradient(to bottom, #0d0d14, #0a0a0f) !important;
+  border: 1px solid rgba(139, 92, 246, 0.3) !important;
+  border-radius: 1.5rem !important;
+}
+
+/* Messages styling */
+.rcb-bot-message {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 1rem !important;
+  border-top-left-radius: 0.25rem !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  animation: floatUp 0.3s ease-out;
+}
+
+.rcb-user-message {
+  background: linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%) !important;
+  border: none !important;
+  border-radius: 1rem !important;
+  border-top-right-radius: 0.25rem !important;
+  color: white !important;
+  animation: floatUp 0.3s ease-out;
+}
+
+/* Options/Buttons styling */
+.rcb-option {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 0.75rem !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  transition: all 0.3s ease !important;
+  margin-top: 0.5rem !important;
+}
+
+.rcb-option:hover {
+  background: rgba(139, 92, 246, 0.2) !important;
+  border-color: rgba(139, 92, 246, 0.5) !important;
+  color: rgba(139, 92, 246, 1) !important;
+  transform: translateY(-2px) !important;
+}
+
+.rcb-option:active {
+  transform: translateY(0) !important;
+}
+
+/* Input field styling */
+.rcb-input {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 0.75rem !important;
+  color: white !important;
+  padding: 0.75rem !important;
+}
+
+.rcb-input:focus {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(139, 92, 246, 0.5) !important;
+  outline: none !important;
+}
+
+.rcb-input::placeholder {
+  color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Send button */
+.rcb-send-button {
+  background: linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%) !important;
+  border: none !important;
+  border-radius: 0.75rem !important;
+  color: white !important;
+  transition: all 0.3s ease !important;
+}
+
+.rcb-send-button:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4) !important;
+}
+
+.rcb-send-button:active {
+  transform: scale(0.98) !important;
+}
+
+/* Scrollbar styling */
+.rcb-messages {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(139, 92, 246, 0.3) transparent;
+}
+
+.rcb-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.rcb-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.rcb-messages::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.3);
+  border-radius: 3px;
+}
+
+.rcb-messages::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.5);
+}
+
+/* Text message styling */
+.rcb-message-text {
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+  color: inherit !important;
+}
+
+/* Loading indicator */
+.rcb-loading {
+  color: rgba(139, 92, 246, 1) !important;
+}
+
+/* Mobile responsive */
+@media (max-width: 480px) {
+  .animate-slideUp {
+    width: calc(100vw - 1.5rem) !important;
+    height: 70vh !important;
+  }
+}
+
+/* Gradient text for special effects */
+.gradient-text {
+  background: linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Purple/Golden theme accent */
+.theme-accent {
+  color: #fbbf24;
+}
+
+.theme-primary {
+  color: #8b5cf6;
+}
+
+.theme-secondary {
+  color: #d946ef;
+}

@@ -1,0 +1,5 @@
+TechFlow Dashboard
+Comprehensive SaaS analytics platform with real-time data visualization and reporting
+React
+TypeScript
+D3.js
