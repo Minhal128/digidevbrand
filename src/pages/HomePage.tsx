@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useApp } from '@/context/AppContext';
 import {
   ArrowRight,
+  CheckCircle,
   ChevronLeftIcon,
   ChevronRightIcon,
   Play,
@@ -285,8 +286,8 @@ const HomePage: React.FC = () => {
                   {/* Main Card Content */}
                   <div
                     className={`relative z-20 h-full w-full rounded-[22px] p-6 flex flex-col justify-center items-center text-center border-2 transition-all duration-500 overflow-hidden ${isDark
-                        ? 'bg-[#281E5A]/90 border-[#4B2F7D]/40 group-hover:border-[#D6B166]/60'
-                        : 'bg-white border-[#4B2F7D]/10 group-hover:border-[#4B2F7D]/30'
+                      ? 'bg-[#281E5A]/90 border-[#4B2F7D]/40 group-hover:border-[#D6B166]/60'
+                      : 'bg-white border-[#4B2F7D]/10 group-hover:border-[#4B2F7D]/30'
                       }`}
                     style={{
                       boxShadow: isDark
@@ -685,6 +686,234 @@ const HomePage: React.FC = () => {
               </div>
             </Swiper>
           </motion.div>
+        </div>
+      </section>
+      {/* Logo Design Packages Section */}
+      <section className="py-24 relative bg-[#0d0d1a]">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(214,177,102,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(214,177,102,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <span className="font-medium text-sm uppercase tracking-widest text-[#D6B166]">Creative Solutions</span>
+            <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-4 text-white">Logo Design <span className="text-[#D6B166]">Packages</span></h2>
+            <p className="max-w-2xl mx-auto text-white/50">
+              Professional logo designs that represent your brand identity with creativity and precision.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 pt-10">
+            {[
+              {
+                name: 'BASIC LOGO DESIGN',
+                price: '$60',
+                features: [
+                  '3 Custom Logo Designs',
+                  'Professional Design',
+                  '3 Revisions',
+                  '48 TO 72 Hours TAT',
+                  'All Files (PNG, JPG)',
+                  '100% Satisfaction Guarantee',
+                  '100% Money Back Guarantee'
+                ],
+                popular: false,
+              },
+              {
+                name: 'Mid-Tier Logo Package',
+                price: '$90',
+                features: [
+                  '6 Custom Logo Designs',
+                  'Professional Design',
+                  'Upto 6 Revisions',
+                  '48 TO 72 Hours TAT',
+                  'All Files (PNG, JPG)',
+                  '100% Satisfaction Guarantee',
+                  '100% Money Back Guarantee'
+                ],
+                popular: true,
+              },
+              {
+                name: 'Elite Logo Design',
+                price: '$120',
+                features: [
+                  '9 Custom Logo Designs',
+                  'Professional Design',
+                  'Upto 9 Revisions',
+                  '48 TO 72 Hours TAT',
+                  'All Files (PNG, JPG)',
+                  '100% Satisfaction Guarantee',
+                  '100% Money Back Guarantee'
+                ],
+                popular: false,
+              },
+              {
+                name: 'PREMIUM LOGO PACKAGE',
+                price: '$600',
+                features: [
+                  'UNLIMITED 3D Logo Design Concepts',
+                  'FREE Business Card',
+                  'Unlimited Revisions',
+                  '2 Stock Photos',
+                  '2 Banner Designs',
+                  '2 Stationary Design Sets',
+                  'FREE MS Word Letterhead',
+                  '48 TO 72 Hours TAT',
+                  'All Files (PNG, JPG)',
+                  '100% Satisfaction Guarantee'
+                ],
+                popular: false,
+              },
+            ].map((pkg, index) => (
+              <motion.div
+                key={pkg.name}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className={`relative group ${pkg.popular ? 'lg:-mt-6 lg:mb-6' : ''}`}
+              >
+                {pkg.popular && (
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20">
+                    <span className="px-6 py-2 bg-[#D6B166] text-[#1a1440] text-sm font-bold rounded-full shadow-lg whitespace-nowrap">
+                      Most Popular
+                    </span>
+                  </div>
+                )}
+
+                <div className={`relative h-full rounded-2xl ${pkg.popular ? 'border-2 border-[#D6B166]' : 'border border-[#D6B166]/20'}`}>
+                  {!pkg.popular && (
+                    <div className="absolute -top-7 left-1/2 -translate-x-1/2 z-10">
+                      <div className="w-14 h-14 rounded-full border-2 border-[#3d5a80] bg-[#1a1440] flex items-center justify-center">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5e9ed0" strokeWidth="1.5">
+                          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                        </svg>
+                      </div>
+                    </div>
+                  )}
+
+                  <div className={`relative p-6 pt-10 rounded-t-2xl`} style={{
+                    background: 'linear-gradient(135deg, #2d2470 0%, #1a1440 50%, #0d2942 100%)'
+                  }}>
+                    <div className="flex justify-center mb-4">
+                      <span className="px-6 py-2 rounded-full border border-[#D6B166]/50 text-white text-sm font-semibold uppercase tracking-wider">
+                        {pkg.name}
+                      </span>
+                    </div>
+
+                    <div className="text-center mb-4">
+                      <span className="text-5xl md:text-6xl font-bold text-[#D6B166]">{pkg.price}</span>
+                    </div>
+
+                    <div className="text-center">
+                      <span className="text-[#D6B166] text-sm font-medium">Plan Includes:</span>
+                    </div>
+                  </div>
+
+                  <div className="bg-[#1a1440] p-6 rounded-b-2xl">
+                    <ul className="space-y-3">
+                      {pkg.features.map((feature, i) => (
+                        <li key={i} className="flex items-center gap-3 text-sm text-white/80">
+                          <div className="w-5 h-5 rounded-full bg-[#D6B166]/20 flex items-center justify-center flex-shrink-0">
+                            <CheckCircle className="h-3.5 w-3.5 text-[#D6B166]" />
+                          </div>
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <Link to="/contact" className="block mt-6">
+                      <button className={`w-full py-4 rounded-lg font-bold transition-all duration-300 ${pkg.popular
+                        ? 'bg-[#D6B166] text-[#1a1440] hover:bg-[#E6C882] hover:shadow-lg hover:shadow-[#D6B166]/30'
+                        : 'bg-transparent border border-[#D6B166]/50 text-white hover:bg-[#D6B166] hover:text-[#1a1440]'
+                        }`}>
+                        Get Started
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Logo Portfolio - Enhanced with Service Logos */}
+      <section id="logo-portfolio" className={`py-24 relative ${isDark ? 'bg-[#0d0d1a]' : 'bg-gray-50'}`}>
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(214,177,102,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(214,177,102,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <span className="font-medium text-sm uppercase tracking-widest text-[#D6B166]">Our Identity Work</span>
+            <h2 className={`text-4xl md:text-5xl font-bold mt-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>Logo <span className="text-[#D6B166]">Portfolio</span></h2>
+            <p className={`max-w-2xl mx-auto mt-4 ${isDark ? 'text-white/50' : 'text-gray-500'}`}>
+              Explore our collection of professionally crafted logos that define brand excellence. From basic concepts to premium designs.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {/* Original logo portfolio */}
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((num, index) => (
+              <motion.div
+                key={`portfolio-${num}`}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+                className="group"
+              >
+                <div className="relative overflow-hidden rounded-2xl bg-white p-8 aspect-square flex items-center justify-center border border-white/10 hover:border-[#D6B166]/30 transition-all duration-300 shadow-xl shadow-black/5 group-hover:shadow-[#D6B166]/10">
+                  <img
+                    src={`/LOGO/${num}.jpg`}
+                    alt={`Logo Concept ${num}`}
+                    className="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-[#D6B166]/0 group-hover:bg-[#D6B166]/5 transition-colors duration-300" />
+                </div>
+              </motion.div>
+            ))}
+            
+            {/* Service logos and mockups */}
+            {[
+              { title: 'Basic Logo Design', image: '/2.png', category: 'Service Logo' },
+              { title: 'Mid-Tier Logo Package', image: '/6.png', category: 'Service Logo' },
+              { title: 'Elite Logo Design', image: '/2.png', category: 'Service Logo' },
+              { title: 'Premium Logo Package', image: '/8.png', category: 'Service Logo' },
+            ].map((logo, index) => (
+              <motion.div
+                key={`service-${index}`}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: (12 + index) * 0.05 }}
+                className="group"
+              >
+                <div className="relative overflow-hidden rounded-2xl bg-white p-8 aspect-square flex items-center justify-center border border-white/10 hover:border-[#D6B166]/30 transition-all duration-300 shadow-xl shadow-black/5 group-hover:shadow-[#D6B166]/10">
+                  <img
+                    src={logo.image}
+                    alt={logo.title}
+                    className="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-[#D6B166]/0 group-hover:bg-[#D6B166]/5 transition-colors duration-300" />
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <p className="text-white text-xs text-center">{logo.title}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
     </div>

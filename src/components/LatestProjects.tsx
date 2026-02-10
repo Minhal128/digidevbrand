@@ -7,7 +7,6 @@ const LatestProjects = () => {
     const { theme } = useApp();
     const isDark = theme === 'dark';
     const [activeCategory, setActiveCategory] = useState('Websites');
-    const [projectsData, setProjectsData] = useState<any[]>([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [prevIndex, setPrevIndex] = useState<number | null>(null);
     const [animatingCard, setAnimatingCard] = useState<number | null>(null);
@@ -23,39 +22,36 @@ const LatestProjects = () => {
 
     const isMobile = windowWidth < 768;
 
-    useEffect(() => {
-        const loadProjects = async () => {
-            const projects = [];
-            for (let i = 1; i <= 9; i++) {
-                try {
-                    const response = await fetch(`/projects/${i}.txt`);
-                    const text = await response.text();
-                    const lines = text.split('\n').map(line => line.trim()).filter(line => line);
+    const allProjects = [
+// Website Projects (expanded from ServicesPage)
+        { title: 'E-Commerce Platform', category: 'Websites', image: '/1.png' },
+        { title: 'Mobile App UI', category: 'Websites', image: '/3.png' },
+        { title: 'Corporate Website', category: 'Websites', image: '/image.png' },
+       
+        { title: 'MID TIER ECOMMERCE WEBSITE', category: 'Websites', image: '/5.jpeg' },
+        { title: 'ELITE TIER ECOMMECE WEBSITE', category: 'Websites', image: '/9.png' },
 
-                    projects.push({
-                        id: i,
-                        title: lines[0] || `Project ${i}`,
-                        description: lines[1] || 'Amazing project',
-                        technologies: lines.slice(2) || [],
-                        image: `/${i}.jpeg`,
-                        category: 'Websites'
-                    });
-                } catch (error) {
-                    console.log(`Project ${i} data not found`);
-                }
-            }
-            projects.push({
-                id: 10,
-                title: 'Latest Project',
-                description: 'Our newest work',
-                technologies: [],
-                image: '/projects/image.png',
-                category: 'Websites'
-            });
-            setProjectsData(projects);
-        };
-        loadProjects();
-    }, []);
+        { title: 'Restaurant Website', category: 'Websites', image: '/2.png' },
+        { title: 'Real Estate Portal', category: 'Websites', image: '/6.png' },
+        { title: 'Educational Platform', category: 'Websites', image: '/7.png' },
+        { title: 'Healthcare Website', category: 'Websites', image: '/8.png' },
+       
+       
+        
+
+        // Logo Design Projects (from ServicesPage)
+       
+    ];
+
+    const projectsData = allProjects;
+
+    // Filter projects based on active category
+    const filteredProjects = allProjects.filter(project => project.category === activeCategory);
+
+    // Reset index when category changes
+    useEffect(() => {
+        setCurrentIndex(0);
+    }, [activeCategory]);
 
     const categories = [
         { id: 'Websites', label: 'Websites' },
@@ -77,8 +73,8 @@ const LatestProjects = () => {
     ];
 
     const getVisibleIndices = useCallback(() => {
-        if (projectsData.length === 0) return [];
-        const total = projectsData.length;
+        if (filteredProjects.length === 0) return [];
+        const total = filteredProjects.length;
         const indices = [];
         // Center the view: show 1 card on left, active in center, 1 on right
         for (let i = -1; i <= 1; i++) {
@@ -88,12 +84,12 @@ const LatestProjects = () => {
             });
         }
         return indices;
-    }, [projectsData.length, currentIndex]);
+    }, [filteredProjects.length, currentIndex]);
 
     const goToNext = useCallback(() => {
-        if (animationPhase !== 'idle' || projectsData.length === 0) return;
+        if (animationPhase !== 'idle' || filteredProjects.length === 0) return;
 
-        const nextIndex = (currentIndex + 1) % projectsData.length;
+        const nextIndex = (currentIndex + 1) % filteredProjects.length;
         const oldIndex = currentIndex;
 
         setAnimatingCard(nextIndex);
@@ -248,175 +244,175 @@ const LatestProjects = () => {
 
                 {activeCategory === 'Video Animation' ? (
                     <>
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto"
-                    >
-                        {animationVideos.map((video) => {
-                            const videoId = video.url.split('/embed/')[1];
-                            return (
-                            <motion.div
-                                key={video.id}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                transition={{ duration: 0.4, delay: video.id * 0.05 }}
-                                onClick={() => setSelectedVideo(video.url + '?autoplay=1')}
-                                className={`rounded-2xl overflow-hidden shadow-xl border-2 cursor-pointer group ${isDark ? 'border-[#4B2F7D]/40 bg-[#1a1235]' : 'border-[#4B2F7D]/10 bg-white'}`}
-                            >
-                                <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-                                    <img
-                                        src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
-                                        alt={`Animation Video ${video.id}`}
-                                        className="absolute top-0 left-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                                    />
-                                    <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/40 transition-colors duration-300">
-                                        <div className={`w-16 h-16 rounded-full flex items-center justify-center ${isDark ? 'bg-[#D6B166]' : 'bg-[#4B2F7D]'} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                                            <Play className="w-7 h-7 text-white fill-white ml-1" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </motion.div>
-                            );
-                        })}
-                    </motion.div>
-
-                    {/* Video Popup Modal */}
-                    <AnimatePresence>
-                        {selectedVideo && (
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                transition={{ duration: 0.25 }}
-                                className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm"
-                                onClick={() => setSelectedVideo(null)}
-                            >
-                                <motion.div
-                                    initial={{ scale: 0.8, opacity: 0 }}
-                                    animate={{ scale: 1, opacity: 1 }}
-                                    exit={{ scale: 0.8, opacity: 0 }}
-                                    transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-                                    className="relative w-[90vw] max-w-4xl"
-                                    onClick={(e) => e.stopPropagation()}
-                                >
-                                    <button
-                                        onClick={() => setSelectedVideo(null)}
-                                        className="absolute -top-12 right-0 text-white hover:text-[#D6B166] transition-colors duration-200 z-10"
-                                    >
-                                        <X className="w-8 h-8" />
-                                    </button>
-                                    <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl" style={{ paddingBottom: '56.25%' }}>
-                                        <iframe
-                                            className="absolute top-0 left-0 w-full h-full"
-                                            src={selectedVideo}
-                                            title="Video Player"
-                                            frameBorder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            allowFullScreen
-                                        />
-                                    </div>
-                                </motion.div>
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
-                    </>
-                ) : (
-                <div className="relative max-w-7xl mx-auto" style={{ perspective: '2000px' }}>
-                    <div className="relative h-[500px] md:h-[620px] flex items-center justify-center overflow-visible">
-                        <div className="relative w-full flex justify-center items-center" style={{ transformStyle: 'preserve-3d' }}>
-                            {visibleIndices.map(({ index: projectIndex, position }) => {
-                                const project = projectsData[projectIndex];
-                                if (!project) return null;
-
-                                const transform = getCardTransform(position, projectIndex);
-
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5 }}
+                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto"
+                        >
+                            {animationVideos.map((video) => {
+                                const videoId = video.url.split('/embed/')[1];
                                 return (
                                     <motion.div
-                                        key={projectIndex}
-                                        className="absolute w-[320px] md:w-[480px] h-[420px] md:h-[560px]"
-                                        initial={false}
-                                        animate={{
-                                            x: transform.x,
-                                            y: transform.y,
-                                            scale: transform.scale,
-                                            rotateY: transform.rotateY,
-                                            zIndex: transform.zIndex,
-                                            opacity: transform.opacity,
-                                        }}
-                                        transition={{
-                                            type: 'spring',
-                                            stiffness: 70,
-                                            damping: 15,
-                                            mass: 0.8,
-                                            opacity: { duration: 0.6 }
-                                        }}
-                                        style={{
-                                            transformStyle: 'preserve-3d',
-                                            left: '50%',
-                                            marginLeft: isMobile ? '-160px' : '-240px',
-                                        }}
+                                        key={video.id}
+                                        initial={{ opacity: 0, scale: 0.9 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        transition={{ duration: 0.4, delay: video.id * 0.05 }}
+                                        onClick={() => setSelectedVideo(video.url + '?autoplay=1')}
+                                        className={`rounded-2xl overflow-hidden shadow-xl border-2 cursor-pointer group ${isDark ? 'border-[#4B2F7D]/40 bg-[#1a1235]' : 'border-[#4B2F7D]/10 bg-white'}`}
                                     >
-                                        <div
-                                            className={`w-full h-full rounded-3xl overflow-hidden shadow-2xl ${isDark ? 'bg-[#1a1235]' : 'bg-white'} border-2 ${position === 0 && animatingCard !== projectIndex ? 'border-[#D6B166]/50' : 'border-transparent'}`}
-                                            style={{
-                                                backfaceVisibility: 'hidden',
-                                                transformStyle: 'preserve-3d',
-                                            }}
-                                        >
-                                            {/* Full Screenshot Display - Scroll on hover with bounce back */}
-                                            <div className="relative h-full overflow-hidden group/card">
-                                                <img
-                                                    src={project.image}
-                                                    alt={project.title}
-                                                    className="w-full translate-y-0 group-hover/card:-translate-y-[60%] transition-transform duration-[10s] ease-in-out"
-                                                />
-                                            </div>
-                                        </div>
-
-                                        <div
-                                            className={`absolute inset-0 w-full h-full rounded-3xl overflow-hidden shadow-2xl flex items-center justify-center ${isDark ? 'bg-gradient-to-br from-[#D6B166] to-[#E6C882]' : 'bg-gradient-to-br from-[#4B2F7D] to-[#281E5A]'}`}
-                                            style={{
-                                                backfaceVisibility: 'hidden',
-                                                transform: 'rotateY(180deg)',
-                                            }}
-                                        >
-                                            <div className="text-center p-8">
-                                                <div className={`w-20 h-20 mx-auto mb-6 rounded-full flex items-center justify-center ${isDark ? 'bg-[#281E5A]' : 'bg-white/20'}`}>
-                                                    <Play className={`w-10 h-10 ${isDark ? 'text-[#D6B166]' : 'text-white'}`} />
+                                        <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                                            <img
+                                                src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
+                                                alt={`Animation Video ${video.id}`}
+                                                className="absolute top-0 left-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                            />
+                                            <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/40 transition-colors duration-300">
+                                                <div className={`w-16 h-16 rounded-full flex items-center justify-center ${isDark ? 'bg-[#D6B166]' : 'bg-[#4B2F7D]'} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                                                    <Play className="w-7 h-7 text-white fill-white ml-1" />
                                                 </div>
-                                                <h3 className={`text-2xl font-black mb-4 ${isDark ? 'text-[#281E5A]' : 'text-white'}`}>
-                                                    {project.title}
-                                                </h3>
-                                                <p className={`text-sm ${isDark ? 'text-[#281E5A]/70' : 'text-white/80'}`}>
-                                                    Loading next project...
-                                                </p>
                                             </div>
                                         </div>
                                     </motion.div>
                                 );
                             })}
+                        </motion.div>
+
+                        {/* Video Popup Modal */}
+                        <AnimatePresence>
+                            {selectedVideo && (
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    transition={{ duration: 0.25 }}
+                                    className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm"
+                                    onClick={() => setSelectedVideo(null)}
+                                >
+                                    <motion.div
+                                        initial={{ scale: 0.8, opacity: 0 }}
+                                        animate={{ scale: 1, opacity: 1 }}
+                                        exit={{ scale: 0.8, opacity: 0 }}
+                                        transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                                        className="relative w-[90vw] max-w-4xl"
+                                        onClick={(e) => e.stopPropagation()}
+                                    >
+                                        <button
+                                            onClick={() => setSelectedVideo(null)}
+                                            className="absolute -top-12 right-0 text-white hover:text-[#D6B166] transition-colors duration-200 z-10"
+                                        >
+                                            <X className="w-8 h-8" />
+                                        </button>
+                                        <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl" style={{ paddingBottom: '56.25%' }}>
+                                            <iframe
+                                                className="absolute top-0 left-0 w-full h-full"
+                                                src={selectedVideo}
+                                                title="Video Player"
+                                                frameBorder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowFullScreen
+                                            />
+                                        </div>
+                                    </motion.div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </>
+                ) : (
+                    <div className="relative max-w-7xl mx-auto" style={{ perspective: '2000px' }}>
+                        <div className="relative h-[650px] md:h-[750px] flex items-center justify-center overflow-visible">
+                            <div className="relative w-full flex justify-center items-center" style={{ transformStyle: 'preserve-3d' }}>
+                                {visibleIndices.map(({ index: projectIndex, position }) => {
+                                    const project = projectsData[projectIndex];
+                                    if (!project) return null;
+
+                                    const transform = getCardTransform(position, projectIndex);
+
+                                    return (
+                                        <motion.div
+                                            key={projectIndex}
+                                            className="absolute w-[320px] md:w-[480px] h-[600px]"
+                                            initial={false}
+                                            animate={{
+                                                x: transform.x,
+                                                y: transform.y,
+                                                scale: transform.scale,
+                                                rotateY: transform.rotateY,
+                                                zIndex: transform.zIndex,
+                                                opacity: transform.opacity,
+                                            }}
+                                            transition={{
+                                                type: 'spring',
+                                                stiffness: 70,
+                                                damping: 15,
+                                                mass: 0.8,
+                                                opacity: { duration: 0.6 }
+                                            }}
+                                            style={{
+                                                transformStyle: 'preserve-3d',
+                                                left: '50%',
+                                                marginLeft: isMobile ? '-160px' : '-240px',
+                                            }}
+                                        >
+                                            <div
+                                                className={`w-full h-full rounded-3xl overflow-hidden shadow-2xl ${isDark ? 'bg-[#1a1235]' : 'bg-white'} border-2 ${position === 0 && animatingCard !== projectIndex ? 'border-[#D6B166]/50' : 'border-transparent'}`}
+                                                style={{
+                                                    backfaceVisibility: 'hidden',
+                                                    transformStyle: 'preserve-3d',
+                                                }}
+                                            >
+                                                {/* Full Screenshot Display - Scroll on hover with bounce back */}
+                                                <div className="relative h-full overflow-hidden group/card">
+                                                    <img
+                                                        src={project.image}
+                                                        alt={project.title}
+                                                        className="w-full translate-y-0 group-hover/card:translate-y-[calc(-100%+600px)] transition-transform duration-[4s] ease-in-out"
+                                                    />
+                                                </div>
+                                            </div>
+
+                                            <div
+                                                className={`absolute inset-0 w-full h-full rounded-3xl overflow-hidden shadow-2xl flex items-center justify-center ${isDark ? 'bg-gradient-to-br from-[#D6B166] to-[#E6C882]' : 'bg-gradient-to-br from-[#4B2F7D] to-[#281E5A]'}`}
+                                                style={{
+                                                    backfaceVisibility: 'hidden',
+                                                    transform: 'rotateY(180deg)',
+                                                }}
+                                            >
+                                                <div className="text-center p-8">
+                                                    <div className={`w-20 h-20 mx-auto mb-6 rounded-full flex items-center justify-center ${isDark ? 'bg-[#281E5A]' : 'bg-white/20'}`}>
+                                                        <Play className={`w-10 h-10 ${isDark ? 'text-[#D6B166]' : 'text-white'}`} />
+                                                    </div>
+                                                    <h3 className={`text-2xl font-black mb-4 ${isDark ? 'text-[#281E5A]' : 'text-white'}`}>
+                                                        {project.title}
+                                                    </h3>
+                                                    <p className={`text-sm ${isDark ? 'text-[#281E5A]/70' : 'text-white/80'}`}>
+                                                        Loading next project...
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </motion.div>
+                                    );
+                                })}
+                            </div>
+
                         </div>
 
+                        <div className="flex justify-center gap-2 mt-8">
+                            {projectsData.map((_, idx) => (
+                                <button
+                                    key={idx}
+                                    onClick={() => {
+                                        if (animationPhase === 'idle') {
+                                            setCurrentIndex(idx);
+                                        }
+                                    }}
+                                    className={`h-2.5 rounded-full transition-all duration-300 ${currentIndex === idx
+                                        ? `w-8 ${isDark ? 'bg-[#D6B166]' : 'bg-[#4B2F7D]'}`
+                                        : `w-2.5 ${isDark ? 'bg-[#4B2F7D]' : 'bg-[#281E5A]/30'} hover:bg-[#D6B166]/50`}`}
+                                />
+                            ))}
+                        </div>
                     </div>
-
-                    <div className="flex justify-center gap-2 mt-8">
-                        {projectsData.map((_, idx) => (
-                            <button
-                                key={idx}
-                                onClick={() => {
-                                    if (animationPhase === 'idle') {
-                                        setCurrentIndex(idx);
-                                    }
-                                }}
-                                className={`h-2.5 rounded-full transition-all duration-300 ${currentIndex === idx
-                                    ? `w-8 ${isDark ? 'bg-[#D6B166]' : 'bg-[#4B2F7D]'}`
-                                    : `w-2.5 ${isDark ? 'bg-[#4B2F7D]' : 'bg-[#281E5A]/30'} hover:bg-[#D6B166]/50`}`}
-                            />
-                        ))}
-                    </div>
-                </div>
                 )}
             </div>
         </section>
