@@ -872,7 +872,7 @@ const ServicesPage: React.FC = () => {
               { title: 'Brand Identity Design', category: 'Branding', image: '/2.png' },
               { title: 'Mobile App UI', category: 'UI/UX Design', image: '/3.png' },
               { title: 'Corporate Website', category: 'Web Development', image: '/image.png' },
-              { title: 'Social Media Campaign', category: 'Marketing', image: '/5.jpeg' },
+              { title: 'Social Media Campaign', category: 'Marketing', image: '/10.png' },
               { title: 'Logo Collection', category: 'Design', image: '/6.png' },
               { title: 'Business Cards Design', category: 'Print Design', image: '/7.png' },
               { title: 'Letterhead Design', category: 'Corporate Identity', image: '/8.png' },
@@ -892,7 +892,7 @@ const ServicesPage: React.FC = () => {
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full object-cover object-top transition-transform duration-[4s] ease-in-out group-hover:translate-y-[calc(-100%+600px)]"
+                      className="w-full object-cover object-top transition-transform duration-[1.5s] ease-in-out group-hover:translate-y-[calc(-100%+600px)]"
                       style={{ height: 'auto', minHeight: '100%' }}
                     />
                   </div>

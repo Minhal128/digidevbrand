@@ -28,7 +28,7 @@ const LatestProjects = () => {
         { title: 'Mobile App UI', category: 'Websites', image: '/3.png' },
         { title: 'Corporate Website', category: 'Websites', image: '/image.png' },
        
-        { title: 'MID TIER ECOMMERCE WEBSITE', category: 'Websites', image: '/5.jpeg' },
+        { title: 'MID TIER ECOMMERCE WEBSITE', category: 'Websites', image: '/10.png' },
         { title: 'ELITE TIER ECOMMECE WEBSITE', category: 'Websites', image: '/9.png' },
 
         { title: 'Restaurant Website', category: 'Websites', image: '/2.png' },

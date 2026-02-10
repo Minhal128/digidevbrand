@@ -12,7 +12,7 @@
    Examples: 30s (fast), 120s (medium), 600s (turtle)
    ============================================= */
 :root {
-  --scroll-speed: 8s;
+  --scroll-speed: 3s;
 }
 
 .slow-scroll-card img.slow-scroll-img {
