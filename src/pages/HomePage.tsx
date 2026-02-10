@@ -266,10 +266,10 @@ const HomePage: React.FC = () => {
                 <motion.div
                   key={index}
                   className="relative group rounded-3xl h-48 overflow-hidden transition-all duration-500 hover:-translate-y-3"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: [0.8, 1.07, 0.97, 1.03, 1] }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ delay: index * 0.15, duration: 0.8, ease: "easeOut" }}
                 >
                   {/* Animated Glow Behind Box */}
                   <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
