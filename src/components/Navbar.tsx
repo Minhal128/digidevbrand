@@ -76,7 +76,7 @@ const navLinks = [
       >
         <nav className="container mx-auto px-6">
           <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center ml-4">
+            <a href="/#logo-portfolio" className="flex items-center ml-4">
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 className="flex items-center"
@@ -87,7 +87,7 @@ const navLinks = [
                   className="h-24 w-auto object-contain drop-shadow-[0_0_10px_rgba(70,40,120,0.3)]"
                 />
               </motion.div>
-            </Link>
+            </a>
 
             {/* Center Navigation */}
             <div className="hidden lg:flex items-center">
