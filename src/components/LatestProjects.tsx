@@ -40,7 +40,24 @@ const LatestProjects = () => {
         
 
         // Logo Design Projects (from ServicesPage)
-       
+        { title: 'Logo 1', category: 'Logo Design', image: '/LOGO/1.jpg' },
+        { title: 'Logo 2', category: 'Logo Design', image: '/LOGO/2.jpg' },
+        { title: 'Logo 3', category: 'Logo Design', image: '/LOGO/3.jpg' },
+        { title: 'Logo 4', category: 'Logo Design', image: '/LOGO/4.jpg' },
+        { title: 'Logo 5', category: 'Logo Design', image: '/LOGO/5.jpg' },
+        { title: 'Logo 6', category: 'Logo Design', image: '/LOGO/6.jpg' },
+        { title: 'Logo 7', category: 'Logo Design', image: '/LOGO/7.jpg' },
+        { title: 'Logo 8', category: 'Logo Design', image: '/LOGO/8.jpg' },
+        { title: 'Logo 9', category: 'Logo Design', image: '/LOGO/9.jpg' },
+        { title: 'Logo 10', category: 'Logo Design', image: '/LOGO/10.jpg' },
+        { title: 'Logo 11', category: 'Logo Design', image: '/LOGO/11.jpg' },
+        { title: 'Logo 12', category: 'Logo Design', image: '/LOGO/12.jpg' },
+
+        // Graphical Work Projects
+        { title: 'Graphic Design 1', category: 'Graphical Work', image: '/graphics/1.png' },
+        { title: 'Graphic Design 2', category: 'Graphical Work', image: '/graphics/2.png' },
+        { title: 'Graphic Design 3', category: 'Graphical Work', image: '/graphics/3.png' },
+        { title: 'Graphic Design 4', category: 'Graphical Work', image: '/graphics/4.png' },
     ];
 
     const projectsData = allProjects;
@@ -242,7 +259,99 @@ const LatestProjects = () => {
                     ))}
                 </div>
 
-                {activeCategory === 'Video Animation' ? (
+                {activeCategory === 'Logo Design' ? (
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl mx-auto"
+                    >
+                        {filteredProjects.map((project, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: index * 0.05 }}
+                                className="group"
+                            >
+                                <div className={`relative overflow-hidden rounded-2xl p-8 aspect-square flex items-center justify-center border transition-all duration-300 shadow-xl group-hover:shadow-[#D6B166]/10 ${
+                                    isDark
+                                        ? 'bg-[#1a1235] border-white/10 hover:border-[#D6B166]/30 shadow-black/5'
+                                        : 'bg-white border-white/10 hover:border-[#D6B166]/30 shadow-black/5'
+                                }`}>
+                                    <img
+                                        src={project.image}
+                                        alt={project.title}
+                                        className="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-500"
+                                    />
+                                    <div className="absolute inset-0 bg-[#D6B166]/0 group-hover:bg-[#D6B166]/5 transition-colors duration-300" />
+                                </div>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                ) : activeCategory === 'Graphical Work' ? (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5 }}
+                        className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto"
+                    >
+                        {filteredProjects.map((project, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, scale: 0.8, rotateY: -15 }}
+                                animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                                transition={{ duration: 0.6, delay: index * 0.15, type: 'spring', stiffness: 100 }}
+                                whileHover={{ scale: 1.03, y: -8 }}
+                                className="group relative"
+                            >
+                                <div className={`relative overflow-hidden rounded-3xl border-2 transition-all duration-500 shadow-2xl ${
+                                    isDark
+                                        ? 'bg-[#1a1235] border-[#4B2F7D]/40 hover:border-[#D6B166]/60 shadow-[#D6B166]/5 hover:shadow-[#D6B166]/20'
+                                        : 'bg-white border-[#4B2F7D]/10 hover:border-[#4B2F7D]/40 shadow-black/5 hover:shadow-[#4B2F7D]/20'
+                                }`}>
+                                    {/* Animated glow border */}
+                                    <div className={`absolute -inset-[1px] rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0 overflow-hidden ${
+                                        isDark ? 'bg-gradient-to-r from-[#D6B166]/20 via-[#4B2F7D]/20 to-[#D6B166]/20' : 'bg-gradient-to-r from-[#4B2F7D]/10 via-[#D6B166]/10 to-[#4B2F7D]/10'
+                                    }`} />
+
+                                    {/* Image */}
+                                    <div className="relative z-10 overflow-hidden rounded-3xl">
+                                        <img
+                                            src={project.image}
+                                            alt={project.title}
+                                            className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                                        />
+                                        {/* Overlay gradient on hover */}
+                                        <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
+                                            isDark
+                                                ? 'bg-gradient-to-t from-[#281E5A]/80 via-transparent to-transparent'
+                                                : 'bg-gradient-to-t from-[#4B2F7D]/60 via-transparent to-transparent'
+                                        }`} />
+
+                                        {/* Title overlay on hover */}
+                                        <motion.div
+                                            className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500"
+                                        >
+                                            <h3 className="text-xl font-bold text-white drop-shadow-lg">
+                                                {project.title}
+                                            </h3>
+                                            <div className="h-1 w-12 rounded-full bg-[#D6B166] mt-2" />
+                                        </motion.div>
+                                    </div>
+                                </div>
+
+                                {/* Floating decorative dots */}
+                                <div className={`absolute -top-2 -right-2 w-4 h-4 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110 ${
+                                    isDark ? 'bg-[#D6B166]' : 'bg-[#4B2F7D]'
+                                }`} />
+                                <div className={`absolute -bottom-2 -left-2 w-3 h-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-700 delay-100 group-hover:scale-110 ${
+                                    isDark ? 'bg-[#E6C882]' : 'bg-[#D6B166]'
+                                }`} />
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                ) : activeCategory === 'Video Animation' ? (
                     <>
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
@@ -362,11 +471,11 @@ const LatestProjects = () => {
                                                 }}
                                             >
                                                 {/* Full Screenshot Display - Scroll on hover with bounce back */}
-                                                <div className="relative h-full overflow-hidden group/card">
+                                                <div className="relative h-full overflow-hidden slow-scroll-card">
                                                     <img
                                                         src={project.image}
                                                         alt={project.title}
-                                                        className="w-full translate-y-0 group-hover/card:translate-y-[calc(-100%+600px)] transition-transform duration-[4s] ease-in-out"
+                                                        className="w-full slow-scroll-img"
                                                     />
                                                 </div>
                                             </div>

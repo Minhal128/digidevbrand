@@ -5,6 +5,24 @@
 @tailwind components;
 @tailwind utilities;
 
+/* =============================================
+   SCROLL SPEED CONTROL — Change the value below
+   to adjust hover-scroll speed on website cards.
+   Lower = faster, Higher = slower.
+   Examples: 30s (fast), 120s (medium), 600s (turtle)
+   ============================================= */
+:root {
+  --scroll-speed: 8s;
+}
+
+.slow-scroll-card img.slow-scroll-img {
+  transform: translateY(0);
+  transition: transform var(--scroll-speed) linear;
+}
+.slow-scroll-card:hover img.slow-scroll-img {
+  transform: translateY(calc(-100% + 600px));
+}
+
 /* Custom CSS variables - Royal Purple & Gold Theme */
 :root {
   --color-primary: #4B2F7D;

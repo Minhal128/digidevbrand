@@ -130,7 +130,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 py-16 border-t border-b border-amber-400/20">
           <div className="lg:col-span-1">
             <div className="flex items-center mb-8">
-              <img src="/logo.png" alt="DigiDevBrand" className="h-44 w-auto object-contain" />
+              <img src="/logo.png" alt="DigiDevBrand" className="h-64 w-auto object-contain" />
             </div>
             <p className="text-sm leading-relaxed mb-6 text-amber-200">
               Premium digital solutions crafted for modern businesses. Full-stack development, branding & strategic marketing.
@@ -179,25 +179,25 @@ const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/services/seo-geo" className={`text-sm transition-all hover:translate-x-1 flex items-center gap-2 group ${isDark ? 'text-white/60 hover:text-purple-400' : 'text-amber-300 hover:text-amber-400'}`}>
+                <Link to="/services/seo-geo" className="text-sm transition-all hover:translate-x-1 flex items-center gap-2 group text-amber-200 hover:text-amber-300">
                   <span className="h-1 w-1 rounded-full bg-purple-400 group-hover:scale-150 transition-transform" />
                   SEO & Marketing
                 </Link>
               </li>
               <li>
-                <Link to="/services/ecommerce" className={`text-sm transition-all hover:translate-x-1 flex items-center gap-2 group ${isDark ? 'text-white/60 hover:text-purple-400' : 'text-amber-300 hover:text-amber-400'}`}>
+                <Link to="/services/ecommerce" className="text-sm transition-all hover:translate-x-1 flex items-center gap-2 group text-amber-200 hover:text-amber-300">
                   <span className="h-1 w-1 rounded-full bg-purple-400 group-hover:scale-150 transition-transform" />
                   E-Commerce
                 </Link>
               </li>
               <li>
-                <Link to="/services/app-development" className={`text-sm transition-all hover:translate-x-1 flex items-center gap-2 group ${isDark ? 'text-white/60 hover:text-purple-400' : 'text-amber-300 hover:text-amber-400'}`}>
+                <Link to="/services/app-development" className="text-sm transition-all hover:translate-x-1 flex items-center gap-2 group text-amber-200 hover:text-amber-300">
                   <span className="h-1 w-1 rounded-full bg-purple-400 group-hover:scale-150 transition-transform" />
                   App Development
                 </Link>
               </li>
               <li>
-                <Link to="/services/game-development" className={`text-sm transition-all hover:translate-x-1 flex items-center gap-2 group ${isDark ? 'text-white/60 hover:text-purple-400' : 'text-amber-300 hover:text-amber-400'}`}>
+                <Link to="/services/game-development" className="text-sm transition-all hover:translate-x-1 flex items-center gap-2 group text-amber-200 hover:text-amber-300">
                   <span className="h-1 w-1 rounded-full bg-purple-400 group-hover:scale-150 transition-transform" />
                   Game Development
                 </Link>
