@@ -22,6 +22,50 @@ const LatestProjects = () => {
 
     const isMobile = windowWidth < 768;
 
+    const allProjects = [
+// Website Projects (expanded from ServicesPage)
+        { title: 'E-Commerce Platform', category: 'Websites', image: '/1.png' },
+        { title: 'Mobile App UI', category: 'Websites', image: '/3.png' },
+        { title: 'Corporate Website', category: 'Websites', image: '/image.png' },
+       
+        { title: 'MID TIER ECOMMERCE WEBSITE', category: 'Websites', image: '/5.jpeg' },
+        { title: 'ELITE TIER ECOMMECE WEBSITE', category: 'Websites', image: '/9.png' },
+
+        { title: 'Restaurant Website', category: 'Websites', image: '/2.png' },
+        { title: 'Real Estate Portal', category: 'Websites', image: '/6.png' },
+        { title: 'Educational Platform', category: 'Websites', image: '/7.png' },
+        { title: 'Healthcare Website', category: 'Websites', image: '/8.png' },
+       
+       
+        
+
+        // Logo Design Projects (from ServicesPage)
+        { title: 'Logo 1', category: 'Logo Design', image: '/LOGO/1.jpg' },
+        { title: 'Logo 2', category: 'Logo Design', image: '/LOGO/2.jpg' },
+        { title: 'Logo 3', category: 'Logo Design', image: '/LOGO/3.jpg' },
+        { title: 'Logo 4', category: 'Logo Design', image: '/LOGO/4.jpg' },
+        { title: 'Logo 5', category: 'Logo Design', image: '/LOGO/5.jpg' },
+        { title: 'Logo 6', category: 'Logo Design', image: '/LOGO/6.jpg' },
+        { title: 'Logo 7', category: 'Logo Design', image: '/LOGO/7.jpg' },
+        { title: 'Logo 8', category: 'Logo Design', image: '/LOGO/8.jpg' },
+        { title: 'Logo 9', category: 'Logo Design', image: '/LOGO/9.jpg' },
+        { title: 'Logo 10', category: 'Logo Design', image: '/LOGO/10.jpg' },
+        { title: 'Logo 11', category: 'Logo Design', image: '/LOGO/11.jpg' },
+        { title: 'Logo 12', category: 'Logo Design', image: '/LOGO/12.jpg' },
+
+        // Graphical Work Projects
+        { title: 'Graphic Design 1', category: 'Graphical Work', image: '/graphics/1.png' },
+        { title: 'Graphic Design 2', category: 'Graphical Work', image: '/graphics/2.png' },
+        { title: 'Graphic Design 3', category: 'Graphical Work', image: '/graphics/3.png' },
+        { title: 'Graphic Design 4', category: 'Graphical Work', image: '/graphics/4.png' },
+    ];
+
+    const projectsData = allProjects;
+
+    // Filter projects based on active category
+    const filteredProjects = allProjects.filter(project => project.category === activeCategory);
+
+    // Reset index when category changes
     useEffect(() => {
         setCurrentIndex(0);
     }, [activeCategory]);
@@ -32,40 +76,6 @@ const LatestProjects = () => {
         { id: 'Graphical Work', label: 'Graphical Work' },
         { id: 'Video Animation', label: 'Video Animation' }
     ];
-
-    const projectsData = [
-        // Website Projects
-        { id: 1, title: 'E-Commerce Platform', image: '/1.png', category: 'Websites' },
-        { id: 2, title: 'Restaurant Website', image: '/2.png', category: 'Websites' },
-        { id: 3, title: 'Mobile App UI', image: '/3.png', category: 'Websites' },
-        { id: 4, title: 'Corporate Website', image: '/image.png', category: 'Websites' },
-        { id: 5, title: 'Real Estate Portal', image: '/6.png', category: 'Websites' },
-        { id: 6, title: 'Educational Platform', image: '/7.png', category: 'Websites' },
-        { id: 7, title: 'Healthcare Website', image: '/8.png', category: 'Websites' },
-        { id: 8, title: 'Elite Tier Website', image: '/9.png', category: 'Websites' },
-
-        // Logo Design Projects
-        { id: 9, title: 'Logo 1', image: '/LOGO/1.jpg', category: 'Logo Design' },
-        { id: 10, title: 'Logo 2', image: '/LOGO/2.jpg', category: 'Logo Design' },
-        { id: 11, title: 'Logo 3', image: '/LOGO/3.jpg', category: 'Logo Design' },
-        { id: 12, title: 'Logo 4', image: '/LOGO/4.jpg', category: 'Logo Design' },
-        { id: 13, title: 'Logo 5', image: '/LOGO/5.jpg', category: 'Logo Design' },
-        { id: 14, title: 'Logo 6', image: '/LOGO/6.jpg', category: 'Logo Design' },
-        { id: 15, title: 'Logo 7', image: '/LOGO/7.jpg', category: 'Logo Design' },
-        { id: 16, title: 'Logo 8', image: '/LOGO/8.jpg', category: 'Logo Design' },
-        { id: 17, title: 'Logo 9', image: '/LOGO/9.jpg', category: 'Logo Design' },
-        { id: 18, title: 'Logo 10', image: '/LOGO/10.jpg', category: 'Logo Design' },
-        { id: 19, title: 'Logo 11', image: '/LOGO/11.jpg', category: 'Logo Design' },
-        { id: 20, title: 'Logo 12', image: '/LOGO/12.jpg', category: 'Logo Design' },
-
-        // Graphical Work Projects
-        { id: 21, title: 'Graphic Design 1', image: '/graphics/1.png', category: 'Graphical Work' },
-        { id: 22, title: 'Graphic Design 2', image: '/graphics/2.png', category: 'Graphical Work' },
-        { id: 23, title: 'Graphic Design 3', image: '/graphics/3.png', category: 'Graphical Work' },
-        { id: 24, title: 'Graphic Design 4', image: '/graphics/4.png', category: 'Graphical Work' },
-    ];
-
-    const filteredProjects = projectsData.filter(project => project.category === activeCategory);
 
     const animationVideos = [
         { id: 1, url: 'https://www.youtube.com/embed/WuEsJ7u8X-c' },
@@ -237,10 +247,10 @@ const LatestProjects = () => {
                             onClick={() => setActiveCategory(category.id)}
                             className={`px-8 py-3.5 rounded-2xl text-base font-bold transition-all duration-500 border-2 ${activeCategory === category.id
                                 ? isDark
-                                    ? 'bg-gradient-to-r from-[#D6B166] to-[#E6C882] border-[#D6B166] text-[#1a0b2e] shadow-xl shadow-[#D6B166]/30 scale-105'
-                                    : 'bg-gradient-to-r from-[#4B2F7D] to-[#281E5A] border-[#4B2F7D] text-white shadow-xl shadow-[#4B2F7D]/20 scale-105'
+                                    ? 'bg-[#D6B166] border-[#D6B166] text-[#281E5A] shadow-xl shadow-[#D6B166]/20 scale-105'
+                                    : 'bg-[#4B2F7D] border-[#4B2F7D] text-white shadow-xl shadow-[#4B2F7D]/20 scale-105'
                                 : isDark
-                                    ? 'bg-[#4B2F7D]/30 text-[#E6C882] border-[#4B2F7D]/40 hover:border-[#D6B166]/50 hover:text-[#D6B166]'
+                                    ? 'bg-[#4B2F7D]/30 text-white/60 border-[#4B2F7D]/40 hover:border-[#D6B166]/50 hover:text-white'
                                     : 'bg-white text-[#4B2F7D]/60 border-[#4B2F7D]/10 hover:border-[#4B2F7D]/40 hover:text-[#4B2F7D]'
                                 }`}
                         >
@@ -249,81 +259,173 @@ const LatestProjects = () => {
                     ))}
                 </div>
 
-                {activeCategory === 'Video Animation' ? (
-                    <>
+                {activeCategory === 'Logo Design' ? (
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
-                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto"
+                        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl mx-auto"
                     >
-                        {animationVideos.map((video) => {
-                            const videoId = video.url.split('/embed/')[1];
-                            return (
+                        {filteredProjects.map((project, index) => (
                             <motion.div
-                                key={video.id}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                transition={{ duration: 0.4, delay: video.id * 0.05 }}
-                                onClick={() => setSelectedVideo(video.url + '?autoplay=1')}
-                                className={`rounded-2xl overflow-hidden shadow-xl border-2 cursor-pointer group ${isDark ? 'border-[#4B2F7D]/40 bg-[#1a1235]' : 'border-[#4B2F7D]/10 bg-white'}`}
+                                key={index}
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: index * 0.05 }}
+                                className="group"
                             >
-                                <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                                <div className={`relative overflow-hidden rounded-2xl p-8 aspect-square flex items-center justify-center border transition-all duration-300 shadow-xl group-hover:shadow-[#D6B166]/10 ${
+                                    isDark
+                                        ? 'bg-[#1a1235] border-white/10 hover:border-[#D6B166]/30 shadow-black/5'
+                                        : 'bg-white border-white/10 hover:border-[#D6B166]/30 shadow-black/5'
+                                }`}>
                                     <img
-                                        src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
-                                        alt={`Animation Video ${video.id}`}
-                                        className="absolute top-0 left-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                        src={project.image}
+                                        alt={project.title}
+                                        className="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-500"
                                     />
-                                    <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/40 transition-colors duration-300">
-                                        <div className={`w-16 h-16 rounded-full flex items-center justify-center ${isDark ? 'bg-[#D6B166]' : 'bg-[#4B2F7D]'} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                                            <Play className="w-7 h-7 text-white fill-white ml-1" />
-                                        </div>
-                                    </div>
+                                    <div className="absolute inset-0 bg-[#D6B166]/0 group-hover:bg-[#D6B166]/5 transition-colors duration-300" />
                                 </div>
                             </motion.div>
-                            );
-                        })}
+                        ))}
                     </motion.div>
-
-                    {/* Video Popup Modal */}
-                    <AnimatePresence>
-                        {selectedVideo && (
+                ) : activeCategory === 'Graphical Work' ? (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5 }}
+                        className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto"
+                    >
+                        {filteredProjects.map((project, index) => (
                             <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                transition={{ duration: 0.25 }}
-                                className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm"
-                                onClick={() => setSelectedVideo(null)}
+                                key={index}
+                                initial={{ opacity: 0, scale: 0.8, rotateY: -15 }}
+                                animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                                transition={{ duration: 0.6, delay: index * 0.15, type: 'spring', stiffness: 100 }}
+                                whileHover={{ scale: 1.03, y: -8 }}
+                                className="group relative"
                             >
-                                <motion.div
-                                    initial={{ scale: 0.8, opacity: 0 }}
-                                    animate={{ scale: 1, opacity: 1 }}
-                                    exit={{ scale: 0.8, opacity: 0 }}
-                                    transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-                                    className="relative w-[90vw] max-w-4xl"
-                                    onClick={(e) => e.stopPropagation()}
-                                >
-                                    <button
-                                        onClick={() => setSelectedVideo(null)}
-                                        className="absolute -top-12 right-0 text-white hover:text-[#D6B166] transition-colors duration-200 z-10"
-                                    >
-                                        <X className="w-8 h-8" />
-                                    </button>
-                                    <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl" style={{ paddingBottom: '56.25%' }}>
-                                        <iframe
-                                            className="absolute top-0 left-0 w-full h-full"
-                                            src={selectedVideo}
-                                            title="Video Player"
-                                            frameBorder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            allowFullScreen
+                                <div className={`relative overflow-hidden rounded-3xl border-2 transition-all duration-500 shadow-2xl ${
+                                    isDark
+                                        ? 'bg-[#1a1235] border-[#4B2F7D]/40 hover:border-[#D6B166]/60 shadow-[#D6B166]/5 hover:shadow-[#D6B166]/20'
+                                        : 'bg-white border-[#4B2F7D]/10 hover:border-[#4B2F7D]/40 shadow-black/5 hover:shadow-[#4B2F7D]/20'
+                                }`}>
+                                    {/* Animated glow border */}
+                                    <div className={`absolute -inset-[1px] rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0 overflow-hidden ${
+                                        isDark ? 'bg-gradient-to-r from-[#D6B166]/20 via-[#4B2F7D]/20 to-[#D6B166]/20' : 'bg-gradient-to-r from-[#4B2F7D]/10 via-[#D6B166]/10 to-[#4B2F7D]/10'
+                                    }`} />
+
+                                    {/* Image */}
+                                    <div className="relative z-10 overflow-hidden rounded-3xl">
+                                        <img
+                                            src={project.image}
+                                            alt={project.title}
+                                            className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                                         />
+                                        {/* Overlay gradient on hover */}
+                                        <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
+                                            isDark
+                                                ? 'bg-gradient-to-t from-[#281E5A]/80 via-transparent to-transparent'
+                                                : 'bg-gradient-to-t from-[#4B2F7D]/60 via-transparent to-transparent'
+                                        }`} />
+
+                                        {/* Title overlay on hover */}
+                                        <motion.div
+                                            className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500"
+                                        >
+                                            <h3 className="text-xl font-bold text-white drop-shadow-lg">
+                                                {project.title}
+                                            </h3>
+                                            <div className="h-1 w-12 rounded-full bg-[#D6B166] mt-2" />
+                                        </motion.div>
                                     </div>
-                                </motion.div>
+                                </div>
+
+                                {/* Floating decorative dots */}
+                                <div className={`absolute -top-2 -right-2 w-4 h-4 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110 ${
+                                    isDark ? 'bg-[#D6B166]' : 'bg-[#4B2F7D]'
+                                }`} />
+                                <div className={`absolute -bottom-2 -left-2 w-3 h-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-700 delay-100 group-hover:scale-110 ${
+                                    isDark ? 'bg-[#E6C882]' : 'bg-[#D6B166]'
+                                }`} />
                             </motion.div>
-                        )}
-                    </AnimatePresence>
+                        ))}
+                    </motion.div>
+                ) : activeCategory === 'Video Animation' ? (
+                    <>
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5 }}
+                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto"
+                        >
+                            {animationVideos.map((video) => {
+                                const videoId = video.url.split('/embed/')[1];
+                                return (
+                                    <motion.div
+                                        key={video.id}
+                                        initial={{ opacity: 0, scale: 0.9 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        transition={{ duration: 0.4, delay: video.id * 0.05 }}
+                                        onClick={() => setSelectedVideo(video.url + '?autoplay=1')}
+                                        className={`rounded-2xl overflow-hidden shadow-xl border-2 cursor-pointer group ${isDark ? 'border-[#4B2F7D]/40 bg-[#1a1235]' : 'border-[#4B2F7D]/10 bg-white'}`}
+                                    >
+                                        <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                                            <img
+                                                src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
+                                                alt={`Animation Video ${video.id}`}
+                                                className="absolute top-0 left-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                            />
+                                            <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/40 transition-colors duration-300">
+                                                <div className={`w-16 h-16 rounded-full flex items-center justify-center ${isDark ? 'bg-[#D6B166]' : 'bg-[#4B2F7D]'} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                                                    <Play className="w-7 h-7 text-white fill-white ml-1" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </motion.div>
+                                );
+                            })}
+                        </motion.div>
+
+                        {/* Video Popup Modal */}
+                        <AnimatePresence>
+                            {selectedVideo && (
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    transition={{ duration: 0.25 }}
+                                    className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm"
+                                    onClick={() => setSelectedVideo(null)}
+                                >
+                                    <motion.div
+                                        initial={{ scale: 0.8, opacity: 0 }}
+                                        animate={{ scale: 1, opacity: 1 }}
+                                        exit={{ scale: 0.8, opacity: 0 }}
+                                        transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                                        className="relative w-[90vw] max-w-4xl"
+                                        onClick={(e) => e.stopPropagation()}
+                                    >
+                                        <button
+                                            onClick={() => setSelectedVideo(null)}
+                                            className="absolute -top-12 right-0 text-white hover:text-[#D6B166] transition-colors duration-200 z-10"
+                                        >
+                                            <X className="w-8 h-8" />
+                                        </button>
+                                        <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl" style={{ paddingBottom: '56.25%' }}>
+                                            <iframe
+                                                className="absolute top-0 left-0 w-full h-full"
+                                                src={selectedVideo}
+                                                title="Video Player"
+                                                frameBorder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowFullScreen
+                                            />
+                                        </div>
+                                    </motion.div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
                     </>
                 ) : (
                     <div className="relative max-w-7xl mx-auto" style={{ perspective: '2000px' }}>
@@ -335,48 +437,48 @@ const LatestProjects = () => {
 
                                     const transform = getCardTransform(position, projectIndex);
 
-                                return (
-                                    <motion.div
-                                        key={projectIndex}
-                                        className="absolute w-[320px] md:w-[480px] h-[420px] md:h-[560px]"
-                                        initial={false}
-                                        animate={{
-                                            x: transform.x,
-                                            y: transform.y,
-                                            scale: transform.scale,
-                                            rotateY: transform.rotateY,
-                                            zIndex: transform.zIndex,
-                                            opacity: transform.opacity,
-                                        }}
-                                        transition={{
-                                            type: 'spring',
-                                            stiffness: 70,
-                                            damping: 15,
-                                            mass: 0.8,
-                                            opacity: { duration: 0.6 }
-                                        }}
-                                        style={{
-                                            transformStyle: 'preserve-3d',
-                                            left: '50%',
-                                            marginLeft: isMobile ? '-160px' : '-240px',
-                                        }}
-                                    >
-                                        <div
-                                            className={`w-full h-full rounded-3xl overflow-hidden shadow-2xl ${isDark ? 'bg-[#1a1235]' : 'bg-white'} border-2 ${position === 0 && animatingCard !== projectIndex ? 'border-[#D6B166]/50' : 'border-transparent'}`}
+                                    return (
+                                        <motion.div
+                                            key={projectIndex}
+                                            className="absolute w-[320px] md:w-[480px] h-[600px]"
+                                            initial={false}
+                                            animate={{
+                                                x: transform.x,
+                                                y: transform.y,
+                                                scale: transform.scale,
+                                                rotateY: transform.rotateY,
+                                                zIndex: transform.zIndex,
+                                                opacity: transform.opacity,
+                                            }}
+                                            transition={{
+                                                type: 'spring',
+                                                stiffness: 70,
+                                                damping: 15,
+                                                mass: 0.8,
+                                                opacity: { duration: 0.6 }
+                                            }}
                                             style={{
-                                                backfaceVisibility: 'hidden',
                                                 transformStyle: 'preserve-3d',
+                                                left: '50%',
+                                                marginLeft: isMobile ? '-160px' : '-240px',
                                             }}
                                         >
-                                            {/* Full Screenshot Display - Scroll on hover with bounce back */}
-                                            <div className="relative h-full overflow-hidden group/card">
-                                                <img
-                                                    src={project.image}
-                                                    alt={project.title}
-                                                    className="w-full translate-y-0 group-hover/card:-translate-y-[60%] transition-transform duration-[20s] ease-in-out"
-                                                />
+                                            <div
+                                                className={`w-full h-full rounded-3xl overflow-hidden shadow-2xl ${isDark ? 'bg-[#1a1235]' : 'bg-white'} border-2 ${position === 0 && animatingCard !== projectIndex ? 'border-[#D6B166]/50' : 'border-transparent'}`}
+                                                style={{
+                                                    backfaceVisibility: 'hidden',
+                                                    transformStyle: 'preserve-3d',
+                                                }}
+                                            >
+                                                {/* Full Screenshot Display - Scroll on hover with bounce back */}
+                                                <div className="relative h-full overflow-hidden slow-scroll-card">
+                                                    <img
+                                                        src={project.image}
+                                                        alt={project.title}
+                                                        className="w-full slow-scroll-img"
+                                                    />
+                                                </div>
                                             </div>
-                                        </div>
 
                                             <div
                                                 className={`absolute inset-0 w-full h-full rounded-3xl overflow-hidden shadow-2xl flex items-center justify-center ${isDark ? 'bg-gradient-to-br from-[#D6B166] to-[#E6C882]' : 'bg-gradient-to-br from-[#4B2F7D] to-[#281E5A]'}`}
