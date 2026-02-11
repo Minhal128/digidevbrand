@@ -45,7 +45,7 @@ const AppContent: React.FC = () => {
   return (
     <Router>
       <ScrollToTop />
-      <div className="flex flex-col min-h-screen bg-background dark:bg-dark-background text-foreground dark:text-dark-foreground transition-colors duration-300">
+      <div className="flex flex-col min-h-screen text-foreground dark:text-dark-foreground transition-colors duration-300 w-full overflow-x-hidden" style={{ backgroundColor: '#210a3d' }}>
         <Navbar />
 
         <main className="flex-grow">
@@ -103,7 +103,7 @@ const AppContent: React.FC = () => {
           </AnimatePresence>
         </main>
 
-        <div className={`-mx-6 px-6 py-4 text-center ${isDark ? 'bg-black' : 'bg-gray-50'}`}>
+        <div className={`w-full px-4 md:px-6 py-3 md:py-4 text-center ${isDark ? 'bg-black' : 'bg-gray-50'}`}>
           <p className="font-semibold tracking-wider uppercase text-xs" style={{ color: isDark ? '#f59e0b' : '#62109F' }}>
             Trusted by Brands Worldwide
           </p>

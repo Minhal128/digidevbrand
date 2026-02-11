@@ -5,6 +5,24 @@
 @tailwind components;
 @tailwind utilities;
 
+/* =============================================
+   SCROLL SPEED CONTROL — Change the value below
+   to adjust hover-scroll speed on website cards.
+   Lower = faster, Higher = slower.
+   Examples: 30s (fast), 120s (medium), 600s (turtle)
+   ============================================= */
+:root {
+  --scroll-speed: 3s;
+}
+
+.slow-scroll-card img.slow-scroll-img {
+  transform: translateY(0);
+  transition: transform var(--scroll-speed) linear;
+}
+.slow-scroll-card:hover img.slow-scroll-img {
+  transform: translateY(calc(-100% + 600px));
+}
+
 /* Custom CSS variables - Royal Purple & Gold Theme */
 :root {
   --color-primary: #4B2F7D;
@@ -366,8 +384,15 @@ html.dark .glass {
 
 /* Scrollbar styling */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
+}
+
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
 }
 
 ::-webkit-scrollbar-track {
@@ -541,4 +566,670 @@ html.dark ::-webkit-scrollbar-thumb:hover {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* =============================================
+   MOBILE RESPONSIVE UTILITIES
+   ============================================= */
+
+/* Mobile-first responsive typography */
+@media (max-width: 640px) {
+  h1 {
+    font-size: 1.875rem; /* 30px */
+    line-height: 2.25rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem; /* 24px */
+    line-height: 2rem;
+  }
+  
+  h3 {
+    font-size: 1.25rem; /* 20px */
+    line-height: 1.75rem;
+  }
+  
+  h4 {
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.5rem;
+  }
+}
+
+/* Mobile container padding */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Touch-friendly button sizes on mobile */
+@media (max-width: 768px) {
+  button, .btn, a[role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Prevent horizontal scroll on mobile */
+body {
+  overflow-x: hidden;
+}
+
+/* Mobile-optimized animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Mobile video optimization */
+@media (max-width: 768px) {
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Mobile image optimization */
+@media (max-width: 768px) {
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Mobile-friendly grid gaps */
+@media (max-width: 640px) {
+  .grid {
+    gap: 0.75rem;
+  }
+}
+
+/* Responsive font scaling */
+@media (min-width: 640px) and (max-width: 1024px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 639px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* Mobile navigation improvements */
+@media (max-width: 1024px) {
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+}
+
+/* Mobile card stacking */
+@media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Responsive spacing utilities */
+.section-padding-mobile {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding-mobile {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-padding-mobile {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+}
+
+/* Mobile-optimized swiper */
+@media (max-width: 768px) {
+  .swiper-slide {
+    padding: 0.5rem;
+  }
+  
+  .swiper-pagination-bullet {
+    width: 8px !important;
+    height: 8px !important;
+  }
+}
+
+/* Responsive text truncation */
+.line-clamp-mobile-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .line-clamp-mobile-2 {
+    -webkit-line-clamp: 3;
+  }
+}
+
+/* Mobile modal improvements */
+@media (max-width: 640px) {
+  .modal-content {
+    width: 95vw;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+}
+
+/* Responsive flex utilities */
+@media (max-width: 640px) {
+  .flex-mobile-col {
+    flex-direction: column;
+  }
+}
+
+/* Mobile-friendly form inputs */
+@media (max-width: 768px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="password"],
+  textarea,
+  select {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Responsive hero section */
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: calc(100vh - 80px);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+/* Mobile-optimized timeline */
+@media (max-width: 768px) {
+  .MuiTimeline-root {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  .MuiTimelineItem-root {
+    min-height: auto;
+  }
+}
+
+/* Responsive pricing cards */
+@media (max-width: 640px) {
+  .pricing-card {
+    margin-bottom: 2rem;
+  }
+}
+
+/* Mobile menu improvements */
+@media (max-width: 1024px) {
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 85%;
+    max-width: 400px;
+    z-index: 100;
+  }
+}
+
+/* Responsive logo sizing */
+@media (max-width: 640px) {
+  .logo {
+    height: 60px;
+    width: auto;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .logo {
+    height: 80px;
+    width: auto;
+  }
+}
+
+/* Mobile-friendly hover states */
+@media (hover: none) {
+  .hover-effect:hover {
+    transform: none;
+  }
+}
+
+/* Responsive testimonial cards */
+@media (max-width: 768px) {
+  .testimonial-card {
+    padding: 1.5rem;
+  }
+}
+
+/* Mobile project gallery */
+@media (max-width: 768px) {
+  .project-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .project-gallery {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+}
+
+/* Responsive footer */
+@media (max-width: 768px) {
+  footer {
+    text-align: center;
+  }
+  
+  footer .grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Mobile-optimized blog cards */
+@media (max-width: 640px) {
+  .blog-card {
+    margin-bottom: 1.5rem;
+  }
+  
+  .blog-card img {
+    height: 200px;
+    object-fit: cover;
+  }
+}
+
+/* Responsive CTA sections */
+@media (max-width: 768px) {
+  .cta-section {
+    padding: 3rem 1rem;
+  }
+  
+  .cta-section h2 {
+    font-size: 1.75rem;
+  }
+  
+  .cta-section p {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile-friendly social icons */
+@media (max-width: 640px) {
+  .social-icons {
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  
+  .social-icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Responsive service boxes */
+@media (max-width: 640px) {
+  .service-box {
+    height: 160px;
+  }
+}
+
+/* Mobile contact form */
+@media (max-width: 768px) {
+  .contact-form {
+    padding: 1.5rem;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    padding: 0.75rem;
+  }
+}
+
+/* Responsive package cards */
+@media (max-width: 768px) {
+  .package-card {
+    margin-top: 2rem;
+  }
+}
+
+/* Mobile-optimized animations */
+@media (max-width: 768px) {
+  .animate-on-scroll {
+    animation-duration: 0.4s;
+  }
+}
+
+/* Responsive iframe embeds */
+@media (max-width: 768px) {
+  iframe {
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* Mobile-friendly tooltips */
+@media (max-width: 768px) {
+  .tooltip {
+    font-size: 0.75rem;
+    padding: 0.5rem;
+  }
+}
+
+/* Responsive badge sizing */
+@media (max-width: 640px) {
+  .badge {
+    font-size: 0.625rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+/* Mobile navigation dots */
+@media (max-width: 768px) {
+  .navigation-dots {
+    bottom: 1rem;
+  }
+  
+  .navigation-dot {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+/* Responsive accordion */
+@media (max-width: 768px) {
+  .accordion-item {
+    padding: 1rem;
+  }
+}
+
+/* Mobile-optimized tabs */
+@media (max-width: 768px) {
+  .tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .tab {
+    white-space: nowrap;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Responsive stat counters */
+@media (max-width: 640px) {
+  .stat-counter {
+    font-size: 2rem;
+  }
+}
+
+/* Mobile-friendly dropdown */
+@media (max-width: 768px) {
+  .dropdown-menu {
+    position: fixed;
+    left: 1rem;
+    right: 1rem;
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+}
+
+/* Responsive breadcrumbs */
+@media (max-width: 640px) {
+  .breadcrumb {
+    font-size: 0.75rem;
+  }
+}
+
+/* Mobile-optimized progress bars */
+@media (max-width: 768px) {
+  .progress-bar {
+    height: 6px;
+  }
+}
+
+/* Responsive alert messages */
+@media (max-width: 640px) {
+  .alert {
+    padding: 0.75rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Mobile-friendly pagination */
+@media (max-width: 640px) {
+  .pagination {
+    gap: 0.25rem;
+  }
+  
+  .pagination-item {
+    width: 32px;
+    height: 32px;
+    font-size: 0.875rem;
+  }
+}
+
+/* Responsive loading spinners */
+@media (max-width: 640px) {
+  .spinner {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* Mobile-optimized shadows */
+@media (max-width: 768px) {
+  .shadow-xl {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Safe area insets for notched devices */
+@supports (padding: max(0px)) {
+  .safe-area-top {
+    padding-top: max(1rem, env(safe-area-inset-top));
+  }
+  
+  .safe-area-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}
+
+/* Mobile landscape optimizations */
+@media (max-width: 896px) and (orientation: landscape) {
+  .hero-section {
+    min-height: auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  .modal-content {
+    max-height: 85vh;
+  }
+}
+
+/* Prevent text size adjustment on orientation change */
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Mobile-friendly focus states */
+@media (max-width: 768px) {
+  *:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+}
+
+/* =============================================
+   CRITICAL FIX: Remove white space at bottom
+   ============================================= */
+html {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background-color: #210a3d !important;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative;
+  background-color: #210a3d !important;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background-color: #210a3d !important;
+}
+
+/* Ensure footer has NO bottom spacing */
+footer {
+  width: 100% !important;
+  margin: 0 !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+  display: block !important;
+  background-color: #210a3d !important;
+}
+
+/* Remove any bottom spacing from last elements */
+footer > *:last-child,
+footer > div:last-child,
+footer > div:last-child > div:last-child {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Mobile chatbot positioning - FIXED */
+@media (max-width: 768px) {
+  button[class*="fixed"][class*="bottom"] {
+    bottom: 1rem !important;
+    right: 1rem !important;
+  }
+  
+  /* Hide chatbot on mobile if causing white space */
+  .fixed.z-50 {
+    bottom: 1rem !important;
+    right: 1rem !important;
+  }
+}
+
+/* Prevent any overflow causing white space */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+main {
+  flex: 1 0 auto;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: transparent;
+}
+
+/* Ensure no white space after footer */
+body::after,
+#root::after,
+footer::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Fix any margin/padding issues */
+.min-h-screen {
+  min-height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  background-color: transparent !important;
+}
+
+/* Ensure CountryMarquee doesn't create white space */
+.overflow-hidden {
+  overflow-x: hidden !important;
+  width: 100% !important;
+}
+
+/* Force footer to stick to content */
+footer {
+  flex-shrink: 0;
+}
+
+/* Remove any potential white space creators */
+br:last-child,
+div:empty:last-child {
+  display: none !important;
+}
+
+/* EMERGENCY: Force all backgrounds to match */
+.bg-background,
+.dark\:bg-dark-background,
+[class*="bg-"] {
+  background-color: inherit !important;
+}
+
+/* Fix white space below footer specifically */
+body > div,
+#root > div {
+  background-color: transparent !important;
+}
+
+/* Ensure page background extends to bottom */
+html,
+body,
+#root {
+  min-height: 100vh !important;
+  height: auto !important;
+}
+
+/* Remove white background from any element at bottom */
+body > *:last-child,
+#root > *:last-child {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Force dark background everywhere */
+* {
+  scrollbar-color: rgba(210, 170, 80, 0.3) #210a3d !important;
 }

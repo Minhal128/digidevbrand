@@ -868,15 +868,15 @@ const ServicesPage: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { title: 'E-Commerce Platform', category: 'Web Development', image: '/1.png' },
-              { title: 'Brand Identity Design', category: 'Branding', image: '/2.png' },
-              { title: 'Mobile App UI', category: 'UI/UX Design', image: '/3.png' },
-              { title: 'Corporate Website', category: 'Web Development', image: '/image.png' },
+              { title: 'E-Commerce Platform', category: 'Web Development', image: '/1.jpeg' },
+              { title: 'Brand Identity Design', category: 'Branding', image: '/2.jpeg' },
+              { title: 'Mobile App UI', category: 'UI/UX Design', image: '/3.jpeg' },
+              { title: 'Corporate Website', category: 'Web Development', image: '/4.jpeg' },
               { title: 'Social Media Campaign', category: 'Marketing', image: '/5.jpeg' },
-              { title: 'Logo Collection', category: 'Design', image: '/6.png' },
-              { title: 'Business Cards Design', category: 'Print Design', image: '/7.png' },
-              { title: 'Letterhead Design', category: 'Corporate Identity', image: '/8.png' },
-              { title: 'Graphic Design Portfolio', category: 'Creative Design', image: '/9.png' },
+              { title: 'Logo Collection', category: 'Design', image: '/6.jpeg' },
+              { title: 'Business Cards Design', category: 'Print Design', image: '/7.jpeg' },
+              { title: 'Letterhead Design', category: 'Corporate Identity', image: '/8.jpeg' },
+              { title: 'Graphic Design Portfolio', category: 'Creative Design', image: '/9.jpeg' },
             ].map((project, index) => (
               <motion.div
                 key={project.title}
@@ -886,17 +886,13 @@ const ServicesPage: React.FC = () => {
                 transition={{ delay: index * 0.1 }}
                 className="group cursor-pointer relative"
               >
-                <div className={`relative overflow-hidden rounded-2xl border ${isDark ? 'border-white/[0.06]' : 'border-gray-200 shadow-lg shadow-gray-100/50'} h-[600px]`}>
-                  {/* Show Image Thumbnail by Default with Hover Scroll Effect */}
-                  <div className="w-full h-full overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full object-cover object-top transition-transform duration-[4s] ease-in-out group-hover:translate-y-[calc(-100%+600px)]"
-                      style={{ height: 'auto', minHeight: '100%' }}
-                    />
-                  </div>
-                  <div className={`absolute inset-0 ${isDark ? 'bg-gradient-to-t from-[#0a0a0f] via-[#0a0a0f]/50 to-transparent' : 'bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent'} opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end pointer-events-none`}>
+                <div className={`relative overflow-hidden rounded-2xl border ${isDark ? 'border-white/[0.06]' : 'border-gray-200 shadow-lg shadow-gray-100/50'}`}>
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full aspect-[4/3] object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className={`absolute inset-0 ${isDark ? 'bg-gradient-to-t from-[#0a0a0f] via-[#0a0a0f]/50 to-transparent' : 'bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent'} opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end`}>
                     <div className="p-6 text-white">
                       <span className="text-sm text-violet-400">{project.category}</span>
                       <h3 className="text-xl font-bold">{project.title}</h3>

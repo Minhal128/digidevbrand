@@ -23,6 +23,7 @@ const serviceData = {
         description: 'We build more than just websites. We create scalable, secure, and high-conversion digital platforms tailored to your business goals.',
         icon: Globe,
         color: 'from-blue-600 to-cyan-600',
+        image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=800&fit=crop',
         metrics: [
             { label: 'Avg Speed Increase', value: '45%' },
             { label: 'Conversion Lift', value: '2.5x' },
@@ -34,13 +35,19 @@ const serviceData = {
             'SEO-ready architecture from day one.',
             'E-commerce integration and CMS mastery.',
         ],
+        packages: [
+            { name: 'BASIC TIER ECOMMERCE WEBSITE', price: '$1250', popular: false, features: ['Custom Home Page Design', 'Multiple Website', '3 Stock Photos', 'Up-to 100 Products', 'Content Management System (CMS)', 'Shopping Cart Integration', 'Easy Product Search', 'Payment Merchant Integration', 'Hover Effects', 'Social Media Integration', '1 Unique Banner Designs', '1 jQuery Slider Banner', 'Dedicated designer & developer', 'Unlimited Revisions', '100% Satisfaction Guarantee', '100% Unique Design Guarantee'] },
+            { name: 'MID TIER ECOMMERCE WEBSITE', price: '$1450', popular: true, features: ['Custom Home Page Design', 'Multiple Page Website', '5 Stock Photos', '2-3 Stock Videos', 'Up-to 300 Products', 'Content Management System (CMS)', 'Shopping Cart Integration', 'Easy Product Search', 'Payment Merchant Integration', 'Hover Effects', 'Social Media Integration', '3 Unique Banner Designs', '3 jQuery Slider Banner', 'Dedicated designer & developer', 'Unlimited Revisions', '100% Satisfaction Guarantee', '100% Unique Design Guarantee'] },
+            { name: 'ELITE TIER ECOMMERCE WEBSITE', price: '$1650', popular: false, features: ['Highly Dynamic CUSTOM WEBSITE', 'Custom Home Page Design', 'Multiple Page Website', 'Multiple Stock Photos', 'Multiple Stock Videos', 'Up-to 500 Products', 'Content Management System (CMS)', 'Shopping Cart Integration', 'Easy Product Search', 'Payment Merchant Integration', 'Hover Effects', 'Social Media Integration', '5 Unique Banner Designs', '5 jQuery Slider Banner', 'Dedicated designer & developer', 'Unlimited Revisions', '100% Satisfaction Guarantee', '100% Unique Design Guarantee'] },
+        ],
     },
     'branding': {
         title: 'Brand Identity & Design',
         subtitle: 'Crafting visceral connections.',
-        description: 'Your brand is your story. we help you tell it through powerful visuals, compelling narratives, and consistent design systems.',
+        description: 'Your brand is your story. We help you tell it through powerful visuals, compelling narratives, and consistent design systems.',
         icon: Palette,
         color: 'from-pink-600 to-rose-600',
+        image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&h=800&fit=crop',
         metrics: [
             { label: 'Brand Recognition', value: '+80%' },
             { label: 'Design Concepts', value: 'Unlimited' },
@@ -52,6 +59,12 @@ const serviceData = {
             'Narrative-driven messaging and microcopy.',
             'Multi-channel brand coherence.',
         ],
+        packages: [
+            { name: 'BASIC LOGO DESIGN', price: '$60', popular: false, features: ['3 Custom Logo Designs', 'Professional Design', '3 Revisions', '48 TO 72 Hours TAT', 'All Files (PNG, JPG)', '100% Satisfaction Guarantee', '100% Money Back Guarantee'] },
+            { name: 'Mid-Tier Logo Package', price: '$90', popular: true, features: ['6 Custom Logo Designs', 'Professional Design', 'Upto 6 Revisions', '48 TO 72 Hours TAT', 'All Files (PNG, JPG)', '100% Satisfaction Guarantee', '100% Money Back Guarantee'] },
+            { name: 'Elite Logo Design', price: '$120', popular: false, features: ['9 Custom Logo Designs', 'Professional Design', 'Upto 9 Revisions', '48 TO 72 Hours TAT', 'All Files (PNG, JPG)', '100% Satisfaction Guarantee', '100% Money Back Guarantee'] },
+            { name: 'PREMIUM LOGO PACKAGE', price: '$600', popular: false, features: ['UNLIMITED 3D Logo Design Concepts', 'FREE Business Card', 'Unlimited Revisions', '2 Stock Photos', '2 Banner Designs', '2 Stationary Design Sets', 'FREE MS Word Letterhead', '48 TO 72 Hours TAT', 'All Files (PNG, JPG)', '100% Satisfaction Guarantee'] },
+        ],
     },
     'seo-geo': {
         title: 'SEO & GEO (Generative Engine Optimization)',
@@ -59,6 +72,7 @@ const serviceData = {
         description: 'Traditional SEO is dead. We help you dominate both search engines and generative AI benchmarks (Perplexity, GPT, Gemini).',
         icon: Search,
         color: 'from-green-600 to-emerald-600',
+        image: 'https://images.unsplash.com/photo-1562577309-4932fdd64cd1?w=800&h=800&fit=crop',
         metrics: [
             { label: 'Organic Growth', value: '300%' },
             { label: 'AI Answer Rate', value: '94%' },
@@ -70,6 +84,11 @@ const serviceData = {
             'Semantic keyword targeting and clustering.',
             'Authority building and content ecosystem.',
         ],
+        packages: [
+            { name: 'Basic SEO Package', price: '$299', popular: false, features: ['Keyword Research & Analysis', 'On-Page SEO Optimization', 'Technical SEO Audit', 'Monthly Report', 'Google Analytics Setup', '100% Satisfaction Guarantee'] },
+            { name: 'Professional SEO Package', price: '$599', popular: true, features: ['Everything in Basic', 'Content Strategy & Creation', 'Link Building Campaign', 'GEO Optimization', 'Competitor Analysis', 'Bi-Weekly Reports', '100% Satisfaction Guarantee'] },
+            { name: 'Elite SEO Package', price: '$999', popular: false, features: ['Everything in Professional', 'AI Search Optimization', 'Full GEO Strategy', 'Authority Building', 'Social Signals', 'Weekly Reports', 'Dedicated SEO Manager', '100% Satisfaction Guarantee'] },
+        ],
     },
     'cyber-security': {
         title: 'Cyber Security & Privacy',
@@ -77,6 +96,7 @@ const serviceData = {
         description: 'Security is a brand promise. We implement elite-level protection for your digital assets and customer data.',
         icon: Shield,
         color: 'from-red-600 to-pink-600',
+        image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=800&fit=crop',
         metrics: [
             { label: 'Threat Mitigation', value: '100%' },
             { label: 'SSL Protocol', value: 'A+' },
@@ -88,6 +108,11 @@ const serviceData = {
             'Secure data encryption and privacy compliance.',
             'Malware protection and emergency response.',
         ],
+        packages: [
+            { name: 'Basic Security Audit', price: '$399', popular: false, features: ['Security Vulnerability Scan', 'SSL Certificate Setup', 'Firewall Configuration', 'Basic Malware Removal', '1 Month Monitoring', '100% Satisfaction Guarantee'] },
+            { name: 'Advanced Security Package', price: '$799', popular: true, features: ['Everything in Basic', 'Penetration Testing', 'DDoS Protection', 'Real-time Monitoring', '24/7 Incident Response', '3 Months Monitoring', '100% Satisfaction Guarantee'] },
+            { name: 'Enterprise Security Suite', price: '$1499', popular: false, features: ['Everything in Advanced', 'Custom Security Architecture', 'Compliance Auditing (GDPR/HIPAA)', 'Employee Security Training', 'Ongoing Vulnerability Management', '12 Months Monitoring', 'Dedicated Security Analyst', '100% Satisfaction Guarantee'] },
+        ],
     },
     'social-media': {
         title: 'Social Media Mastery',
@@ -95,6 +120,7 @@ const serviceData = {
         description: 'From viral content to elite community management, we turn your social channels into conversion engines.',
         icon: Share2,
         color: 'from-purple-600 to-indigo-600',
+        image: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&h=800&fit=crop',
         metrics: [
             { label: 'Engagement Rate', value: '12%' },
             { label: 'ROI on Ad Spend', value: '5x' },
@@ -106,6 +132,11 @@ const serviceData = {
             'Paid social scaling and optimization.',
             'Influencer partnerships and brand advocacy.',
         ],
+        packages: [
+            { name: 'Starter Social Package', price: '$299', popular: false, features: ['2 Platforms Management', '12 Posts per Month', 'Basic Graphics', 'Monthly Analytics Report', 'Community Management', '100% Satisfaction Guarantee'] },
+            { name: 'Growth Social Package', price: '$599', popular: true, features: ['4 Platforms Management', '24 Posts per Month', 'Professional Graphics & Reels', 'Paid Ad Campaign Management', 'Bi-Weekly Reports', 'Content Calendar', '100% Satisfaction Guarantee'] },
+            { name: 'Elite Social Package', price: '$999', popular: false, features: ['All Platforms Management', 'Daily Posts & Stories', 'Premium Video Content', 'Influencer Outreach', 'Full Ad Campaign Suite', 'Weekly Reports', 'Dedicated Social Manager', '100% Satisfaction Guarantee'] },
+        ],
     },
     'ecommerce': {
         title: 'E-Commerce Evolution',
@@ -113,6 +144,7 @@ const serviceData = {
         description: 'We build e-commerce experiences that don’t just sell—they build loyal communities through interactive UI/UX.',
         icon: ShoppingCart,
         color: 'from-orange-600 to-amber-600',
+        image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=800&fit=crop',
         metrics: [
             { label: 'Cart Recovery', value: '30%' },
             { label: 'Avg Order Value', value: '+25%' },
@@ -124,7 +156,60 @@ const serviceData = {
             'Scalable inventory and payment integrations.',
             'Conversion Rate Optimization (CRO) audits.',
         ],
-    }
+        packages: [
+            { name: 'BASIC TIER ECOMMERCE', price: '$1250', popular: false, features: ['Custom Home Page Design', 'Up-to 100 Products', 'CMS', 'Shopping Cart Integration', 'Payment Merchant Integration', 'Social Media Integration', 'Unlimited Revisions', '100% Satisfaction Guarantee'] },
+            { name: 'MID TIER ECOMMERCE', price: '$1450', popular: true, features: ['Custom Home Page Design', 'Multiple Page Website', '5 Stock Photos', '2-3 Stock Videos', 'Up-to 300 Products', 'CMS', 'Shopping Cart Integration', 'Payment Merchant Integration', '3 Banner Designs', 'Unlimited Revisions', '100% Satisfaction Guarantee'] },
+            { name: 'ELITE TIER ECOMMERCE', price: '$1650', popular: false, features: ['Highly Dynamic CUSTOM WEBSITE', 'Multiple Stock Photos & Videos', 'Up-to 500 Products', 'CMS', 'Shopping Cart Integration', 'Payment Merchant Integration', '5 Banner Designs', 'Dedicated designer & developer', 'Unlimited Revisions', '100% Satisfaction Guarantee'] },
+        ],
+    },
+    'app-development': {
+        title: 'App Development',
+        subtitle: 'Powerful apps, seamless experiences.',
+        description: 'We build native and cross-platform mobile applications that deliver exceptional user experiences and drive business growth.',
+        icon: Globe,
+        color: 'from-teal-600 to-cyan-600',
+        image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=800&fit=crop',
+        metrics: [
+            { label: 'App Store Rating', value: '4.8+' },
+            { label: 'User Retention', value: '72%' },
+            { label: 'Load Time', value: '<2s' },
+        ],
+        outcomes: [
+            'Native iOS and Android app development.',
+            'Cross-platform development with React Native & Flutter.',
+            'Intuitive UI/UX designed for engagement.',
+            'Backend API development and cloud integration.',
+        ],
+        packages: [
+            { name: 'Basic App Package', price: '$2500', popular: false, features: ['Single Platform (iOS or Android)', 'Up to 5 Screens', 'Basic UI/UX Design', 'Push Notifications', 'API Integration', 'App Store Submission', '3 Months Support', '100% Satisfaction Guarantee'] },
+            { name: 'Professional App Package', price: '$5000', popular: true, features: ['Cross-Platform (iOS & Android)', 'Up to 15 Screens', 'Custom UI/UX Design', 'Push Notifications', 'Payment Integration', 'Admin Dashboard', 'API Integration', '6 Months Support', '100% Satisfaction Guarantee'] },
+            { name: 'Enterprise App Package', price: '$10000', popular: false, features: ['Cross-Platform (iOS & Android)', 'Unlimited Screens', 'Premium UI/UX Design', 'Real-time Features', 'Payment Integration', 'Advanced Admin Dashboard', 'Cloud Infrastructure', 'Analytics Dashboard', '12 Months Support', '100% Satisfaction Guarantee'] },
+        ],
+    },
+    'game-development': {
+        title: 'Game Development',
+        subtitle: 'Immersive worlds, endless possibilities.',
+        description: 'From casual mobile games to complex multiplayer experiences, we bring your gaming vision to life with cutting-edge technology.',
+        icon: Zap,
+        color: 'from-violet-600 to-purple-600',
+        image: 'https://images.unsplash.com/photo-1535223289827-42f1e9919769?w=800&h=800&fit=crop',
+        metrics: [
+            { label: 'Player Retention', value: '65%' },
+            { label: 'Avg Session Time', value: '18min' },
+            { label: 'Platform Support', value: 'All' },
+        ],
+        outcomes: [
+            '2D and 3D game design and development.',
+            'Unity and Unreal Engine expertise.',
+            'Multiplayer and real-time game mechanics.',
+            'In-app purchases and monetization strategy.',
+        ],
+        packages: [
+            { name: 'Indie Game Package', price: '$3000', popular: false, features: ['2D Game Development', 'Up to 5 Levels', 'Basic Character Design', 'Sound Effects', 'Leaderboard Integration', 'App Store Submission', '100% Satisfaction Guarantee'] },
+            { name: 'Pro Game Package', price: '$7500', popular: true, features: ['2D/3D Game Development', 'Up to 15 Levels', 'Custom Character & Environment Design', 'Original Soundtrack', 'Multiplayer Support', 'In-App Purchases', 'Analytics Integration', '100% Satisfaction Guarantee'] },
+            { name: 'AAA Game Package', price: '$15000', popular: false, features: ['Full 3D Game Development', 'Unlimited Levels', 'Premium Art & Animation', 'Original Soundtrack & Voice Acting', 'Multiplayer Infrastructure', 'Cross-Platform Support', 'Live Ops & Updates', 'Dedicated Game Team', '100% Satisfaction Guarantee'] },
+        ],
+    },
 };
 
 const ServiceDetailPage: React.FC = () => {
@@ -220,8 +305,8 @@ const ServiceDetailPage: React.FC = () => {
                         >
                             <div className="absolute -inset-4 bg-gradient-to-r from-violet-500 to-fuchsia-500 opacity-20 blur-2xl rounded-[3rem]" />
                             <img
-                                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=800&fit=crop"
-                                alt="Outcome visual"
+                                src={service.image}
+                                alt={service.title}
                                 className="w-full h-auto rounded-[2.5rem] relative z-10"
                             />
                         </motion.div>
@@ -232,23 +317,40 @@ const ServiceDetailPage: React.FC = () => {
             {/* Packages Preview */}
             <section className={`py-32 ${isDark ? 'bg-white/[0.02]' : 'bg-gray-50'}`}>
                 <div className="container mx-auto px-6 text-center">
-                    <h2 className="text-5xl font-black mb-16">Select Your <span className="text-fuchsia-500">Fuel</span></h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {['Basic', 'Professional', 'Elite'].map((tier, idx) => (
+                    <h2 className="text-5xl font-black mb-16">Select Your <span className="text-fuchsia-500">Package</span></h2>
+                    <div className={`grid grid-cols-1 ${service.packages.length === 4 ? 'md:grid-cols-2 lg:grid-cols-4' : 'md:grid-cols-3'} gap-8`}>
+                        {service.packages.map((pkg, idx) => (
                             <motion.div
-                                key={tier}
+                                key={pkg.name}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: idx * 0.1 }}
                                 whileHover={{ y: -10 }}
-                                className={`p-10 rounded-3xl border transition-all ${isDark ? 'bg-black border-white/5 hover:border-violet-500/50' : 'bg-white border-gray-100 hover:border-violet-300 shadow-xl'}`}
+                                className={`p-8 rounded-3xl border transition-all relative ${pkg.popular ? (isDark ? 'bg-violet-500/10 border-violet-500/50 shadow-2xl shadow-violet-500/10' : 'bg-violet-50 border-violet-300 shadow-2xl shadow-violet-100') : (isDark ? 'bg-black border-white/5 hover:border-violet-500/50' : 'bg-white border-gray-100 hover:border-violet-300 shadow-xl')}`}
                             >
-                                <div className={`h-12 w-12 rounded-full flex items-center justify-center mb-6 mx-auto ${idx === 1 ? 'bg-violet-500 text-white' : 'bg-violet-500/10 text-violet-500'}`}>
+                                {pkg.popular && (
+                                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-violet-500 text-white text-xs font-bold rounded-full uppercase tracking-wider">
+                                        Most Popular
+                                    </div>
+                                )}
+                                <div className={`h-12 w-12 rounded-full flex items-center justify-center mb-6 mx-auto ${pkg.popular ? 'bg-violet-500 text-white' : 'bg-violet-500/10 text-violet-500'}`}>
                                     {idx === 0 ? <Zap className="h-6 w-6" /> : idx === 1 ? <Briefcase className="h-6 w-6" /> : <Star className="h-6 w-6" />}
                                 </div>
-                                <h3 className="text-2xl font-bold mb-4">{tier}</h3>
-                                <div className="text-4xl font-black mb-8 text-violet-500">
-                                    {idx === 0 ? '$199' : idx === 1 ? '$844' : '$1,494'}
+                                <h3 className={`text-lg font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>{pkg.name}</h3>
+                                <div className="text-4xl font-black mb-6 text-violet-500">
+                                    {pkg.price}
                                 </div>
+                                <ul className="text-left space-y-3 mb-8">
+                                    {pkg.features.map((feature, fIdx) => (
+                                        <li key={fIdx} className={`flex items-start gap-2 text-sm ${isDark ? 'text-white/70' : 'text-gray-600'}`}>
+                                            <CheckCircle className="h-4 w-4 text-violet-500 flex-shrink-0 mt-0.5" />
+                                            {feature}
+                                        </li>
+                                    ))}
+                                </ul>
                                 <Link to="/contact">
-                                    <button className={`w-full py-4 rounded-2xl font-black transition-all ${idx === 1 ? 'bg-violet-500 text-white hover:bg-violet-600 shadow-xl shadow-violet-500/30' : 'border-2 border-violet-500 text-violet-500 hover:bg-violet-500 hover:text-white'}`}>
+                                    <button className={`w-full py-4 rounded-2xl font-black transition-all ${pkg.popular ? 'bg-violet-500 text-white hover:bg-violet-600 shadow-xl shadow-violet-500/30' : 'border-2 border-violet-500 text-violet-500 hover:bg-violet-500 hover:text-white'}`}>
                                         Order Now
                                     </button>
                                 </Link>

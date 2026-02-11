@@ -181,7 +181,7 @@ const HomePage: React.FC = () => {
                       </div>
                     </div>
 
-                    <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight text-gray-900 font-serif">
+                    <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-6 md:mb-8 leading-tight text-gray-900 font-serif px-4">
                       {t('hero.title').split(' ').slice(0, 2).join(' ')}
                       <br />
                       <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-violet-500 to-fuchsia-500">
@@ -189,20 +189,20 @@ const HomePage: React.FC = () => {
                       </span>
                     </h1>
 
-                    <p className="text-lg md:text-xl mb-10 leading-relaxed text-gray-600 max-w-2xl mx-auto">
+                    <p className="text-base sm:text-lg md:text-xl mb-8 md:mb-10 leading-relaxed text-gray-600 max-w-2xl mx-auto px-4">
                       {t('hero.subtitle')}
                     </p>
 
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                      <Link to="/contact">
-                        <button className="group px-8 py-4 bg-black text-white font-bold text-base rounded-2xl hover:bg-violet-500 transition-all transform hover:scale-105 shadow-2xl flex items-center gap-3 justify-center">
+                    <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-4">
+                      <Link to="/contact" className="w-full sm:w-auto">
+                        <button className="group w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-black text-white font-bold text-sm md:text-base rounded-2xl hover:bg-violet-500 transition-all transform hover:scale-105 shadow-2xl flex items-center gap-2 md:gap-3 justify-center">
                           {t('hero.cta')}
-                          <ArrowRight className="h-5 w-5 group-hover:translate-x-2 transition-transform" />
+                          <ArrowRight className="h-4 md:h-5 w-4 md:w-5 group-hover:translate-x-2 transition-transform" />
                         </button>
                       </Link>
-                      <Link to="/services">
-                        <button className="px-8 py-4 border-2 border-gray-900 text-gray-900 font-bold text-base rounded-2xl hover:bg-gray-900 hover:text-white transition-all flex items-center gap-3 justify-center">
-                          <Play className="h-5 w-5" />
+                      <Link to="/services" className="w-full sm:w-auto">
+                        <button className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 border-2 border-gray-900 text-gray-900 font-bold text-sm md:text-base rounded-2xl hover:bg-gray-900 hover:text-white transition-all flex items-center gap-2 md:gap-3 justify-center">
+                          <Play className="h-4 md:h-5 w-4 md:w-5" />
                           {t('hero.ctaSecondary')}
                         </button>
                       </Link>
@@ -248,15 +248,15 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Trust Bar / Service Boxes */}
-      <section className={`py-20 ${isDark ? 'bg-[#281E5A]' : 'bg-[#E6E6E6]'}`}>
-        <div className="container mx-auto px-6">
+      <section className={`py-12 md:py-20 ${isDark ? 'bg-[#281E5A]' : 'bg-[#E6E6E6]'}`}>
+        <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-7xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4"
             >
               {[
                 { title: "Graphic Designing", subtitle: "Creative Visuals" },
@@ -301,16 +301,16 @@ const HomePage: React.FC = () => {
 
                     <div className="relative z-30">
                       <motion.div
-                        className={`mb-4 inline-flex p-3 rounded-2xl ${isDark ? 'bg-[#4B2F7D]/40' : 'bg-[#4B2F7D]/5'}`}
+                        className={`mb-3 md:mb-4 inline-flex p-2 md:p-3 rounded-xl md:rounded-2xl ${isDark ? 'bg-[#4B2F7D]/40' : 'bg-[#4B2F7D]/5'}`}
                         whileHover={{ rotate: 15, scale: 1.1 }}
                       >
-                        {index === 0 && <Palette className={`h-6 w-6 ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`} />}
-                        {index === 1 && <Code className={`h-6 w-6 ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`} />}
-                        {index === 2 && <TrendingUp className={`h-6 w-6 ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`} />}
-                        {index === 3 && <Zap className={`h-6 w-6 ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`} />}
+                        {index === 0 && <Palette className={`h-5 md:h-6 w-5 md:w-6 ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`} />}
+                        {index === 1 && <Code className={`h-5 md:h-6 w-5 md:w-6 ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`} />}
+                        {index === 2 && <TrendingUp className={`h-5 md:h-6 w-5 md:w-6 ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`} />}
+                        {index === 3 && <Zap className={`h-5 md:h-6 w-5 md:w-6 ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`} />}
                       </motion.div>
-                      <h3 className={`text-xl font-bold mb-2 leading-tight group-hover:text-[#D6B166] transition-colors ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`}>{item.title}</h3>
-                      <p className={`text-sm font-medium tracking-wide uppercase transition-colors ${isDark ? 'text-white/40 group-hover:text-[#D6B166]/60' : 'text-[#4B2F7D]/50 group-hover:text-[#4B2F7D]/80'}`}>{item.subtitle}</p>
+                      <h3 className={`text-base md:text-xl font-bold mb-1 md:mb-2 leading-tight group-hover:text-[#D6B166] transition-colors ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`}>{item.title}</h3>
+                      <p className={`text-xs md:text-sm font-medium tracking-wide uppercase transition-colors ${isDark ? 'text-white/40 group-hover:text-[#D6B166]/60' : 'text-[#4B2F7D]/50 group-hover:text-[#4B2F7D]/80'}`}>{item.subtitle}</p>
                     </div>
 
                     {/* Hover Decorative Line */}
@@ -327,12 +327,12 @@ const HomePage: React.FC = () => {
       <LatestProjects />
 
       {/* Process Section - Modern MUI Timeline - Royal Purple & Gold */}
-      <section className={`py-28 relative overflow-hidden ${isDark ? 'bg-gradient-to-b from-[#281E5A] via-[#4B2F7D] to-[#281E5A]' : 'bg-gradient-to-b from-[#E6E6E6] via-white to-[#E6E6E6]'}`}>
+      <section className={`py-16 md:py-28 relative overflow-hidden ${isDark ? 'bg-gradient-to-b from-[#281E5A] via-[#4B2F7D] to-[#281E5A]' : 'bg-gradient-to-b from-[#E6E6E6] via-white to-[#E6E6E6]'}`}>
         {/* Background decorative elements */}
-        <div className={`absolute top-0 left-1/4 w-96 h-96 rounded-full blur-3xl ${isDark ? 'bg-[#D6B166]/10' : 'bg-[#D6B166]/20'}`} />
-        <div className={`absolute bottom-0 right-1/4 w-96 h-96 rounded-full blur-3xl ${isDark ? 'bg-[#E6C882]/5' : 'bg-[#E6C882]/15'}`} />
+        <div className={`absolute top-0 left-1/4 w-64 md:w-96 h-64 md:h-96 rounded-full blur-3xl ${isDark ? 'bg-[#D6B166]/10' : 'bg-[#D6B166]/20'}`} />
+        <div className={`absolute bottom-0 right-1/4 w-64 md:w-96 h-64 md:h-96 rounded-full blur-3xl ${isDark ? 'bg-[#E6C882]/5' : 'bg-[#E6C882]/15'}`} />
 
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -346,8 +346,8 @@ const HomePage: React.FC = () => {
               <Zap className="h-4 w-4" />
               How We Work
             </span>
-            <h2 className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-6 ${isDark ? 'text-[#E6C882]' : 'text-[#281E5A]'}`}>Our Process</h2>
-            <p className={`max-w-2xl mx-auto text-lg ${isDark ? 'text-white/60' : 'text-[#462878]/70'}`}>
+            <h2 className={`text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 md:mb-6 ${isDark ? 'text-[#E6C882]' : 'text-[#281E5A]'}`}>Our Process</h2>
+            <p className={`max-w-2xl mx-auto text-base md:text-lg ${isDark ? 'text-white/60' : 'text-[#462878]/70'}`}>
               A streamlined approach to delivering exceptional results
             </p>
           </motion.div>
@@ -442,8 +442,8 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Testimonials Section - Modern Carousel */}
-      <section className={`py-28 overflow-hidden ${isDark ? 'bg-[#281E5A]' : 'bg-gradient-to-b from-[#E6E6E6] to-white'}`}>
-        <div className="container mx-auto px-4">
+      <section className={`py-16 md:py-28 overflow-hidden ${isDark ? 'bg-[#281E5A]' : 'bg-gradient-to-b from-[#E6E6E6] to-white'}`}>
+        <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -538,24 +538,24 @@ const HomePage: React.FC = () => {
             >
               {testimonials.map((testimonial) => (
                 <SwiperSlide key={testimonial.name}>
-                  <div className="text-center px-4 md:px-12">
-                    <div className="flex justify-center mb-8">
-                      <div className={`text-6xl font-serif leading-none ${isDark ? 'text-[#D6B166]/40' : 'text-[#4B2F7D]/30'}`}>
+                  <div className="text-center px-4 md:px-8 lg:px-12">
+                    <div className="flex justify-center mb-6 md:mb-8">
+                      <div className={`text-4xl md:text-6xl font-serif leading-none ${isDark ? 'text-[#D6B166]/40' : 'text-[#4B2F7D]/30'}`}>
                         "
                       </div>
                     </div>
 
-                    <p className={`text-lg md:text-xl leading-relaxed mb-10 max-w-3xl mx-auto ${isDark ? 'text-white/80' : 'text-[#281E5A]/80'
+                    <p className={`text-base md:text-lg lg:text-xl leading-relaxed mb-8 md:mb-10 max-w-3xl mx-auto ${isDark ? 'text-white/80' : 'text-[#281E5A]/80'
                       }`}>
                       {testimonial.content}
                     </p>
 
-                    <div className="flex items-center justify-center gap-3">
-                      <span className={`font-semibold ${isDark ? 'text-[#E6C882]' : 'text-[#281E5A]'}`}>
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3">
+                      <span className={`font-semibold text-sm md:text-base ${isDark ? 'text-[#E6C882]' : 'text-[#281E5A]'}`}>
                         {testimonial.name}
                       </span>
-                      <span className={`w-px h-4 ${isDark ? 'bg-[#D6B166]/30' : 'bg-[#4B2F7D]/30'}`} />
-                      <span className={`text-sm ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`}>
+                      <span className={`hidden sm:block w-px h-4 ${isDark ? 'bg-[#D6B166]/30' : 'bg-[#4B2F7D]/30'}`} />
+                      <span className={`text-xs md:text-sm ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`}>
                         {testimonial.role}
                       </span>
                     </div>
@@ -568,16 +568,16 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Blog Section with Swiper Carousel */}
-      <section className={`py-28 overflow-hidden ${isDark ? 'bg-gradient-to-b from-[#281E5A] via-[#4B2F7D] to-[#281E5A]' : 'bg-[#E6E6E6]'}`}>
-        <div className="container mx-auto px-4">
+      <section className={`py-16 md:py-28 overflow-hidden ${isDark ? 'bg-gradient-to-b from-[#281E5A] via-[#4B2F7D] to-[#281E5A]' : 'bg-[#E6E6E6]'}`}>
+        <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <span className={`font-medium text-sm uppercase tracking-widest ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`}>{t('blog.subtitle')}</span>
-            <h2 className={`text-3xl md:text-4xl lg:text-5xl font-bold mt-4 ${isDark ? 'text-[#E6C882]' : 'text-[#281E5A]'}`}>{t('blog.title')}</h2>
+            <span className={`font-medium text-xs md:text-sm uppercase tracking-widest ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`}>{t('blog.subtitle')}</span>
+            <h2 className={`text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mt-3 md:mt-4 ${isDark ? 'text-[#E6C882]' : 'text-[#281E5A]'}`}>{t('blog.title')}</h2>
           </motion.div>
 
           <style>{`
@@ -686,234 +686,6 @@ const HomePage: React.FC = () => {
               </div>
             </Swiper>
           </motion.div>
-        </div>
-      </section>
-      {/* Logo Design Packages Section */}
-      <section className="py-24 relative bg-[#0d0d1a]">
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(214,177,102,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(214,177,102,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <span className="font-medium text-sm uppercase tracking-widest text-[#D6B166]">Creative Solutions</span>
-            <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-4 text-white">Logo Design <span className="text-[#D6B166]">Packages</span></h2>
-            <p className="max-w-2xl mx-auto text-white/50">
-              Professional logo designs that represent your brand identity with creativity and precision.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 pt-10">
-            {[
-              {
-                name: 'BASIC LOGO DESIGN',
-                price: '$60',
-                features: [
-                  '3 Custom Logo Designs',
-                  'Professional Design',
-                  '3 Revisions',
-                  '48 TO 72 Hours TAT',
-                  'All Files (PNG, JPG)',
-                  '100% Satisfaction Guarantee',
-                  '100% Money Back Guarantee'
-                ],
-                popular: false,
-              },
-              {
-                name: 'Mid-Tier Logo Package',
-                price: '$90',
-                features: [
-                  '6 Custom Logo Designs',
-                  'Professional Design',
-                  'Upto 6 Revisions',
-                  '48 TO 72 Hours TAT',
-                  'All Files (PNG, JPG)',
-                  '100% Satisfaction Guarantee',
-                  '100% Money Back Guarantee'
-                ],
-                popular: true,
-              },
-              {
-                name: 'Elite Logo Design',
-                price: '$120',
-                features: [
-                  '9 Custom Logo Designs',
-                  'Professional Design',
-                  'Upto 9 Revisions',
-                  '48 TO 72 Hours TAT',
-                  'All Files (PNG, JPG)',
-                  '100% Satisfaction Guarantee',
-                  '100% Money Back Guarantee'
-                ],
-                popular: false,
-              },
-              {
-                name: 'PREMIUM LOGO PACKAGE',
-                price: '$600',
-                features: [
-                  'UNLIMITED 3D Logo Design Concepts',
-                  'FREE Business Card',
-                  'Unlimited Revisions',
-                  '2 Stock Photos',
-                  '2 Banner Designs',
-                  '2 Stationary Design Sets',
-                  'FREE MS Word Letterhead',
-                  '48 TO 72 Hours TAT',
-                  'All Files (PNG, JPG)',
-                  '100% Satisfaction Guarantee'
-                ],
-                popular: false,
-              },
-            ].map((pkg, index) => (
-              <motion.div
-                key={pkg.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className={`relative group ${pkg.popular ? 'lg:-mt-6 lg:mb-6' : ''}`}
-              >
-                {pkg.popular && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20">
-                    <span className="px-6 py-2 bg-[#D6B166] text-[#1a1440] text-sm font-bold rounded-full shadow-lg whitespace-nowrap">
-                      Most Popular
-                    </span>
-                  </div>
-                )}
-
-                <div className={`relative h-full rounded-2xl ${pkg.popular ? 'border-2 border-[#D6B166]' : 'border border-[#D6B166]/20'}`}>
-                  {!pkg.popular && (
-                    <div className="absolute -top-7 left-1/2 -translate-x-1/2 z-10">
-                      <div className="w-14 h-14 rounded-full border-2 border-[#3d5a80] bg-[#1a1440] flex items-center justify-center">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5e9ed0" strokeWidth="1.5">
-                          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                        </svg>
-                      </div>
-                    </div>
-                  )}
-
-                  <div className={`relative p-6 pt-10 rounded-t-2xl`} style={{
-                    background: 'linear-gradient(135deg, #2d2470 0%, #1a1440 50%, #0d2942 100%)'
-                  }}>
-                    <div className="flex justify-center mb-4">
-                      <span className="px-6 py-2 rounded-full border border-[#D6B166]/50 text-white text-sm font-semibold uppercase tracking-wider">
-                        {pkg.name}
-                      </span>
-                    </div>
-
-                    <div className="text-center mb-4">
-                      <span className="text-5xl md:text-6xl font-bold text-[#D6B166]">{pkg.price}</span>
-                    </div>
-
-                    <div className="text-center">
-                      <span className="text-[#D6B166] text-sm font-medium">Plan Includes:</span>
-                    </div>
-                  </div>
-
-                  <div className="bg-[#1a1440] p-6 rounded-b-2xl">
-                    <ul className="space-y-3">
-                      {pkg.features.map((feature, i) => (
-                        <li key={i} className="flex items-center gap-3 text-sm text-white/80">
-                          <div className="w-5 h-5 rounded-full bg-[#D6B166]/20 flex items-center justify-center flex-shrink-0">
-                            <CheckCircle className="h-3.5 w-3.5 text-[#D6B166]" />
-                          </div>
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <Link to="/contact" className="block mt-6">
-                      <button className={`w-full py-4 rounded-lg font-bold transition-all duration-300 ${pkg.popular
-                        ? 'bg-[#D6B166] text-[#1a1440] hover:bg-[#E6C882] hover:shadow-lg hover:shadow-[#D6B166]/30'
-                        : 'bg-transparent border border-[#D6B166]/50 text-white hover:bg-[#D6B166] hover:text-[#1a1440]'
-                        }`}>
-                        Get Started
-                      </button>
-                    </Link>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Logo Portfolio - Enhanced with Service Logos */}
-      <section id="logo-portfolio" className={`py-24 relative ${isDark ? 'bg-[#0d0d1a]' : 'bg-gray-50'}`}>
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(214,177,102,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(214,177,102,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <span className="font-medium text-sm uppercase tracking-widest text-[#D6B166]">Our Identity Work</span>
-            <h2 className={`text-4xl md:text-5xl font-bold mt-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>Logo <span className="text-[#D6B166]">Portfolio</span></h2>
-            <p className={`max-w-2xl mx-auto mt-4 ${isDark ? 'text-white/50' : 'text-gray-500'}`}>
-              Explore our collection of professionally crafted logos that define brand excellence. From basic concepts to premium designs.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {/* Original logo portfolio */}
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((num, index) => (
-              <motion.div
-                key={`portfolio-${num}`}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                className="group"
-              >
-                <div className="relative overflow-hidden rounded-2xl bg-white p-8 aspect-square flex items-center justify-center border border-white/10 hover:border-[#D6B166]/30 transition-all duration-300 shadow-xl shadow-black/5 group-hover:shadow-[#D6B166]/10">
-                  <img
-                    src={`/LOGO/${num}.jpg`}
-                    alt={`Logo Concept ${num}`}
-                    className="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-[#D6B166]/0 group-hover:bg-[#D6B166]/5 transition-colors duration-300" />
-                </div>
-              </motion.div>
-            ))}
-            
-            {/* Service logos and mockups */}
-            {[
-              { title: 'Basic Logo Design', image: '/2.png', category: 'Service Logo' },
-              { title: 'Mid-Tier Logo Package', image: '/6.png', category: 'Service Logo' },
-              { title: 'Elite Logo Design', image: '/2.png', category: 'Service Logo' },
-              { title: 'Premium Logo Package', image: '/8.png', category: 'Service Logo' },
-            ].map((logo, index) => (
-              <motion.div
-                key={`service-${index}`}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: (12 + index) * 0.05 }}
-                className="group"
-              >
-                <div className="relative overflow-hidden rounded-2xl bg-white p-8 aspect-square flex items-center justify-center border border-white/10 hover:border-[#D6B166]/30 transition-all duration-300 shadow-xl shadow-black/5 group-hover:shadow-[#D6B166]/10">
-                  <img
-                    src={logo.image}
-                    alt={logo.title}
-                    className="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-[#D6B166]/0 group-hover:bg-[#D6B166]/5 transition-colors duration-300" />
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <p className="text-white text-xs text-center">{logo.title}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
     </div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '@/context/AppContext';
-import { MessageCircle, X, Send } from 'lucide-react';
+import { X, Send, Sparkles, Bot } from 'lucide-react';
 import './AIChat.css';
 
 interface Message {
@@ -327,29 +327,39 @@ const AIChat: React.FC = () => {
     return (
       <button
         onClick={() => setIsChatOpen(true)}
-        className="fixed bottom-6 right-6 z-40 h-16 w-16 rounded-full bg-gradient-to-br from-purple-800 via-purple-900 to-purple-950 text-white shadow-2xl shadow-purple-700/40 hover:shadow-purple-700/60 flex items-center justify-center hover:scale-110 transition-all duration-300 group border border-yellow-500/30"
+        className="fixed bottom-6 right-6 z-50 h-16 w-16 rounded-full bg-gradient-to-br from-purple-600 via-purple-700 to-purple-900 text-white shadow-2xl shadow-purple-500/50 hover:shadow-purple-500/70 flex items-center justify-center hover:scale-110 transition-all duration-300 group border-2 border-yellow-400/40 hover:border-yellow-400/60"
+        aria-label="Open chat"
       >
-        <MessageCircle className="h-7 w-7 text-yellow-400" />
-        <div className="absolute -top-1 -right-1 h-5 w-5 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
-          <div className="h-2 w-2 bg-white rounded-full" />
-        </div>
-        <div className="absolute bottom-20 right-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-gray-900 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap pointer-events-none">
-          Chat with us 24/7
+        {/* Main Bot Icon */}
+        <Bot className="h-8 w-8 text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.8)]" />
+        
+        {/* Sparkles accent */}
+        <Sparkles className="h-4 w-4 text-yellow-300 absolute top-2 right-2 animate-pulse" />
+        
+        {/* Online indicator */}
+        <div className="absolute -top-1 -right-1 h-5 w-5 bg-green-500 rounded-full border-2 border-white animate-pulse">
+          <div className="h-2 w-2 bg-white rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
         </div>
       </button>
     );
   }
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 w-[420px] max-w-[calc(100vw-3rem)] h-[600px] max-h-[85vh] rounded-3xl bg-gradient-to-b from-[#1a1235] to-[#120d2a] border border-violet-500/30 shadow-2xl shadow-violet-500/30 overflow-hidden flex flex-col animate-slideUp">
+    <div className="fixed bottom-6 right-6 z-50 w-[95vw] sm:w-[420px] max-w-[420px] h-[85vh] sm:h-[600px] max-h-[600px] rounded-3xl bg-gradient-to-b from-[#1a1235] to-[#120d2a] border border-violet-500/30 shadow-2xl shadow-violet-500/30 overflow-hidden flex flex-col animate-slideUp"
+      style={{ maxWidth: 'calc(100vw - 3rem)' }}
+    >
       <div className="bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 p-4 flex items-center justify-between relative overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent)] animate-shimmer" />
         <div className="flex items-center gap-3 relative z-10">
-          <div className="h-10 w-10 rounded-lg bg-purple-700/40 backdrop-blur-sm flex items-center justify-center border border-yellow-400/50">
-            <MessageCircle className="h-5 w-5 text-yellow-400" />
+          <div className="h-10 w-10 rounded-lg bg-purple-700/40 backdrop-blur-sm flex items-center justify-center border border-yellow-400/50 relative">
+            <Bot className="h-6 w-6 text-yellow-400 drop-shadow-[0_0_6px_rgba(250,204,21,0.6)]" />
+            <Sparkles className="h-3 w-3 text-yellow-300 absolute -top-0.5 -right-0.5 animate-pulse" />
           </div>
           <div>
-            <h4 className="font-bold text-white text-sm">DigiDevBrand AI</h4>
+            <h4 className="font-bold text-white text-sm flex items-center gap-1">
+              DigiDevBrand AI
+              <Sparkles className="h-3 w-3 text-yellow-300 animate-pulse" />
+            </h4>
             <p className="text-xs text-white/70">🟢 24/7 Support</p>
           </div>
         </div>

@@ -96,7 +96,7 @@ const navLinks = [
                   <Link
                     key={link.path}
                     to={link.path}
-                    className={`relative px-5 py-2 text-sm font-bold rounded-full transition-all duration-300 ${location.pathname === link.path
+                    className={`relative px-3 xl:px-5 py-2 text-xs xl:text-sm font-bold rounded-full transition-all duration-300 ${location.pathname === link.path
                       ? 'text-[#D6B166] bg-[#4B2F7D] shadow-lg shadow-black/20'
                       : isDark ? 'text-white/80 hover:text-white hover:bg-white/10' : 'text-[#281E5A] hover:text-[#4B2F7D] hover:bg-[#4B2F7D]/10'
                       }`}
@@ -115,9 +115,9 @@ const navLinks = [
             </div>
 
             {/* Right Side Controls */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 md:gap-3">
               {/* Country Dropdown */}
-              <div className="relative hidden md:block">
+              <div className="relative hidden lg:block">
                 <button
                   onClick={() => setIsCountryDropdownOpen(!isCountryDropdownOpen)}
                   className={`flex items-center gap-2 h-10 px-3 rounded-full border transition-all text-sm font-bold shadow-sm ${isDark ? 'border-white/20 bg-white/5 text-white hover:border-white/40 hover:bg-white/10' : 'border-[#462878]/30 bg-white/80 text-[#462878] hover:border-[#462878] hover:bg-white'}`}
@@ -239,11 +239,11 @@ const navLinks = [
               </div>
 
               {/* CTA Button */}
-              <Link to="/contact" className="hidden md:block">
+              <Link to="/contact" className="hidden lg:block">
                 <motion.button
                   whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(70, 40, 120, 0.3)' }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-6 py-2.5 text-sm font-bold text-white bg-gradient-to-r from-[#4B2F7D] to-[#281E5A] rounded-full shadow-lg transition-all border border-white/10"
+                  className="px-4 xl:px-6 py-2.5 text-xs xl:text-sm font-bold text-white bg-gradient-to-r from-[#4B2F7D] to-[#281E5A] rounded-full shadow-lg transition-all border border-white/10"
                 >
                   {t('nav.getProposal')}
                 </motion.button>
