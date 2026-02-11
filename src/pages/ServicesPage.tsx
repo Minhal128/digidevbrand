@@ -18,7 +18,7 @@ const ServicesPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const serviceImages = ['/service1.jpeg', '/service2.jpeg', '/service3.jpeg'];
+  const serviceImages = ['/service1.png', '/service2.jpeg', '/service3.jpeg'];
 
   // Auto-advance slider every 3 seconds
   useEffect(() => {
@@ -884,7 +884,7 @@ const ServicesPage: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group cursor-pointer"
+                className="group cursor-pointer relative"
               >
                 <div className={`relative overflow-hidden rounded-2xl border ${isDark ? 'border-white/[0.06]' : 'border-gray-200 shadow-lg shadow-gray-100/50'}`}>
                   <img
@@ -899,6 +899,7 @@ const ServicesPage: React.FC = () => {
                     </div>
                   </div>
                 </div>
+
               </motion.div>
             ))}
           </div>

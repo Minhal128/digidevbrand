@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useApp } from '@/context/AppContext';
 import {
   ArrowRight,
+  CheckCircle,
   ChevronLeftIcon,
   ChevronRightIcon,
   Play,
@@ -180,7 +181,7 @@ const HomePage: React.FC = () => {
                       </div>
                     </div>
 
-                    <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight text-gray-900 font-serif">
+                    <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-6 md:mb-8 leading-tight text-gray-900 font-serif px-4">
                       {t('hero.title').split(' ').slice(0, 2).join(' ')}
                       <br />
                       <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-violet-500 to-fuchsia-500">
@@ -188,20 +189,20 @@ const HomePage: React.FC = () => {
                       </span>
                     </h1>
 
-                    <p className="text-lg md:text-xl mb-10 leading-relaxed text-gray-600 max-w-2xl mx-auto">
+                    <p className="text-base sm:text-lg md:text-xl mb-8 md:mb-10 leading-relaxed text-gray-600 max-w-2xl mx-auto px-4">
                       {t('hero.subtitle')}
                     </p>
 
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                      <Link to="/contact">
-                        <button className="group px-8 py-4 bg-black text-white font-bold text-base rounded-2xl hover:bg-violet-500 transition-all transform hover:scale-105 shadow-2xl flex items-center gap-3 justify-center">
+                    <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-4">
+                      <Link to="/contact" className="w-full sm:w-auto">
+                        <button className="group w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-black text-white font-bold text-sm md:text-base rounded-2xl hover:bg-violet-500 transition-all transform hover:scale-105 shadow-2xl flex items-center gap-2 md:gap-3 justify-center">
                           {t('hero.cta')}
-                          <ArrowRight className="h-5 w-5 group-hover:translate-x-2 transition-transform" />
+                          <ArrowRight className="h-4 md:h-5 w-4 md:w-5 group-hover:translate-x-2 transition-transform" />
                         </button>
                       </Link>
-                      <Link to="/services">
-                        <button className="px-8 py-4 border-2 border-gray-900 text-gray-900 font-bold text-base rounded-2xl hover:bg-gray-900 hover:text-white transition-all flex items-center gap-3 justify-center">
-                          <Play className="h-5 w-5" />
+                      <Link to="/services" className="w-full sm:w-auto">
+                        <button className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 border-2 border-gray-900 text-gray-900 font-bold text-sm md:text-base rounded-2xl hover:bg-gray-900 hover:text-white transition-all flex items-center gap-2 md:gap-3 justify-center">
+                          <Play className="h-4 md:h-5 w-4 md:w-5" />
                           {t('hero.ctaSecondary')}
                         </button>
                       </Link>
@@ -247,15 +248,15 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Trust Bar / Service Boxes */}
-      <section className={`py-20 ${isDark ? 'bg-[#281E5A]' : 'bg-[#E6E6E6]'}`}>
-        <div className="container mx-auto px-6">
+      <section className={`py-12 md:py-20 ${isDark ? 'bg-[#281E5A]' : 'bg-[#E6E6E6]'}`}>
+        <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-7xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4"
             >
               {[
                 { title: "Graphic Designing", subtitle: "Creative Visuals" },
@@ -266,10 +267,10 @@ const HomePage: React.FC = () => {
                 <motion.div
                   key={index}
                   className="relative group rounded-3xl h-48 overflow-hidden transition-all duration-500 hover:-translate-y-3"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: [0.8, 1.07, 0.97, 1.03, 1] }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ delay: index * 0.15, duration: 0.8, ease: "easeOut" }}
                 >
                   {/* Animated Glow Behind Box */}
                   <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
@@ -285,8 +286,8 @@ const HomePage: React.FC = () => {
                   {/* Main Card Content */}
                   <div
                     className={`relative z-20 h-full w-full rounded-[22px] p-6 flex flex-col justify-center items-center text-center border-2 transition-all duration-500 overflow-hidden ${isDark
-                        ? 'bg-[#281E5A]/90 border-[#4B2F7D]/40 group-hover:border-[#D6B166]/60'
-                        : 'bg-white border-[#4B2F7D]/10 group-hover:border-[#4B2F7D]/30'
+                      ? 'bg-[#281E5A]/90 border-[#4B2F7D]/40 group-hover:border-[#D6B166]/60'
+                      : 'bg-white border-[#4B2F7D]/10 group-hover:border-[#4B2F7D]/30'
                       }`}
                     style={{
                       boxShadow: isDark
@@ -300,16 +301,16 @@ const HomePage: React.FC = () => {
 
                     <div className="relative z-30">
                       <motion.div
-                        className={`mb-4 inline-flex p-3 rounded-2xl ${isDark ? 'bg-[#4B2F7D]/40' : 'bg-[#4B2F7D]/5'}`}
+                        className={`mb-3 md:mb-4 inline-flex p-2 md:p-3 rounded-xl md:rounded-2xl ${isDark ? 'bg-[#4B2F7D]/40' : 'bg-[#4B2F7D]/5'}`}
                         whileHover={{ rotate: 15, scale: 1.1 }}
                       >
-                        {index === 0 && <Palette className={`h-6 w-6 ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`} />}
-                        {index === 1 && <Code className={`h-6 w-6 ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`} />}
-                        {index === 2 && <TrendingUp className={`h-6 w-6 ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`} />}
-                        {index === 3 && <Zap className={`h-6 w-6 ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`} />}
+                        {index === 0 && <Palette className={`h-5 md:h-6 w-5 md:w-6 ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`} />}
+                        {index === 1 && <Code className={`h-5 md:h-6 w-5 md:w-6 ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`} />}
+                        {index === 2 && <TrendingUp className={`h-5 md:h-6 w-5 md:w-6 ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`} />}
+                        {index === 3 && <Zap className={`h-5 md:h-6 w-5 md:w-6 ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`} />}
                       </motion.div>
-                      <h3 className={`text-xl font-bold mb-2 leading-tight group-hover:text-[#D6B166] transition-colors ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`}>{item.title}</h3>
-                      <p className={`text-sm font-medium tracking-wide uppercase transition-colors ${isDark ? 'text-white/40 group-hover:text-[#D6B166]/60' : 'text-[#4B2F7D]/50 group-hover:text-[#4B2F7D]/80'}`}>{item.subtitle}</p>
+                      <h3 className={`text-base md:text-xl font-bold mb-1 md:mb-2 leading-tight group-hover:text-[#D6B166] transition-colors ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`}>{item.title}</h3>
+                      <p className={`text-xs md:text-sm font-medium tracking-wide uppercase transition-colors ${isDark ? 'text-white/40 group-hover:text-[#D6B166]/60' : 'text-[#4B2F7D]/50 group-hover:text-[#4B2F7D]/80'}`}>{item.subtitle}</p>
                     </div>
 
                     {/* Hover Decorative Line */}
@@ -326,12 +327,12 @@ const HomePage: React.FC = () => {
       <LatestProjects />
 
       {/* Process Section - Modern MUI Timeline - Royal Purple & Gold */}
-      <section className={`py-28 relative overflow-hidden ${isDark ? 'bg-gradient-to-b from-[#281E5A] via-[#4B2F7D] to-[#281E5A]' : 'bg-gradient-to-b from-[#E6E6E6] via-white to-[#E6E6E6]'}`}>
+      <section className={`py-16 md:py-28 relative overflow-hidden ${isDark ? 'bg-gradient-to-b from-[#281E5A] via-[#4B2F7D] to-[#281E5A]' : 'bg-gradient-to-b from-[#E6E6E6] via-white to-[#E6E6E6]'}`}>
         {/* Background decorative elements */}
-        <div className={`absolute top-0 left-1/4 w-96 h-96 rounded-full blur-3xl ${isDark ? 'bg-[#D6B166]/10' : 'bg-[#D6B166]/20'}`} />
-        <div className={`absolute bottom-0 right-1/4 w-96 h-96 rounded-full blur-3xl ${isDark ? 'bg-[#E6C882]/5' : 'bg-[#E6C882]/15'}`} />
+        <div className={`absolute top-0 left-1/4 w-64 md:w-96 h-64 md:h-96 rounded-full blur-3xl ${isDark ? 'bg-[#D6B166]/10' : 'bg-[#D6B166]/20'}`} />
+        <div className={`absolute bottom-0 right-1/4 w-64 md:w-96 h-64 md:h-96 rounded-full blur-3xl ${isDark ? 'bg-[#E6C882]/5' : 'bg-[#E6C882]/15'}`} />
 
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -345,8 +346,8 @@ const HomePage: React.FC = () => {
               <Zap className="h-4 w-4" />
               How We Work
             </span>
-            <h2 className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-6 ${isDark ? 'text-[#E6C882]' : 'text-[#281E5A]'}`}>Our Process</h2>
-            <p className={`max-w-2xl mx-auto text-lg ${isDark ? 'text-white/60' : 'text-[#462878]/70'}`}>
+            <h2 className={`text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 md:mb-6 ${isDark ? 'text-[#E6C882]' : 'text-[#281E5A]'}`}>Our Process</h2>
+            <p className={`max-w-2xl mx-auto text-base md:text-lg ${isDark ? 'text-white/60' : 'text-[#462878]/70'}`}>
               A streamlined approach to delivering exceptional results
             </p>
           </motion.div>
@@ -441,8 +442,8 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Testimonials Section - Modern Carousel */}
-      <section className={`py-28 overflow-hidden ${isDark ? 'bg-[#281E5A]' : 'bg-gradient-to-b from-[#E6E6E6] to-white'}`}>
-        <div className="container mx-auto px-4">
+      <section className={`py-16 md:py-28 overflow-hidden ${isDark ? 'bg-[#281E5A]' : 'bg-gradient-to-b from-[#E6E6E6] to-white'}`}>
+        <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -537,24 +538,24 @@ const HomePage: React.FC = () => {
             >
               {testimonials.map((testimonial) => (
                 <SwiperSlide key={testimonial.name}>
-                  <div className="text-center px-4 md:px-12">
-                    <div className="flex justify-center mb-8">
-                      <div className={`text-6xl font-serif leading-none ${isDark ? 'text-[#D6B166]/40' : 'text-[#4B2F7D]/30'}`}>
+                  <div className="text-center px-4 md:px-8 lg:px-12">
+                    <div className="flex justify-center mb-6 md:mb-8">
+                      <div className={`text-4xl md:text-6xl font-serif leading-none ${isDark ? 'text-[#D6B166]/40' : 'text-[#4B2F7D]/30'}`}>
                         "
                       </div>
                     </div>
 
-                    <p className={`text-lg md:text-xl leading-relaxed mb-10 max-w-3xl mx-auto ${isDark ? 'text-white/80' : 'text-[#281E5A]/80'
+                    <p className={`text-base md:text-lg lg:text-xl leading-relaxed mb-8 md:mb-10 max-w-3xl mx-auto ${isDark ? 'text-white/80' : 'text-[#281E5A]/80'
                       }`}>
                       {testimonial.content}
                     </p>
 
-                    <div className="flex items-center justify-center gap-3">
-                      <span className={`font-semibold ${isDark ? 'text-[#E6C882]' : 'text-[#281E5A]'}`}>
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3">
+                      <span className={`font-semibold text-sm md:text-base ${isDark ? 'text-[#E6C882]' : 'text-[#281E5A]'}`}>
                         {testimonial.name}
                       </span>
-                      <span className={`w-px h-4 ${isDark ? 'bg-[#D6B166]/30' : 'bg-[#4B2F7D]/30'}`} />
-                      <span className={`text-sm ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`}>
+                      <span className={`hidden sm:block w-px h-4 ${isDark ? 'bg-[#D6B166]/30' : 'bg-[#4B2F7D]/30'}`} />
+                      <span className={`text-xs md:text-sm ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`}>
                         {testimonial.role}
                       </span>
                     </div>
@@ -567,16 +568,16 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Blog Section with Swiper Carousel */}
-      <section className={`py-28 overflow-hidden ${isDark ? 'bg-gradient-to-b from-[#281E5A] via-[#4B2F7D] to-[#281E5A]' : 'bg-[#E6E6E6]'}`}>
-        <div className="container mx-auto px-4">
+      <section className={`py-16 md:py-28 overflow-hidden ${isDark ? 'bg-gradient-to-b from-[#281E5A] via-[#4B2F7D] to-[#281E5A]' : 'bg-[#E6E6E6]'}`}>
+        <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <span className={`font-medium text-sm uppercase tracking-widest ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`}>{t('blog.subtitle')}</span>
-            <h2 className={`text-3xl md:text-4xl lg:text-5xl font-bold mt-4 ${isDark ? 'text-[#E6C882]' : 'text-[#281E5A]'}`}>{t('blog.title')}</h2>
+            <span className={`font-medium text-xs md:text-sm uppercase tracking-widest ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`}>{t('blog.subtitle')}</span>
+            <h2 className={`text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mt-3 md:mt-4 ${isDark ? 'text-[#E6C882]' : 'text-[#281E5A]'}`}>{t('blog.title')}</h2>
           </motion.div>
 
           <style>{`

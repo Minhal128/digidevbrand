@@ -85,7 +85,9 @@ export default {
   		animation: {
   			'pulse-ring': 'pulse-ring 1.5s ease-out infinite',
   			float: 'float 3s ease-in-out infinite',
-  			marquee: 'marquee 30s linear infinite'
+  			marquee: 'marquee 30s linear infinite',
+  			scrollImage: 'scrollImage 8s ease-in-out infinite alternate',
+  			bounceBack: 'bounceBack 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards'
   		},
   		keyframes: {
   			'pulse-ring': {
@@ -112,6 +114,31 @@ export default {
   				},
   				'100%': {
   					transform: 'translateX(-50%)'
+  				}
+  			},
+  			scrollImage: {
+  				'0%': {
+  					'object-position': 'top'
+  				},
+  				'100%': {
+  					'object-position': 'bottom'
+  				}
+  			},
+  			bounceBack: {
+  				'0%': {
+  					transform: 'translateY(-60%)'
+  				},
+  				'45%': {
+  					transform: 'translateY(4%)'
+  				},
+  				'65%': {
+  					transform: 'translateY(-2%)'
+  				},
+  				'80%': {
+  					transform: 'translateY(1%)'
+  				},
+  				'100%': {
+  					transform: 'translateY(0%)'
   				}
   			}
   		}

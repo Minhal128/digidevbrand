@@ -51,8 +51,8 @@ const CountryMarquee: React.FC = () => {
   );
 
   return (
-    <div className={`py-4 overflow-hidden border-t border-b ${isDark ? 'bg-[#050508] border-white/5' : 'bg-gray-50 border-gray-100'}`}>
-      <div className="flex">
+    <div className={`py-3 md:py-4 overflow-hidden border-t border-b w-full ${isDark ? 'bg-[#050508] border-white/5' : 'bg-gray-50 border-gray-100'}`}>
+      <div className="flex w-full">
         <motion.div
           initial={{ x: 0 }}
           animate={{ x: '-100%' }}

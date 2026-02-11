@@ -1,0 +1,50 @@
+/* EMERGENCY QUICK FIX - Copy this to the END of src/index.css if changes aren't working */
+
+/* Force remove white space */
+html, body {
+  background-color: #210a3d !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden !important;
+}
+
+#root {
+  background-color: #210a3d !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Force footer to have no bottom space */
+footer,
+footer > div:last-child,
+footer > div:last-child > div:last-child {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+  background-color: #210a3d !important;
+}
+
+/* Force chatbot position on mobile */
+@media (max-width: 768px) {
+  button.fixed.z-40,
+  button[class*="fixed"][class*="z-40"] {
+    bottom: 1rem !important;
+    right: 1rem !important;
+    width: 3.5rem !important;
+    height: 3.5rem !important;
+  }
+  
+  div.fixed.z-50 {
+    bottom: 1rem !important;
+    right: 1rem !important;
+    width: 95vw !important;
+    max-width: calc(100vw - 2rem) !important;
+  }
+}
+
+/* Remove any potential white space creators */
+body::after,
+#root::after,
+footer::after {
+  display: none !important;
+  content: none !important;
+}
