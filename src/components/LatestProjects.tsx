@@ -33,6 +33,40 @@ const LatestProjects = () => {
         { id: 'Video Animation', label: 'Video Animation' }
     ];
 
+    const projectsData = [
+        // Website Projects
+        { id: 1, title: 'E-Commerce Platform', image: '/1.png', category: 'Websites' },
+        { id: 2, title: 'Restaurant Website', image: '/2.png', category: 'Websites' },
+        { id: 3, title: 'Mobile App UI', image: '/3.png', category: 'Websites' },
+        { id: 4, title: 'Corporate Website', image: '/image.png', category: 'Websites' },
+        { id: 5, title: 'Real Estate Portal', image: '/6.png', category: 'Websites' },
+        { id: 6, title: 'Educational Platform', image: '/7.png', category: 'Websites' },
+        { id: 7, title: 'Healthcare Website', image: '/8.png', category: 'Websites' },
+        { id: 8, title: 'Elite Tier Website', image: '/9.png', category: 'Websites' },
+
+        // Logo Design Projects
+        { id: 9, title: 'Logo 1', image: '/LOGO/1.jpg', category: 'Logo Design' },
+        { id: 10, title: 'Logo 2', image: '/LOGO/2.jpg', category: 'Logo Design' },
+        { id: 11, title: 'Logo 3', image: '/LOGO/3.jpg', category: 'Logo Design' },
+        { id: 12, title: 'Logo 4', image: '/LOGO/4.jpg', category: 'Logo Design' },
+        { id: 13, title: 'Logo 5', image: '/LOGO/5.jpg', category: 'Logo Design' },
+        { id: 14, title: 'Logo 6', image: '/LOGO/6.jpg', category: 'Logo Design' },
+        { id: 15, title: 'Logo 7', image: '/LOGO/7.jpg', category: 'Logo Design' },
+        { id: 16, title: 'Logo 8', image: '/LOGO/8.jpg', category: 'Logo Design' },
+        { id: 17, title: 'Logo 9', image: '/LOGO/9.jpg', category: 'Logo Design' },
+        { id: 18, title: 'Logo 10', image: '/LOGO/10.jpg', category: 'Logo Design' },
+        { id: 19, title: 'Logo 11', image: '/LOGO/11.jpg', category: 'Logo Design' },
+        { id: 20, title: 'Logo 12', image: '/LOGO/12.jpg', category: 'Logo Design' },
+
+        // Graphical Work Projects
+        { id: 21, title: 'Graphic Design 1', image: '/graphics/1.png', category: 'Graphical Work' },
+        { id: 22, title: 'Graphic Design 2', image: '/graphics/2.png', category: 'Graphical Work' },
+        { id: 23, title: 'Graphic Design 3', image: '/graphics/3.png', category: 'Graphical Work' },
+        { id: 24, title: 'Graphic Design 4', image: '/graphics/4.png', category: 'Graphical Work' },
+    ];
+
+    const filteredProjects = projectsData.filter(project => project.category === activeCategory);
+
     const animationVideos = [
         { id: 1, url: 'https://www.youtube.com/embed/WuEsJ7u8X-c' },
         { id: 2, url: 'https://www.youtube.com/embed/Abh_G7Kp69c' },
@@ -339,7 +373,7 @@ const LatestProjects = () => {
                                                 <img
                                                     src={project.image}
                                                     alt={project.title}
-                                                    className="w-full translate-y-0 group-hover/card:-translate-y-[60%] transition-transform duration-[10s] ease-in-out"
+                                                    className="w-full translate-y-0 group-hover/card:-translate-y-[60%] transition-transform duration-[20s] ease-in-out"
                                                 />
                                             </div>
                                         </div>

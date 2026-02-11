@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useApp } from '@/context/AppContext';
 import {
   ArrowRight,
-  CheckCircle,
   ChevronLeftIcon,
   ChevronRightIcon,
   Play,
@@ -41,6 +41,58 @@ const HomePage: React.FC = () => {
   const { t } = useTranslation();
   const { theme } = useApp();
   const isDark = theme === 'dark';
+
+  // Track video load errors to show a fallback image if needed
+  const [videoFailed, setVideoFailed] = useState(false);
+  const [videoPlaying, setVideoPlaying] = useState(false);
+
+  // Small presentational component for the hero video with fallback and poster overlay
+  const HeroVideo: React.FC = () => {
+    if (videoFailed) {
+      return (
+        <img src="/share.jpeg" alt="Hero fallback" className="w-full h-full object-cover" />
+      );
+    }
+
+    return (
+      <div className="relative w-full h-full">
+        {/* Debug badge */}
+        <div className="absolute top-4 left-4 z-50 text-xs bg-white/90 text-black p-2 rounded shadow-md">
+          <div><strong>Hero Video</strong></div>
+          <div>failed: {String(videoFailed)}</div>
+          <div>playing: {String(videoPlaying)}</div>
+        </div>
+
+        {/* Poster overlay (shows until video plays) */}
+        <img
+          src="/share.jpeg"
+          alt="Hero poster"
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${videoPlaying ? 'opacity-0' : 'opacity-100'}`}
+          aria-hidden="true"
+        />
+
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          poster="/share.jpeg"
+          controls
+          onPlay={() => { console.log('hero: onPlay'); setVideoPlaying(true); }}
+          onPause={() => { console.log('hero: onPause'); setVideoPlaying(false); }}
+          onLoadedData={() => { console.log('hero: loaded data'); }}
+          onCanPlay={() => { console.log('hero: can play'); }}
+          onError={(e) => { console.error('hero: video error', e); setVideoFailed(true); }}
+          className="w-full h-full object-cover absolute inset-0"
+          style={{ objectPosition: 'center center' }}
+        >
+          <source src="/hero.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    );
+  };
 
   const testimonials = [
     {
@@ -140,19 +192,58 @@ const HomePage: React.FC = () => {
           <SwiperSlide>
             <div className="relative h-full w-full bg-white overflow-hidden">
               {/* Full Screen Video Background */}
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-full object-cover"
-                style={{
-                  objectPosition: 'center center',
-                }}
-              >
-                <source src="/hero.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              {/* Fallback handling: show poster while loading and an image if video fails to load */}
+              <HeroVideo />
+
+              {/* Overlay content for Slide 1 (ensures hero content is visible even if video is blocked) */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="container mx-auto px-6 text-center">
+                  <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 0.2 }}
+                    className="max-w-4xl mx-auto"
+                  >
+                    <div className="mb-8">
+                      <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border bg-black/50 border-white/30 text-white text-xs font-bold uppercase tracking-[0.3em]">
+                        <span className="relative flex h-2 w-2">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+                        </span>
+                        {t('hero.tagline')}
+                      </div>
+                    </div>
+
+                    <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-6 md:mb-8 leading-tight text-white font-serif px-4">
+                      {t('hero.title').split(' ').slice(0, 2).join(' ')}
+                      <br />
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-violet-300 to-fuchsia-400">
+                        {t('hero.title').split(' ').slice(2).join(' ')}
+                      </span>
+                    </h1>
+
+                    <p className="text-base sm:text-lg md:text-xl mb-8 md:mb-10 leading-relaxed text-white/80 max-w-2xl mx-auto px-4">
+                      {t('hero.subtitle')}
+                    </p>
+
+                    <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-4">
+                      <Link to="/contact" className="w-full sm:w-auto">
+                        <button className="group w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-white text-black font-bold text-sm md:text-base rounded-2xl hover:bg-white/90 transition-all transform hover:scale-105 shadow-2xl flex items-center gap-2 md:gap-3 justify-center">
+                          {t('hero.cta')}
+                          <ArrowRight className="h-4 md:h-5 w-4 md:w-5 group-hover:translate-x-2 transition-transform" />
+                        </button>
+                      </Link>
+                      <Link to="/services" className="w-full sm:w-auto">
+                        <button className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 border-2 border-white/30 text-white font-bold text-sm md:text-base rounded-2xl hover:bg-white/10 transition-all flex items-center gap-2 md:gap-3 justify-center">
+                          <Play className="h-4 md:h-5 w-4 md:w-5" />
+                          {t('hero.ctaSecondary')}
+                        </button>
+                      </Link>
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+
             </div>
           </SwiperSlide>
 
