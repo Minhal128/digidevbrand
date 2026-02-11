@@ -88,28 +88,28 @@ const ContactPage: React.FC = () => {
   return (
     <div className={`overflow-hidden ${isDark ? 'bg-[#1a1235]' : 'bg-white'}`}>
       {/* Hero Section */}
-      <section className="relative pt-32 pb-24 overflow-hidden">
+      <section className="relative pt-24 md:pt-32 pb-16 md:pb-24 overflow-hidden">
         <div className="absolute inset-0">
           <div className={`absolute inset-0 ${isDark ? 'bg-gradient-to-b from-violet-500/10 via-transparent to-transparent' : 'bg-gradient-to-b from-violet-100/50 via-transparent to-transparent'}`} />
-          <div className={`absolute inset-0 ${isDark ? 'bg-[linear-gradient(rgba(139,92,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.03)_1px,transparent_1px)]' : 'bg-[linear-gradient(rgba(139,92,246,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.08)_1px,transparent_1px)]'} bg-[size:50px_50px]`} />
+          <div className={`absolute inset-0 ${isDark ? 'bg-[linear-gradient(rgba(139,92,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.03)_1px,transparent_1px)]' : 'bg-[linear-gradient(rgba(139,92,246,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.08)_1px,transparent_1px)]'} bg-[size:40px_40px] md:bg-[size:50px_50px]`} />
         </div>
-        <div className={`absolute top-20 left-1/4 w-96 h-96 ${isDark ? 'bg-violet-500/20' : 'bg-violet-300/30'} rounded-full blur-[120px]`} />
-        <div className={`absolute bottom-0 right-1/4 w-80 h-80 ${isDark ? 'bg-purple-500/15' : 'bg-purple-300/25'} rounded-full blur-[100px]`} />
+        <div className={`absolute top-20 left-1/4 w-64 md:w-96 h-64 md:h-96 ${isDark ? 'bg-violet-500/20' : 'bg-violet-300/30'} rounded-full blur-[100px] md:blur-[120px]`} />
+        <div className={`absolute bottom-0 right-1/4 w-56 md:w-80 h-56 md:h-80 ${isDark ? 'bg-purple-500/15' : 'bg-purple-300/25'} rounded-full blur-[80px] md:blur-[100px]`} />
 
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <span className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${isDark ? 'bg-violet-500/10 border-violet-500/20 text-violet-400' : 'bg-violet-100 border-violet-200 text-violet-600'} border text-sm font-medium mb-6`}>
-              <MessageSquare className="h-4 w-4" />
+            <span className={`inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full ${isDark ? 'bg-violet-500/10 border-violet-500/20 text-violet-400' : 'bg-violet-100 border-violet-200 text-violet-600'} border text-xs md:text-sm font-medium mb-4 md:mb-6`}>
+              <MessageSquare className="h-3 md:h-4 w-3 md:w-4" />
               {t('contact.subtitle')}
             </span>
-            <h1 className={`text-5xl md:text-7xl font-bold mb-6 leading-tight ${isDark ? 'text-white' : 'text-gray-900'}`}>
+            <h1 className={`text-3xl md:text-5xl lg:text-7xl font-bold mb-4 md:mb-6 leading-tight ${isDark ? 'text-white' : 'text-gray-900'}`}>
               {t('contact.title')}
             </h1>
-            <p className={`text-xl leading-relaxed max-w-2xl mx-auto ${isDark ? 'text-white/60' : 'text-gray-600'}`}>
+            <p className={`text-base md:text-xl leading-relaxed max-w-2xl mx-auto ${isDark ? 'text-white/60' : 'text-gray-600'}`}>
               {t('contact.description')}
             </p>
           </motion.div>
@@ -117,9 +117,9 @@ const ContactPage: React.FC = () => {
       </section>
 
       {/* Contact Info Cards */}
-      <section className="py-8 relative z-20">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 -mt-16">
+      <section className="py-6 md:py-8 relative z-20">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 -mt-12 md:-mt-16">
             {contactInfo.map((info, index) => (
               <motion.div
                 key={info.title}
@@ -154,30 +154,30 @@ const ContactPage: React.FC = () => {
       </section>
 
       {/* Quick Contact Buttons */}
-      <section className="py-12">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap gap-4 justify-center">
+      <section className="py-8 md:py-12">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4 justify-center">
             <a
               href="tel:+12095085566"
-              className="px-8 py-4 bg-violet-500 hover:bg-violet-600 text-white font-medium rounded-full transition-all inline-flex items-center gap-2"
+              className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-violet-500 hover:bg-violet-600 text-white font-medium text-sm md:text-base rounded-full transition-all inline-flex items-center justify-center gap-2"
             >
-              <Phone className="h-5 w-5" />
+              <Phone className="h-4 md:h-5 w-4 md:w-5" />
               Call Us Now
             </a>
             <a
               href="https://wa.me/12095085566"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 bg-green-500 hover:bg-green-600 text-white font-medium rounded-full transition-all inline-flex items-center gap-2"
+              className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-green-500 hover:bg-green-600 text-white font-medium text-sm md:text-base rounded-full transition-all inline-flex items-center justify-center gap-2"
             >
-              <MessageCircle className="h-5 w-5" />
+              <MessageCircle className="h-4 md:h-5 w-4 md:w-5" />
               WhatsApp Us
             </a>
             <a
               href="mailto:sales@digidevbrand.com"
-              className={`px-8 py-4 font-medium rounded-full transition-all inline-flex items-center gap-2 ${isDark ? 'bg-white/[0.05] border border-white/[0.1] hover:bg-white/[0.1] text-white' : 'bg-gray-100 border border-gray-200 hover:bg-gray-200 text-gray-900'}`}
+              className={`w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 font-medium text-sm md:text-base rounded-full transition-all inline-flex items-center justify-center gap-2 ${isDark ? 'bg-white/[0.05] border border-white/[0.1] hover:bg-white/[0.1] text-white' : 'bg-gray-100 border border-gray-200 hover:bg-gray-200 text-gray-900'}`}
             >
-              <Mail className="h-5 w-5" />
+              <Mail className="h-4 md:h-5 w-4 md:w-5" />
               Email Us
             </a>
           </div>
@@ -185,9 +185,9 @@ const ContactPage: React.FC = () => {
       </section>
 
       {/* Contact Form & Info */}
-      <section className="py-24">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
             {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}

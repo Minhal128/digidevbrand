@@ -247,10 +247,10 @@ const LatestProjects = () => {
                             onClick={() => setActiveCategory(category.id)}
                             className={`px-8 py-3.5 rounded-2xl text-base font-bold transition-all duration-500 border-2 ${activeCategory === category.id
                                 ? isDark
-                                    ? 'bg-[#D6B166] border-[#D6B166] text-[#281E5A] shadow-xl shadow-[#D6B166]/20 scale-105'
-                                    : 'bg-[#4B2F7D] border-[#4B2F7D] text-white shadow-xl shadow-[#4B2F7D]/20 scale-105'
+                                    ? 'bg-gradient-to-r from-[#D6B166] to-[#E6C882] border-[#D6B166] text-[#1a0b2e] shadow-xl shadow-[#D6B166]/30 scale-105'
+                                    : 'bg-gradient-to-r from-[#4B2F7D] to-[#281E5A] border-[#4B2F7D] text-white shadow-xl shadow-[#4B2F7D]/20 scale-105'
                                 : isDark
-                                    ? 'bg-[#4B2F7D]/30 text-white/60 border-[#4B2F7D]/40 hover:border-[#D6B166]/50 hover:text-white'
+                                    ? 'bg-[#4B2F7D]/30 text-[#E6C882] border-[#4B2F7D]/40 hover:border-[#D6B166]/50 hover:text-[#D6B166]'
                                     : 'bg-white text-[#4B2F7D]/60 border-[#4B2F7D]/10 hover:border-[#4B2F7D]/40 hover:text-[#4B2F7D]'
                                 }`}
                         >
@@ -352,40 +352,58 @@ const LatestProjects = () => {
                         ))}
                     </motion.div>
                 ) : activeCategory === 'Video Animation' ? (
-                    <>
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5 }}
-                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto"
-                        >
-                            {animationVideos.map((video) => {
-                                const videoId = video.url.split('/embed/')[1];
-                                return (
-                                    <motion.div
-                                        key={video.id}
-                                        initial={{ opacity: 0, scale: 0.9 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        transition={{ duration: 0.4, delay: video.id * 0.05 }}
-                                        onClick={() => setSelectedVideo(video.url + '?autoplay=1')}
-                                        className={`rounded-2xl overflow-hidden shadow-xl border-2 cursor-pointer group ${isDark ? 'border-[#4B2F7D]/40 bg-[#1a1235]' : 'border-[#4B2F7D]/10 bg-white'}`}
-                                    >
-                                        <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-                                            <img
-                                                src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
-                                                alt={`Animation Video ${video.id}`}
-                                                className="absolute top-0 left-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                                            />
-                                            <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/40 transition-colors duration-300">
-                                                <div className={`w-16 h-16 rounded-full flex items-center justify-center ${isDark ? 'bg-[#D6B166]' : 'bg-[#4B2F7D]'} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                                                    <Play className="w-7 h-7 text-white fill-white ml-1" />
+                    <div className="relative z-10">
+                        {animationVideos && animationVideos.length > 0 ? (
+                            <motion.div
+                                key="video-animation-grid"
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5 }}
+                                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto px-4"
+                            >
+                                {animationVideos.map((video) => {
+                                    const videoId = video.url.split('/embed/')[1]?.split('?')[0];
+                                    return (
+                                        <motion.div
+                                            key={video.id}
+                                            initial={{ opacity: 0, scale: 0.9 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            transition={{ duration: 0.4, delay: video.id * 0.05 }}
+                                            onClick={() => setSelectedVideo(video.url + '?autoplay=1')}
+                                            className={`rounded-2xl overflow-hidden shadow-2xl border-2 cursor-pointer group relative ${isDark ? 'border-[#D6B166]/40 bg-[#1a1235]' : 'border-[#4B2F7D]/30 bg-white'}`}
+                                        >
+                                            <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                                                <img
+                                                    src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
+                                                    alt={`Animation Video ${video.id}`}
+                                                    className="absolute top-0 left-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                                    onError={(e) => {
+                                                        const target = e.target as HTMLImageElement;
+                                                        target.src = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+                                                    }}
+                                                />
+                                                <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/50 transition-colors duration-300">
+                                                    <div className={`w-16 h-16 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-300 ${isDark ? 'bg-[#D6B166]' : 'bg-[#4B2F7D]'}`}>
+                                                        <Play className="w-7 h-7 text-white fill-white ml-1" />
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </motion.div>
-                                );
-                            })}
-                        </motion.div>
+                                            <div className={`p-4 text-center ${isDark ? 'bg-[#1a1235]' : 'bg-white'}`}>
+                                                <p className={`text-sm font-semibold ${isDark ? 'text-[#E6C882]' : 'text-[#281E5A]'}`}>
+                                                    Animation Video {video.id}
+                                                </p>
+                                            </div>
+                                        </motion.div>
+                                    );
+                                })}
+                            </motion.div>
+                        ) : (
+                            <div className="text-center py-20">
+                                <p className={`text-xl font-semibold ${isDark ? 'text-[#E6C882]' : 'text-[#281E5A]'}`}>
+                                    No animation videos available at the moment.
+                                </p>
+                            </div>
+                        )}
 
                         {/* Video Popup Modal */}
                         <AnimatePresence>
@@ -426,7 +444,7 @@ const LatestProjects = () => {
                                 </motion.div>
                             )}
                         </AnimatePresence>
-                    </>
+                    </div>
                 ) : (
                     <div className="relative max-w-7xl mx-auto" style={{ perspective: '2000px' }}>
                         <div className="relative h-[650px] md:h-[750px] flex items-center justify-center overflow-visible">
