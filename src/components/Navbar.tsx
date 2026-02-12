@@ -46,13 +46,13 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-const navLinks = [
-      { name: t('nav.home'), path: '/' },
-      { name: t('nav.about'), path: '/about' },
-      { name: t('nav.services'), path: '/services' },
-      { name: t('nav.contact'), path: '/contact' },
-      { name: t('nav.review'), path: '/review' },
-    ];
+  const navLinks = [
+    { name: t('nav.home'), path: '/' },
+    { name: t('nav.about'), path: '/about' },
+    { name: t('nav.services'), path: '/services' },
+    { name: t('nav.contact'), path: '/contact' },
+    { name: t('nav.review'), path: '/review' },
+  ];
 
   const toggleLanguage = (lang: 'en' | 'ar') => {
     setLanguage(lang);
@@ -67,10 +67,10 @@ const navLinks = [
         animate={{ y: 0 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
           ? isDark
-            ? 'bg-[#1a1235] border-b border-white/10 py-3 shadow-lg'
+            ? 'bg-[#110B2E]/95 backdrop-blur-xl border-b border-[#D6B166]/10 py-3 shadow-lg shadow-black/30'
             : 'bg-white border-b border-[#462878]/10 py-3 shadow-lg'
           : isDark
-            ? 'bg-[#1a1235] py-4'
+            ? 'bg-[#110B2E]/90 backdrop-blur-md py-4'
             : 'bg-white py-4'
           }`}
       >
@@ -278,7 +278,7 @@ const navLinks = [
                 animate={{ x: 0 }}
                 exit={{ x: '100%' }}
                 transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                className={`fixed top-0 right-0 h-full w-[85%] max-w-sm backdrop-blur-2xl border-l shadow-2xl z-[101] lg:hidden ${isDark ? 'bg-[#1a1235]/98 border-white/10' : 'bg-white/98 border-[#462878]/20'}`}
+                className={`fixed top-0 right-0 h-full w-[85%] max-w-sm backdrop-blur-2xl border-l shadow-2xl z-[101] lg:hidden ${isDark ? 'bg-[#110B2E]/98 border-[#D6B166]/10' : 'bg-white/98 border-[#462878]/20'}`}
               >
                 <div className="flex flex-col h-full">
                   <div className={`flex items-center justify-between p-6 border-b ${isDark ? 'border-white/10' : 'border-[#462878]/10'}`}>

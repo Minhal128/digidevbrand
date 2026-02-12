@@ -23,11 +23,11 @@ const LatestProjects = () => {
     const isMobile = windowWidth < 768;
 
     const allProjects = [
-// Website Projects (expanded from ServicesPage)
+        // Website Projects (expanded from ServicesPage)
         { title: 'E-Commerce Platform', category: 'Websites', image: '/1.png' },
         { title: 'Mobile App UI', category: 'Websites', image: '/3.png' },
         { title: 'Corporate Website', category: 'Websites', image: '/image.png' },
-       
+
         { title: 'MID TIER ECOMMERCE WEBSITE', category: 'Websites', image: '/5.jpeg' },
         { title: 'ELITE TIER ECOMMECE WEBSITE', category: 'Websites', image: '/9.png' },
 
@@ -35,9 +35,9 @@ const LatestProjects = () => {
         { title: 'Real Estate Portal', category: 'Websites', image: '/6.png' },
         { title: 'Educational Platform', category: 'Websites', image: '/7.png' },
         { title: 'Healthcare Website', category: 'Websites', image: '/8.png' },
-       
-       
-        
+
+
+
 
         // Logo Design Projects (from ServicesPage)
         { title: 'Logo 1', category: 'Logo Design', image: '/LOGO/1.jpg' },
@@ -259,37 +259,7 @@ const LatestProjects = () => {
                     ))}
                 </div>
 
-                {activeCategory === 'Logo Design' ? (
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl mx-auto"
-                    >
-                        {filteredProjects.map((project, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 30 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: index * 0.05 }}
-                                className="group"
-                            >
-                                <div className={`relative overflow-hidden rounded-2xl p-8 aspect-square flex items-center justify-center border transition-all duration-300 shadow-xl group-hover:shadow-[#D6B166]/10 ${
-                                    isDark
-                                        ? 'bg-[#1a1235] border-white/10 hover:border-[#D6B166]/30 shadow-black/5'
-                                        : 'bg-white border-white/10 hover:border-[#D6B166]/30 shadow-black/5'
-                                }`}>
-                                    <img
-                                        src={project.image}
-                                        alt={project.title}
-                                        className="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-500"
-                                    />
-                                    <div className="absolute inset-0 bg-[#D6B166]/0 group-hover:bg-[#D6B166]/5 transition-colors duration-300" />
-                                </div>
-                            </motion.div>
-                        ))}
-                    </motion.div>
-                ) : activeCategory === 'Graphical Work' ? (
+                {activeCategory === 'Graphical Work' ? (
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -305,31 +275,24 @@ const LatestProjects = () => {
                                 whileHover={{ scale: 1.03, y: -8 }}
                                 className="group relative"
                             >
-                                <div className={`relative overflow-hidden rounded-3xl border-2 transition-all duration-500 shadow-2xl ${
-                                    isDark
-                                        ? 'bg-[#1a1235] border-[#4B2F7D]/40 hover:border-[#D6B166]/60 shadow-[#D6B166]/5 hover:shadow-[#D6B166]/20'
-                                        : 'bg-white border-[#4B2F7D]/10 hover:border-[#4B2F7D]/40 shadow-black/5 hover:shadow-[#4B2F7D]/20'
-                                }`}>
-                                    {/* Animated glow border */}
-                                    <div className={`absolute -inset-[1px] rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0 overflow-hidden ${
-                                        isDark ? 'bg-gradient-to-r from-[#D6B166]/20 via-[#4B2F7D]/20 to-[#D6B166]/20' : 'bg-gradient-to-r from-[#4B2F7D]/10 via-[#D6B166]/10 to-[#4B2F7D]/10'
-                                    }`} />
+                                <div className={`relative overflow-hidden rounded-3xl border-2 transition-all duration-500 shadow-2xl ${isDark
+                                    ? 'bg-[#1a1235] border-[#4B2F7D]/40 hover:border-[#D6B166]/60 shadow-[#D6B166]/5 hover:shadow-[#D6B166]/20'
+                                    : 'bg-white border-[#4B2F7D]/10 hover:border-[#4B2F7D]/40 shadow-black/5 hover:shadow-[#4B2F7D]/20'
+                                    }`}>
+                                    <div className={`absolute -inset-[1px] rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0 overflow-hidden ${isDark ? 'bg-gradient-to-r from-[#D6B166]/20 via-[#4B2F7D]/20 to-[#D6B166]/20' : 'bg-gradient-to-r from-[#4B2F7D]/10 via-[#D6B166]/10 to-[#4B2F7D]/10'
+                                        }`} />
 
-                                    {/* Image */}
                                     <div className="relative z-10 overflow-hidden rounded-3xl">
                                         <img
                                             src={project.image}
                                             alt={project.title}
                                             className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                                         />
-                                        {/* Overlay gradient on hover */}
-                                        <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
-                                            isDark
-                                                ? 'bg-gradient-to-t from-[#281E5A]/80 via-transparent to-transparent'
-                                                : 'bg-gradient-to-t from-[#4B2F7D]/60 via-transparent to-transparent'
-                                        }`} />
+                                        <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${isDark
+                                            ? 'bg-gradient-to-t from-[#281E5A]/80 via-transparent to-transparent'
+                                            : 'bg-gradient-to-t from-[#4B2F7D]/60 via-transparent to-transparent'
+                                            }`} />
 
-                                        {/* Title overlay on hover */}
                                         <motion.div
                                             className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500"
                                         >
@@ -340,14 +303,10 @@ const LatestProjects = () => {
                                         </motion.div>
                                     </div>
                                 </div>
-
-                                {/* Floating decorative dots */}
-                                <div className={`absolute -top-2 -right-2 w-4 h-4 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110 ${
-                                    isDark ? 'bg-[#D6B166]' : 'bg-[#4B2F7D]'
-                                }`} />
-                                <div className={`absolute -bottom-2 -left-2 w-3 h-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-700 delay-100 group-hover:scale-110 ${
-                                    isDark ? 'bg-[#E6C882]' : 'bg-[#D6B166]'
-                                }`} />
+                                <div className={`absolute -top-2 -right-2 w-4 h-4 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110 ${isDark ? 'bg-[#D6B166]' : 'bg-[#4B2F7D]'
+                                    }`} />
+                                <div className={`absolute -bottom-2 -left-2 w-3 h-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-700 delay-100 group-hover:scale-110 ${isDark ? 'bg-[#E6C882]' : 'bg-[#D6B166]'
+                                    }`} />
                             </motion.div>
                         ))}
                     </motion.div>
@@ -386,61 +345,47 @@ const LatestProjects = () => {
                                 );
                             })}
                         </motion.div>
-
-                        {/* Video Popup Modal */}
-                        <AnimatePresence>
-                            {selectedVideo && (
-                                <motion.div
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    exit={{ opacity: 0 }}
-                                    transition={{ duration: 0.25 }}
-                                    className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm"
-                                    onClick={() => setSelectedVideo(null)}
-                                >
-                                    <motion.div
-                                        initial={{ scale: 0.8, opacity: 0 }}
-                                        animate={{ scale: 1, opacity: 1 }}
-                                        exit={{ scale: 0.8, opacity: 0 }}
-                                        transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-                                        className="relative w-[90vw] max-w-4xl"
-                                        onClick={(e) => e.stopPropagation()}
-                                    >
-                                        <button
-                                            onClick={() => setSelectedVideo(null)}
-                                            className="absolute -top-12 right-0 text-white hover:text-[#D6B166] transition-colors duration-200 z-10"
-                                        >
-                                            <X className="w-8 h-8" />
-                                        </button>
-                                        <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl" style={{ paddingBottom: '56.25%' }}>
-                                            <iframe
-                                                className="absolute top-0 left-0 w-full h-full"
-                                                src={selectedVideo}
-                                                title="Video Player"
-                                                frameBorder="0"
-                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                allowFullScreen
-                                            />
-                                        </div>
-                                    </motion.div>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
                     </>
                 ) : (
                     <div className="relative max-w-7xl mx-auto" style={{ perspective: '2000px' }}>
-                        <div className="relative h-[650px] md:h-[750px] flex items-center justify-center overflow-visible">
+                        {/* Navigation Arrows */}
+                        <button
+                            onClick={() => {
+                                if (animationPhase === 'idle') {
+                                    const prev = (currentIndex - 1 + filteredProjects.length) % filteredProjects.length;
+                                    setCurrentIndex(prev);
+                                }
+                            }}
+                            className={`absolute left-0 md:-left-12 top-1/2 -translate-y-1/2 z-30 w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-300 ${isDark
+                                ? 'bg-[#4B2F7D]/60 backdrop-blur-md border border-[#D6B166]/30 text-[#D6B166] hover:bg-[#D6B166]/20'
+                                : 'bg-white/80 backdrop-blur-md border border-[#4B2F7D]/20 text-[#4B2F7D] hover:bg-[#4B2F7D]/10'
+                                } shadow-lg`}
+                        >
+                            <Play className="h-6 w-6 rotate-180" />
+                        </button>
+                        <button
+                            onClick={goToNext}
+                            className={`absolute right-0 md:-right-12 top-1/2 -translate-y-1/2 z-30 w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-300 ${isDark
+                                ? 'bg-[#4B2F7D]/60 backdrop-blur-md border border-[#D6B166]/30 text-[#D6B166] hover:bg-[#D6B166]/20'
+                                : 'bg-white/80 backdrop-blur-md border border-[#4B2F7D]/20 text-[#4B2F7D] hover:bg-[#4B2F7D]/10'
+                                } shadow-lg`}
+                        >
+                            <Play className="h-6 w-6" />
+                        </button>
+
+                        <div className={`relative ${activeCategory === 'Logo Design' ? 'h-[400px] md:h-[550px]' : 'h-[650px] md:h-[750px]'} flex items-center justify-center overflow-visible`}>
                             <div className="relative w-full flex justify-center items-center" style={{ transformStyle: 'preserve-3d' }}>
                                 {visibleIndices.map(({ index: projectIndex, position }) => {
-                                    const project = projectsData[projectIndex];
+                                    const project = filteredProjects[projectIndex];
                                     if (!project) return null;
 
                                     const transform = getCardTransform(position, projectIndex);
+                                    const isLogo = activeCategory === 'Logo Design';
 
                                     return (
                                         <motion.div
-                                            key={projectIndex}
-                                            className="absolute w-[320px] md:w-[480px] h-[600px]"
+                                            key={`${activeCategory}-${projectIndex}`}
+                                            className={`absolute ${isLogo ? 'w-[280px] md:w-[420px] h-[280px] md:h-[420px]' : 'w-[320px] md:w-[480px] h-[600px]'}`}
                                             initial={false}
                                             animate={{
                                                 x: transform.x,
@@ -460,26 +405,26 @@ const LatestProjects = () => {
                                             style={{
                                                 transformStyle: 'preserve-3d',
                                                 left: '50%',
-                                                marginLeft: isMobile ? '-160px' : '-240px',
+                                                marginLeft: isLogo ? (isMobile ? '-140px' : '-210px') : (isMobile ? '-160px' : '-240px'),
                                             }}
                                         >
                                             <div
-                                                className={`w-full h-full rounded-3xl overflow-hidden shadow-2xl ${isDark ? 'bg-[#1a1235]' : 'bg-white'} border-2 ${position === 0 && animatingCard !== projectIndex ? 'border-[#D6B166]/50' : 'border-transparent'}`}
+                                                className={`w-full h-full rounded-3xl overflow-hidden shadow-2xl border-2 ${position === 0 && animatingCard !== projectIndex ? 'border-[#D6B166]/50' : 'border-transparent'} ${isDark ? 'bg-[#1a1235]' : 'bg-white'}`}
                                                 style={{
                                                     backfaceVisibility: 'hidden',
                                                     transformStyle: 'preserve-3d',
                                                 }}
                                             >
-                                                {/* Full Screenshot Display - Scroll on hover with bounce back */}
-                                                <div className="relative h-full overflow-hidden slow-scroll-card">
+                                                <div className={`relative h-full overflow-hidden ${!isLogo ? 'slow-scroll-card' : ''}`}>
                                                     <img
                                                         src={project.image}
                                                         alt={project.title}
-                                                        className="w-full slow-scroll-img"
+                                                        className={`w-full ${isLogo ? 'h-full object-contain p-8' : 'slow-scroll-img'}`}
                                                     />
                                                 </div>
                                             </div>
 
+                                            {/* Back Face */}
                                             <div
                                                 className={`absolute inset-0 w-full h-full rounded-3xl overflow-hidden shadow-2xl flex items-center justify-center ${isDark ? 'bg-gradient-to-br from-[#D6B166] to-[#E6C882]' : 'bg-gradient-to-br from-[#4B2F7D] to-[#281E5A]'}`}
                                                 style={{
@@ -488,26 +433,20 @@ const LatestProjects = () => {
                                                 }}
                                             >
                                                 <div className="text-center p-8">
-                                                    <div className={`w-20 h-20 mx-auto mb-6 rounded-full flex items-center justify-center ${isDark ? 'bg-[#281E5A]' : 'bg-white/20'}`}>
-                                                        <Play className={`w-10 h-10 ${isDark ? 'text-[#D6B166]' : 'text-white'}`} />
-                                                    </div>
-                                                    <h3 className={`text-2xl font-black mb-4 ${isDark ? 'text-[#281E5A]' : 'text-white'}`}>
+                                                    <Play className={`w-10 h-10 mx-auto mb-4 ${isDark ? 'text-[#281E5A]' : 'text-white'}`} />
+                                                    <h3 className={`text-xl font-bold ${isDark ? 'text-[#281E5A]' : 'text-white'}`}>
                                                         {project.title}
                                                     </h3>
-                                                    <p className={`text-sm ${isDark ? 'text-[#281E5A]/70' : 'text-white/80'}`}>
-                                                        Loading next project...
-                                                    </p>
                                                 </div>
                                             </div>
                                         </motion.div>
                                     );
                                 })}
                             </div>
-
                         </div>
 
                         <div className="flex justify-center gap-2 mt-8">
-                            {projectsData.map((_, idx) => (
+                            {filteredProjects.map((_, idx) => (
                                 <button
                                     key={idx}
                                     onClick={() => {
@@ -523,6 +462,46 @@ const LatestProjects = () => {
                         </div>
                     </div>
                 )}
+
+                {/* Video Popup Modal */}
+                <AnimatePresence>
+                    {selectedVideo && (
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.25 }}
+                            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm"
+                            onClick={() => setSelectedVideo(null)}
+                        >
+                            <motion.div
+                                initial={{ scale: 0.8, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                exit={{ scale: 0.8, opacity: 0 }}
+                                transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                                className="relative w-[90vw] max-w-4xl"
+                                onClick={(e) => e.stopPropagation()}
+                            >
+                                <button
+                                    onClick={() => setSelectedVideo(null)}
+                                    className="absolute -top-12 right-0 text-white hover:text-[#D6B166] transition-colors duration-200 z-10"
+                                >
+                                    <X className="w-8 h-8" />
+                                </button>
+                                <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl" style={{ paddingBottom: '56.25%' }}>
+                                    <iframe
+                                        className="absolute top-0 left-0 w-full h-full"
+                                        src={selectedVideo}
+                                        title="Video Player"
+                                        frameBorder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen
+                                    />
+                                </div>
+                            </motion.div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
         </section>
     );

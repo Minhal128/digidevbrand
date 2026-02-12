@@ -45,7 +45,7 @@ const AppContent: React.FC = () => {
   return (
     <Router>
       <ScrollToTop />
-      <div className="flex flex-col min-h-screen text-foreground dark:text-dark-foreground transition-colors duration-300 w-full overflow-x-hidden" style={{ backgroundColor: '#210a3d' }}>
+      <div className={`flex flex-col min-h-screen transition-colors duration-300 w-full overflow-x-hidden ${isDark ? 'bg-[#110B2E] text-white' : 'bg-white text-[#281E5A]'}`}>
         <Navbar />
 
         <main className="flex-grow">
