@@ -55,8 +55,8 @@ const LatestProjects = () => {
 
         // Graphical Work Projects (original)
         { title: 'Graphic Design 1', category: 'Graphical Work', image: '/graphics/1.png' },
-        { title: 'Graphic Design 3', category: 'Graphical Work', image: '/graphics/3.png' },
         { title: 'Graphic Design 2', category: 'Graphical Work', image: '/graphics/2.png' },
+        { title: 'Graphic Design 3', category: 'Graphical Work', image: '/graphics/3.png' },
         { title: 'Graphic Design 4', category: 'Graphical Work', image: '/graphics/4.png' },
         { title: 'Card Outline 1', category: 'Graphical Work', image: '/graphics/card%20outline.ai/1.png' },
         { title: 'Card Outline 2', category: 'Graphical Work', image: '/graphics/card%20outline.ai/2.png' },
@@ -252,12 +252,12 @@ const LatestProjects = () => {
                     </motion.p>
                 </div>
 
-                <div className="flex flex-wrap justify-center gap-3 mb-8">
+                <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-8">
                     {categories.map((category) => (
                         <button
                             key={category.id}
                             onClick={() => setActiveCategory(category.id)}
-                            className={`px-8 py-3.5 rounded-2xl text-base font-bold transition-all duration-500 border-2 ${activeCategory === category.id
+                            className={`px-4 md:px-8 py-2.5 md:py-3.5 rounded-2xl text-sm md:text-base font-bold transition-all duration-500 border-2 ${activeCategory === category.id
                                 ? isDark
                                     ? 'bg-[#D6B166] border-[#D6B166] text-[#281E5A] shadow-xl shadow-[#D6B166]/20 scale-105'
                                     : 'bg-[#4B2F7D] border-[#4B2F7D] text-white shadow-xl shadow-[#4B2F7D]/20 scale-105'
@@ -277,12 +277,12 @@ const LatestProjects = () => {
                         <button
                             onClick={() => setGraphicalSliderIndex((prev) => Math.max(prev - 1, 0))}
                             disabled={graphicalSliderIndex === 0}
-                            className={`absolute left-0 md:-left-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-300 ${isDark
+                            className={`absolute -left-2 md:-left-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-300 ${isDark
                                 ? 'bg-[#4B2F7D]/60 backdrop-blur-md border border-[#D6B166]/30 text-[#D6B166] hover:bg-[#D6B166]/20'
                                 : 'bg-white/80 backdrop-blur-md border border-[#4B2F7D]/20 text-[#4B2F7D] hover:bg-[#4B2F7D]/10'
                             } shadow-lg disabled:opacity-30 disabled:cursor-not-allowed`}
                         >
-                            <ChevronLeft className="h-6 w-6" />
+                            <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
                         </button>
 
                         {/* Right Arrow */}
@@ -292,19 +292,19 @@ const LatestProjects = () => {
                                 return Math.min(prev + 1, maxIndex);
                             })}
                             disabled={graphicalSliderIndex >= Math.max(0, filteredProjects.length - (isMobile ? 1 : 2))}
-                            className={`absolute right-0 md:-right-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-300 ${isDark
+                            className={`absolute -right-2 md:-right-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-300 ${isDark
                                 ? 'bg-[#4B2F7D]/60 backdrop-blur-md border border-[#D6B166]/30 text-[#D6B166] hover:bg-[#D6B166]/20'
                                 : 'bg-white/80 backdrop-blur-md border border-[#4B2F7D]/20 text-[#4B2F7D] hover:bg-[#4B2F7D]/10'
                             } shadow-lg disabled:opacity-30 disabled:cursor-not-allowed`}
                         >
-                            <ChevronRight className="h-6 w-6" />
+                            <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
                         </button>
 
                         {/* Slider Track */}
-                        <div className="overflow-hidden mx-8 md:mx-10">
+                        <div className="overflow-hidden mx-6 md:mx-10">
                             <motion.div
                                 className="flex"
-                                style={{ gap: isMobile ? 0 : '24px' }}
+                                style={{ gap: isMobile ? '0px' : '24px' }}
                                 animate={{ x: isMobile
                                     ? `-${graphicalSliderIndex * 100}%`
                                     : `calc(-${graphicalSliderIndex} * (50% + 12px))`
@@ -318,11 +318,11 @@ const LatestProjects = () => {
                                         style={{ width: isMobile ? '100%' : 'calc(50% - 12px)' }}
                                         whileHover={{ scale: 1.02, y: -5 }}
                                     >
-                                        <div className={`relative overflow-hidden rounded-3xl border-2 transition-all duration-500 shadow-2xl ${isDark
+                                        <div className={`relative overflow-hidden rounded-2xl md:rounded-3xl border-2 transition-all duration-500 shadow-2xl ${isDark
                                             ? 'bg-[#1a1235] border-[#4B2F7D]/40 hover:border-[#D6B166]/60 shadow-[#D6B166]/5 hover:shadow-[#D6B166]/20'
                                             : 'bg-white border-[#4B2F7D]/10 hover:border-[#4B2F7D]/40 shadow-black/5 hover:shadow-[#4B2F7D]/20'
                                             }`}>
-                                            <div className="relative z-10 overflow-hidden rounded-3xl">
+                                            <div className="relative z-10 overflow-hidden rounded-2xl md:rounded-3xl">
                                                 <img
                                                     src={project.image}
                                                     alt={project.title}
@@ -334,9 +334,9 @@ const LatestProjects = () => {
                                                     }`} />
 
                                                 <div
-                                                    className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500"
+                                                    className="absolute bottom-0 left-0 right-0 p-4 md:p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500"
                                                 >
-                                                    <h3 className="text-xl font-bold text-white drop-shadow-lg">
+                                                    <h3 className="text-base md:text-xl font-bold text-white drop-shadow-lg">
                                                         {project.title}
                                                     </h3>
                                                     <div className="h-1 w-12 rounded-full bg-[#D6B166] mt-2" />
@@ -367,31 +367,35 @@ const LatestProjects = () => {
                         <button
                             onClick={() => setVideoSliderIndex((prev) => Math.max(prev - 1, 0))}
                             disabled={videoSliderIndex === 0}
-                            className={`absolute left-0 md:-left-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-300 ${isDark
+                            className={`absolute -left-2 md:-left-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-300 ${isDark
                                 ? 'bg-[#4B2F7D]/60 backdrop-blur-md border border-[#D6B166]/30 text-[#D6B166] hover:bg-[#D6B166]/20'
                                 : 'bg-white/80 backdrop-blur-md border border-[#4B2F7D]/20 text-[#4B2F7D] hover:bg-[#4B2F7D]/10'
                             } shadow-lg disabled:opacity-30 disabled:cursor-not-allowed`}
                         >
-                            <ChevronLeft className="h-6 w-6" />
+                            <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
                         </button>
 
                         {/* Right Arrow */}
                         <button
                             onClick={() => setVideoSliderIndex((prev) => Math.min(prev + 1, animationVideos.length - (isMobile ? 1 : 3)))}
                             disabled={videoSliderIndex >= animationVideos.length - (isMobile ? 1 : 3)}
-                            className={`absolute right-0 md:-right-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-300 ${isDark
+                            className={`absolute -right-2 md:-right-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-300 ${isDark
                                 ? 'bg-[#4B2F7D]/60 backdrop-blur-md border border-[#D6B166]/30 text-[#D6B166] hover:bg-[#D6B166]/20'
                                 : 'bg-white/80 backdrop-blur-md border border-[#4B2F7D]/20 text-[#4B2F7D] hover:bg-[#4B2F7D]/10'
                             } shadow-lg disabled:opacity-30 disabled:cursor-not-allowed`}
                         >
-                            <ChevronRight className="h-6 w-6" />
+                            <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
                         </button>
 
                         {/* Slider Track */}
-                        <div className="overflow-hidden mx-8 md:mx-10" ref={videoSliderRef}>
+                        <div className="overflow-hidden mx-6 md:mx-10" ref={videoSliderRef}>
                             <motion.div
-                                className="flex gap-6"
-                                animate={{ x: `-${videoSliderIndex * (isMobile ? 100 : 33.333)}%` }}
+                                className="flex"
+                                style={{ gap: isMobile ? '0px' : '24px' }}
+                                animate={{ x: isMobile
+                                    ? `-${videoSliderIndex * 100}%`
+                                    : `calc(-${videoSliderIndex} * (33.333% + 8px))`
+                                }}
                                 transition={{ type: 'spring', stiffness: 200, damping: 30 }}
                             >
                                 {animationVideos.map((video) => {
@@ -399,7 +403,7 @@ const LatestProjects = () => {
                                     return (
                                         <motion.div
                                             key={video.id}
-                                            className={`rounded-2xl overflow-hidden shadow-xl border-2 cursor-pointer group flex-shrink-0 ${isDark ? 'border-[#4B2F7D]/40 bg-[#1a1235]' : 'border-[#4B2F7D]/10 bg-white'}`}
+                                            className={`rounded-xl md:rounded-2xl overflow-hidden shadow-xl border-2 cursor-pointer group flex-shrink-0 ${isDark ? 'border-[#4B2F7D]/40 bg-[#1a1235]' : 'border-[#4B2F7D]/10 bg-white'}`}
                                             style={{ width: isMobile ? '100%' : 'calc(33.333% - 16px)' }}
                                             onClick={() => setSelectedVideo(video.url + '?autoplay=1')}
                                             whileHover={{ scale: 1.02 }}
@@ -411,8 +415,8 @@ const LatestProjects = () => {
                                                     className="absolute top-0 left-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                                                 />
                                                 <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/40 transition-colors duration-300">
-                                                    <div className={`w-16 h-16 rounded-full flex items-center justify-center ${isDark ? 'bg-[#D6B166]' : 'bg-[#4B2F7D]'} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                                                        <Play className="w-7 h-7 text-white fill-white ml-1" />
+                                                    <div className={`w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center ${isDark ? 'bg-[#D6B166]' : 'bg-[#4B2F7D]'} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                                                        <Play className="w-5 h-5 md:w-7 md:h-7 text-white fill-white ml-0.5" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -424,7 +428,7 @@ const LatestProjects = () => {
 
                         {/* Dot indicators */}
                         <div className="flex justify-center gap-2 mt-6">
-                            {Array.from({ length: animationVideos.length - (isMobile ? 1 : 3) + 1 }).map((_, idx) => (
+                            {Array.from({ length: animationVideos.length - (isMobile ? 0 : 2) }).map((_, idx) => (
                                 <button
                                     key={idx}
                                     onClick={() => setVideoSliderIndex(idx)}
