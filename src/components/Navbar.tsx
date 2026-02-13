@@ -34,7 +34,18 @@ const Navbar: React.FC = () => {
   const [isLangDropdownOpen, setIsLangDropdownOpen] = useState(false);
   const [isCountryDropdownOpen, setIsCountryDropdownOpen] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState(countries[0]);
+  const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
   const location = useLocation();
+
+  const serviceDropdownItems = [
+    { name: 'Web Development', path: '/services/web-development' },
+    { name: 'Brand Identity', path: '/services/branding' },
+    { name: 'SEO & Marketing', path: '/services/seo-geo' },
+    { name: 'E-Commerce', path: '/services/ecommerce' },
+    { name: 'App Development', path: '/services/app-development' },
+    { name: 'Game Development', path: '/services/game-development' },
+  ];
 
   const isDark = theme === 'dark';
 
@@ -93,23 +104,79 @@ const Navbar: React.FC = () => {
             <div className="hidden lg:flex items-center">
               <div className={`flex items-center gap-1 px-2 py-1.5 rounded-full backdrop-blur-md border shadow-inner ${isDark ? 'bg-white/5 border-white/10' : 'bg-white border-[#462878]/20'}`}>
                 {navLinks.map((link) => (
-                  <Link
-                    key={link.path}
-                    to={link.path}
-                    className={`relative px-3 xl:px-5 py-2 text-xs xl:text-sm font-bold rounded-full transition-all duration-300 ${location.pathname === link.path
-                      ? 'text-[#D6B166] bg-[#4B2F7D] shadow-lg shadow-black/20'
-                      : isDark ? 'text-white/80 hover:text-white hover:bg-white/10' : 'text-[#281E5A] hover:text-[#4B2F7D] hover:bg-[#4B2F7D]/10'
-                      }`}
-                  >
-                    {link.name}
-                    {location.pathname === link.path && (
-                      <motion.div
-                        layoutId="nav-pill"
-                        className="absolute inset-0 rounded-full border border-[#D6B166]/30"
-                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                      />
-                    )}
-                  </Link>
+                  link.path === '/services' ? (
+                    <div
+                      key={link.path}
+                      className="relative"
+                      onMouseEnter={() => setIsServicesDropdownOpen(true)}
+                      onMouseLeave={() => setIsServicesDropdownOpen(false)}
+                    >
+                      <Link
+                        to={link.path}
+                        className={`relative flex items-center gap-1 px-3 xl:px-5 py-2 text-xs xl:text-sm font-bold rounded-full transition-all duration-300 ${location.pathname === link.path || location.pathname.startsWith('/services/')
+                          ? 'text-[#D6B166] bg-[#4B2F7D] shadow-lg shadow-black/20'
+                          : isDark ? 'text-white/80 hover:text-white hover:bg-white/10' : 'text-[#281E5A] hover:text-[#4B2F7D] hover:bg-[#4B2F7D]/10'
+                          }`}
+                      >
+                        {link.name}
+                        <ChevronDown className={`h-3 w-3 transition-transform duration-300 ${isServicesDropdownOpen ? 'rotate-180' : ''}`} />
+                        {(location.pathname === link.path || location.pathname.startsWith('/services/')) && (
+                          <motion.div
+                            layoutId="nav-pill"
+                            className="absolute inset-0 rounded-full border border-[#D6B166]/30"
+                            transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                          />
+                        )}
+                      </Link>
+                      <AnimatePresence>
+                        {isServicesDropdownOpen && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                            transition={{ duration: 0.2 }}
+                            className={`absolute left-0 top-full mt-2 w-64 rounded-2xl shadow-2xl border overflow-hidden z-[60] ${isDark ? 'border-white/10 bg-[#1a1235]/95 backdrop-blur-xl' : 'border-[#462878]/10 bg-white/95 backdrop-blur-xl shadow-[#462878]/10'}`}
+                          >
+                            <div className="p-2 space-y-0.5">
+                              {serviceDropdownItems.map((item) => (
+                                <Link
+                                  key={item.path}
+                                  to={item.path}
+                                  className={`flex items-center justify-between w-full px-4 py-3 text-sm font-semibold rounded-xl transition-all duration-200 group/item ${location.pathname === item.path
+                                    ? 'bg-[#4B2F7D] text-[#D6B166]'
+                                    : isDark
+                                      ? 'text-white/70 hover:bg-white/5 hover:text-white'
+                                      : 'text-[#4B2F7D]/80 hover:bg-[#4B2F7D]/5 hover:text-[#4B2F7D]'
+                                    }`}
+                                >
+                                  <span>{item.name}</span>
+                                  <ArrowRight className="h-3.5 w-3.5 opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200" />
+                                </Link>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  ) : (
+                    <Link
+                      key={link.path}
+                      to={link.path}
+                      className={`relative px-3 xl:px-5 py-2 text-xs xl:text-sm font-bold rounded-full transition-all duration-300 ${location.pathname === link.path
+                        ? 'text-[#D6B166] bg-[#4B2F7D] shadow-lg shadow-black/20'
+                        : isDark ? 'text-white/80 hover:text-white hover:bg-white/10' : 'text-[#281E5A] hover:text-[#4B2F7D] hover:bg-[#4B2F7D]/10'
+                        }`}
+                    >
+                      {link.name}
+                      {location.pathname === link.path && (
+                        <motion.div
+                          layoutId="nav-pill"
+                          className="absolute inset-0 rounded-full border border-[#D6B166]/30"
+                          transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                        />
+                      )}
+                    </Link>
+                  )
                 ))}
               </div>
             </div>
@@ -303,17 +370,71 @@ const Navbar: React.FC = () => {
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: index * 0.05 }}
                         >
-                          <Link
-                            to={link.path}
-                            onClick={() => setIsMobileMenuOpen(false)}
-                            className={`flex items-center justify-between px-5 py-4 text-lg font-bold rounded-2xl transition-all ${location.pathname === link.path
-                              ? 'text-[#D6B166] bg-[#4B2F7D] border-r-4 border-[#D6B166]'
-                              : isDark ? 'text-white/80 hover:text-white hover:bg-white/5' : 'text-[#4B2F7D]/80 hover:text-[#4B2F7D] hover:bg-[#4B2F7D]/5'
-                              }`}
-                          >
-                            {link.name}
-                            <ArrowRight className={`h-4 w-4 opacity-50 ${location.pathname === link.path ? 'opacity-100' : ''}`} />
-                          </Link>
+                          {link.path === '/services' ? (
+                            <div>
+                              <div className="flex items-center">
+                                <Link
+                                  to={link.path}
+                                  onClick={() => setIsMobileMenuOpen(false)}
+                                  className={`flex-1 flex items-center px-5 py-4 text-lg font-bold rounded-l-2xl transition-all ${location.pathname === link.path || location.pathname.startsWith('/services/')
+                                    ? 'text-[#D6B166] bg-[#4B2F7D] border-r-4 border-[#D6B166]'
+                                    : isDark ? 'text-white/80 hover:text-white hover:bg-white/5' : 'text-[#4B2F7D]/80 hover:text-[#4B2F7D] hover:bg-[#4B2F7D]/5'
+                                    }`}
+                                >
+                                  {link.name}
+                                </Link>
+                                <button
+                                  onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+                                  className={`px-4 py-4 rounded-r-2xl transition-all ${location.pathname === link.path || location.pathname.startsWith('/services/')
+                                    ? 'text-[#D6B166] bg-[#4B2F7D]'
+                                    : isDark ? 'text-white/80 hover:text-white hover:bg-white/5' : 'text-[#4B2F7D]/80 hover:text-[#4B2F7D] hover:bg-[#4B2F7D]/5'
+                                    }`}
+                                >
+                                  <ChevronDown className={`h-5 w-5 transition-transform duration-300 ${isMobileServicesOpen ? 'rotate-180' : ''}`} />
+                                </button>
+                              </div>
+                              <AnimatePresence>
+                                {isMobileServicesOpen && (
+                                  <motion.div
+                                    initial={{ height: 0, opacity: 0 }}
+                                    animate={{ height: 'auto', opacity: 1 }}
+                                    exit={{ height: 0, opacity: 0 }}
+                                    transition={{ duration: 0.3 }}
+                                    className="overflow-hidden"
+                                  >
+                                    <div className="pl-6 pt-1 space-y-1">
+                                      {serviceDropdownItems.map((item) => (
+                                        <Link
+                                          key={item.path}
+                                          to={item.path}
+                                          onClick={() => { setIsMobileMenuOpen(false); setIsMobileServicesOpen(false); }}
+                                          className={`flex items-center justify-between px-4 py-3 text-sm font-semibold rounded-xl transition-all ${location.pathname === item.path
+                                            ? 'text-[#D6B166] bg-[#4B2F7D]'
+                                            : isDark ? 'text-white/60 hover:text-white hover:bg-white/5' : 'text-[#4B2F7D]/70 hover:text-[#4B2F7D] hover:bg-[#4B2F7D]/5'
+                                            }`}
+                                        >
+                                          {item.name}
+                                          <ArrowRight className="h-3.5 w-3.5 opacity-50" />
+                                        </Link>
+                                      ))}
+                                    </div>
+                                  </motion.div>
+                                )}
+                              </AnimatePresence>
+                            </div>
+                          ) : (
+                            <Link
+                              to={link.path}
+                              onClick={() => setIsMobileMenuOpen(false)}
+                              className={`flex items-center justify-between px-5 py-4 text-lg font-bold rounded-2xl transition-all ${location.pathname === link.path
+                                ? 'text-[#D6B166] bg-[#4B2F7D] border-r-4 border-[#D6B166]'
+                                : isDark ? 'text-white/80 hover:text-white hover:bg-white/5' : 'text-[#4B2F7D]/80 hover:text-[#4B2F7D] hover:bg-[#4B2F7D]/5'
+                                }`}
+                            >
+                              {link.name}
+                              <ArrowRight className={`h-4 w-4 opacity-50 ${location.pathname === link.path ? 'opacity-100' : ''}`} />
+                            </Link>
+                          )}
                         </motion.div>
                       ))}
                     </div>

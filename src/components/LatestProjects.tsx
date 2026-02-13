@@ -1,7 +1,7 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useApp } from '@/context/AppContext';
-import { Play, X } from 'lucide-react';
+import { Play, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const LatestProjects = () => {
     const { theme } = useApp();
@@ -13,6 +13,9 @@ const LatestProjects = () => {
     const [animationPhase, setAnimationPhase] = useState<'idle' | 'lift' | 'flip' | 'settle'>('idle');
     const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
     const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+    const [videoSliderIndex, setVideoSliderIndex] = useState(0);
+    const [graphicalSliderIndex, setGraphicalSliderIndex] = useState(0);
+    const videoSliderRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const handleResize = () => setWindowWidth(window.innerWidth);
@@ -25,16 +28,12 @@ const LatestProjects = () => {
     const allProjects = [
         // Website Projects (expanded from ServicesPage)
         { title: 'E-Commerce Platform', category: 'Websites', image: '/1.png' },
-        { title: 'Mobile App UI', category: 'Websites', image: '/3.png' },
-        { title: 'Corporate Website', category: 'Websites', image: '/image.png' },
-
-        { title: 'MID TIER ECOMMERCE WEBSITE', category: 'Websites', image: '/5.jpeg' },
-        { title: 'ELITE TIER ECOMMECE WEBSITE', category: 'Websites', image: '/9.png' },
-
         { title: 'Restaurant Website', category: 'Websites', image: '/2.png' },
+        { title: 'MID TIER ECOMMERCE WEBSITE', category: 'Websites', image: '/3.png' },
         { title: 'Real Estate Portal', category: 'Websites', image: '/6.png' },
         { title: 'Educational Platform', category: 'Websites', image: '/7.png' },
         { title: 'Healthcare Website', category: 'Websites', image: '/8.png' },
+        { title: 'ELITE TIER ECOMMECE WEBSITE', category: 'Websites', image: '/9.png' },
 
 
 
@@ -52,12 +51,23 @@ const LatestProjects = () => {
         { title: 'Logo 10', category: 'Logo Design', image: '/LOGO/10.jpg' },
         { title: 'Logo 11', category: 'Logo Design', image: '/LOGO/11.jpg' },
         { title: 'Logo 12', category: 'Logo Design', image: '/LOGO/12.jpg' },
+        { title: 'Basic Survival Gear Logo', category: 'Logo Design', image: '/LOGO/BASICSURVIVALGEAR%20LOGO/Final/Logo-01.jpg' },
 
-        // Graphical Work Projects
+        // Graphical Work Projects (original)
         { title: 'Graphic Design 1', category: 'Graphical Work', image: '/graphics/1.png' },
-        { title: 'Graphic Design 2', category: 'Graphical Work', image: '/graphics/2.png' },
         { title: 'Graphic Design 3', category: 'Graphical Work', image: '/graphics/3.png' },
+        { title: 'Graphic Design 2', category: 'Graphical Work', image: '/graphics/2.png' },
         { title: 'Graphic Design 4', category: 'Graphical Work', image: '/graphics/4.png' },
+        { title: 'Card Outline 1', category: 'Graphical Work', image: '/graphics/card%20outline.ai/1.png' },
+        { title: 'Card Outline 2', category: 'Graphical Work', image: '/graphics/card%20outline.ai/2.png' },
+        // Graphical Work Projects (new)
+        { title: 'Business Card Design', category: 'Graphical Work', image: '/graphics/1.jpeg' },
+        { title: 'Brochure Design', category: 'Graphical Work', image: '/graphics/2.jpeg' },
+        { title: 'Flyer Design', category: 'Graphical Work', image: '/graphics/3.jpeg' },
+        { title: 'Social Media Design', category: 'Graphical Work', image: '/graphics/4.jpeg' },
+        { title: 'Banner Design', category: 'Graphical Work', image: '/graphics/5.jpeg' },
+        { title: 'Poster Design', category: 'Graphical Work', image: '/graphics/6.jpeg' },
+        { title: 'Packaging Design', category: 'Graphical Work', image: '/graphics/7.jpeg' },
     ];
 
     const projectsData = allProjects;
@@ -68,6 +78,8 @@ const LatestProjects = () => {
     // Reset index when category changes
     useEffect(() => {
         setCurrentIndex(0);
+        setGraphicalSliderIndex(0);
+        setVideoSliderIndex(0);
     }, [activeCategory]);
 
     const categories = [
@@ -260,92 +272,169 @@ const LatestProjects = () => {
                 </div>
 
                 {activeCategory === 'Graphical Work' ? (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.5 }}
-                        className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto"
-                    >
-                        {filteredProjects.map((project, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, scale: 0.8, rotateY: -15 }}
-                                animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-                                transition={{ duration: 0.6, delay: index * 0.15, type: 'spring', stiffness: 100 }}
-                                whileHover={{ scale: 1.03, y: -8 }}
-                                className="group relative"
-                            >
-                                <div className={`relative overflow-hidden rounded-3xl border-2 transition-all duration-500 shadow-2xl ${isDark
-                                    ? 'bg-[#1a1235] border-[#4B2F7D]/40 hover:border-[#D6B166]/60 shadow-[#D6B166]/5 hover:shadow-[#D6B166]/20'
-                                    : 'bg-white border-[#4B2F7D]/10 hover:border-[#4B2F7D]/40 shadow-black/5 hover:shadow-[#4B2F7D]/20'
-                                    }`}>
-                                    <div className={`absolute -inset-[1px] rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0 overflow-hidden ${isDark ? 'bg-gradient-to-r from-[#D6B166]/20 via-[#4B2F7D]/20 to-[#D6B166]/20' : 'bg-gradient-to-r from-[#4B2F7D]/10 via-[#D6B166]/10 to-[#4B2F7D]/10'
-                                        }`} />
-
-                                    <div className="relative z-10 overflow-hidden rounded-3xl">
-                                        <img
-                                            src={project.image}
-                                            alt={project.title}
-                                            className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
-                                        />
-                                        <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${isDark
-                                            ? 'bg-gradient-to-t from-[#281E5A]/80 via-transparent to-transparent'
-                                            : 'bg-gradient-to-t from-[#4B2F7D]/60 via-transparent to-transparent'
-                                            }`} />
-
-                                        <motion.div
-                                            className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500"
-                                        >
-                                            <h3 className="text-xl font-bold text-white drop-shadow-lg">
-                                                {project.title}
-                                            </h3>
-                                            <div className="h-1 w-12 rounded-full bg-[#D6B166] mt-2" />
-                                        </motion.div>
-                                    </div>
-                                </div>
-                                <div className={`absolute -top-2 -right-2 w-4 h-4 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110 ${isDark ? 'bg-[#D6B166]' : 'bg-[#4B2F7D]'
-                                    }`} />
-                                <div className={`absolute -bottom-2 -left-2 w-3 h-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-700 delay-100 group-hover:scale-110 ${isDark ? 'bg-[#E6C882]' : 'bg-[#D6B166]'
-                                    }`} />
-                            </motion.div>
-                        ))}
-                    </motion.div>
-                ) : activeCategory === 'Video Animation' ? (
-                    <>
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5 }}
-                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto"
+                    <div className="relative max-w-7xl mx-auto">
+                        {/* Left Arrow */}
+                        <button
+                            onClick={() => setGraphicalSliderIndex((prev) => Math.max(prev - 1, 0))}
+                            disabled={graphicalSliderIndex === 0}
+                            className={`absolute left-0 md:-left-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-300 ${isDark
+                                ? 'bg-[#4B2F7D]/60 backdrop-blur-md border border-[#D6B166]/30 text-[#D6B166] hover:bg-[#D6B166]/20'
+                                : 'bg-white/80 backdrop-blur-md border border-[#4B2F7D]/20 text-[#4B2F7D] hover:bg-[#4B2F7D]/10'
+                            } shadow-lg disabled:opacity-30 disabled:cursor-not-allowed`}
                         >
-                            {animationVideos.map((video) => {
-                                const videoId = video.url.split('/embed/')[1];
-                                return (
+                            <ChevronLeft className="h-6 w-6" />
+                        </button>
+
+                        {/* Right Arrow */}
+                        <button
+                            onClick={() => setGraphicalSliderIndex((prev) => {
+                                const maxIndex = Math.max(0, filteredProjects.length - (isMobile ? 1 : 2));
+                                return Math.min(prev + 1, maxIndex);
+                            })}
+                            disabled={graphicalSliderIndex >= Math.max(0, filteredProjects.length - (isMobile ? 1 : 2))}
+                            className={`absolute right-0 md:-right-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-300 ${isDark
+                                ? 'bg-[#4B2F7D]/60 backdrop-blur-md border border-[#D6B166]/30 text-[#D6B166] hover:bg-[#D6B166]/20'
+                                : 'bg-white/80 backdrop-blur-md border border-[#4B2F7D]/20 text-[#4B2F7D] hover:bg-[#4B2F7D]/10'
+                            } shadow-lg disabled:opacity-30 disabled:cursor-not-allowed`}
+                        >
+                            <ChevronRight className="h-6 w-6" />
+                        </button>
+
+                        {/* Slider Track */}
+                        <div className="overflow-hidden mx-8 md:mx-10">
+                            <motion.div
+                                className="flex"
+                                style={{ gap: isMobile ? 0 : '24px' }}
+                                animate={{ x: isMobile
+                                    ? `-${graphicalSliderIndex * 100}%`
+                                    : `calc(-${graphicalSliderIndex} * (50% + 12px))`
+                                }}
+                                transition={{ type: 'spring', stiffness: 200, damping: 30 }}
+                            >
+                                {filteredProjects.map((project, index) => (
                                     <motion.div
-                                        key={video.id}
-                                        initial={{ opacity: 0, scale: 0.9 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        transition={{ duration: 0.4, delay: video.id * 0.05 }}
-                                        onClick={() => setSelectedVideo(video.url + '?autoplay=1')}
-                                        className={`rounded-2xl overflow-hidden shadow-xl border-2 cursor-pointer group ${isDark ? 'border-[#4B2F7D]/40 bg-[#1a1235]' : 'border-[#4B2F7D]/10 bg-white'}`}
+                                        key={index}
+                                        className="flex-shrink-0 group relative"
+                                        style={{ width: isMobile ? '100%' : 'calc(50% - 12px)' }}
+                                        whileHover={{ scale: 1.02, y: -5 }}
                                     >
-                                        <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-                                            <img
-                                                src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
-                                                alt={`Animation Video ${video.id}`}
-                                                className="absolute top-0 left-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                                            />
-                                            <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/40 transition-colors duration-300">
-                                                <div className={`w-16 h-16 rounded-full flex items-center justify-center ${isDark ? 'bg-[#D6B166]' : 'bg-[#4B2F7D]'} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                                                    <Play className="w-7 h-7 text-white fill-white ml-1" />
+                                        <div className={`relative overflow-hidden rounded-3xl border-2 transition-all duration-500 shadow-2xl ${isDark
+                                            ? 'bg-[#1a1235] border-[#4B2F7D]/40 hover:border-[#D6B166]/60 shadow-[#D6B166]/5 hover:shadow-[#D6B166]/20'
+                                            : 'bg-white border-[#4B2F7D]/10 hover:border-[#4B2F7D]/40 shadow-black/5 hover:shadow-[#4B2F7D]/20'
+                                            }`}>
+                                            <div className="relative z-10 overflow-hidden rounded-3xl">
+                                                <img
+                                                    src={project.image}
+                                                    alt={project.title}
+                                                    className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                                                />
+                                                <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${isDark
+                                                    ? 'bg-gradient-to-t from-[#281E5A]/80 via-transparent to-transparent'
+                                                    : 'bg-gradient-to-t from-[#4B2F7D]/60 via-transparent to-transparent'
+                                                    }`} />
+
+                                                <div
+                                                    className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500"
+                                                >
+                                                    <h3 className="text-xl font-bold text-white drop-shadow-lg">
+                                                        {project.title}
+                                                    </h3>
+                                                    <div className="h-1 w-12 rounded-full bg-[#D6B166] mt-2" />
                                                 </div>
                                             </div>
                                         </div>
                                     </motion.div>
-                                );
-                            })}
-                        </motion.div>
-                    </>
+                                ))}
+                            </motion.div>
+                        </div>
+
+                        {/* Dot indicators */}
+                        <div className="flex justify-center gap-2 mt-6">
+                            {Array.from({ length: Math.max(1, filteredProjects.length - (isMobile ? 0 : 1)) }).map((_, idx) => (
+                                <button
+                                    key={idx}
+                                    onClick={() => setGraphicalSliderIndex(idx)}
+                                    className={`h-2.5 rounded-full transition-all duration-300 ${graphicalSliderIndex === idx
+                                        ? `w-8 ${isDark ? 'bg-[#D6B166]' : 'bg-[#4B2F7D]'}`
+                                        : `w-2.5 ${isDark ? 'bg-[#4B2F7D]' : 'bg-[#281E5A]/30'} hover:bg-[#D6B166]/50`}`}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                ) : activeCategory === 'Video Animation' ? (
+                    <div className="relative max-w-7xl mx-auto">
+                        {/* Left Arrow */}
+                        <button
+                            onClick={() => setVideoSliderIndex((prev) => Math.max(prev - 1, 0))}
+                            disabled={videoSliderIndex === 0}
+                            className={`absolute left-0 md:-left-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-300 ${isDark
+                                ? 'bg-[#4B2F7D]/60 backdrop-blur-md border border-[#D6B166]/30 text-[#D6B166] hover:bg-[#D6B166]/20'
+                                : 'bg-white/80 backdrop-blur-md border border-[#4B2F7D]/20 text-[#4B2F7D] hover:bg-[#4B2F7D]/10'
+                            } shadow-lg disabled:opacity-30 disabled:cursor-not-allowed`}
+                        >
+                            <ChevronLeft className="h-6 w-6" />
+                        </button>
+
+                        {/* Right Arrow */}
+                        <button
+                            onClick={() => setVideoSliderIndex((prev) => Math.min(prev + 1, animationVideos.length - (isMobile ? 1 : 3)))}
+                            disabled={videoSliderIndex >= animationVideos.length - (isMobile ? 1 : 3)}
+                            className={`absolute right-0 md:-right-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-300 ${isDark
+                                ? 'bg-[#4B2F7D]/60 backdrop-blur-md border border-[#D6B166]/30 text-[#D6B166] hover:bg-[#D6B166]/20'
+                                : 'bg-white/80 backdrop-blur-md border border-[#4B2F7D]/20 text-[#4B2F7D] hover:bg-[#4B2F7D]/10'
+                            } shadow-lg disabled:opacity-30 disabled:cursor-not-allowed`}
+                        >
+                            <ChevronRight className="h-6 w-6" />
+                        </button>
+
+                        {/* Slider Track */}
+                        <div className="overflow-hidden mx-8 md:mx-10" ref={videoSliderRef}>
+                            <motion.div
+                                className="flex gap-6"
+                                animate={{ x: `-${videoSliderIndex * (isMobile ? 100 : 33.333)}%` }}
+                                transition={{ type: 'spring', stiffness: 200, damping: 30 }}
+                            >
+                                {animationVideos.map((video) => {
+                                    const videoId = video.url.split('/embed/')[1];
+                                    return (
+                                        <motion.div
+                                            key={video.id}
+                                            className={`rounded-2xl overflow-hidden shadow-xl border-2 cursor-pointer group flex-shrink-0 ${isDark ? 'border-[#4B2F7D]/40 bg-[#1a1235]' : 'border-[#4B2F7D]/10 bg-white'}`}
+                                            style={{ width: isMobile ? '100%' : 'calc(33.333% - 16px)' }}
+                                            onClick={() => setSelectedVideo(video.url + '?autoplay=1')}
+                                            whileHover={{ scale: 1.02 }}
+                                        >
+                                            <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                                                <img
+                                                    src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
+                                                    alt={`Animation Video ${video.id}`}
+                                                    className="absolute top-0 left-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                                />
+                                                <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/40 transition-colors duration-300">
+                                                    <div className={`w-16 h-16 rounded-full flex items-center justify-center ${isDark ? 'bg-[#D6B166]' : 'bg-[#4B2F7D]'} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                                                        <Play className="w-7 h-7 text-white fill-white ml-1" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </motion.div>
+                                    );
+                                })}
+                            </motion.div>
+                        </div>
+
+                        {/* Dot indicators */}
+                        <div className="flex justify-center gap-2 mt-6">
+                            {Array.from({ length: animationVideos.length - (isMobile ? 1 : 3) + 1 }).map((_, idx) => (
+                                <button
+                                    key={idx}
+                                    onClick={() => setVideoSliderIndex(idx)}
+                                    className={`h-2.5 rounded-full transition-all duration-300 ${videoSliderIndex === idx
+                                        ? `w-8 ${isDark ? 'bg-[#D6B166]' : 'bg-[#4B2F7D]'}`
+                                        : `w-2.5 ${isDark ? 'bg-[#4B2F7D]' : 'bg-[#281E5A]/30'} hover:bg-[#D6B166]/50`}`}
+                                />
+                            ))}
+                        </div>
+                    </div>
                 ) : (
                     <div className="relative max-w-7xl mx-auto" style={{ perspective: '2000px' }}>
                         {/* Navigation Arrows */}
