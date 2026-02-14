@@ -45,6 +45,36 @@ const LatestProjects = () => {
         { id: 9, url: 'https://www.youtube.com/embed/Zm4u9BbER0E' },
     ];
 
+    const allProjects = [
+        { id: 1, title: 'Website 1', category: 'Websites', image: '/1.png' },
+        { id: 2, title: 'Website 2', category: 'Websites', image: '/2.png' },
+        { id: 3, title: 'Website 3', category: 'Websites', image: '/3.png' },
+        { id: 4, title: 'Website 4', category: 'Websites', image: '/6.png' },
+        { id: 5, title: 'Website 5', category: 'Websites', image: '/7.png' },
+        { id: 6, title: 'Website 6', category: 'Websites', image: '/8.png' },
+        { id: 7, title: 'Website 7', category: 'Websites', image: '/9.png' },
+        { id: 8, title: 'Website 8', category: 'Websites', image: '/10.png' },
+        { id: 9, title: 'Logo 1', category: 'Logo Design', image: '/LOGO/1.jpg' },
+        { id: 10, title: 'Logo 2', category: 'Logo Design', image: '/LOGO/2.jpg' },
+        { id: 11, title: 'Logo 3', category: 'Logo Design', image: '/LOGO/3.jpg' },
+        { id: 12, title: 'Logo 4', category: 'Logo Design', image: '/LOGO/4.jpg' },
+        { id: 13, title: 'Logo 5', category: 'Logo Design', image: '/LOGO/5.jpg' },
+        { id: 14, title: 'Logo 6', category: 'Logo Design', image: '/LOGO/6.jpg' },
+        { id: 15, title: 'Logo 7', category: 'Logo Design', image: '/LOGO/7.jpg' },
+        { id: 16, title: 'Logo 8', category: 'Logo Design', image: '/LOGO/8.jpg' },
+        { id: 17, title: 'Logo 9', category: 'Logo Design', image: '/LOGO/9.jpg' },
+        { id: 18, title: 'Logo 10', category: 'Logo Design', image: '/LOGO/10.jpg' },
+        { id: 19, title: 'Logo 11', category: 'Logo Design', image: '/LOGO/11.jpg' },
+        { id: 20, title: 'Logo 12', category: 'Logo Design', image: '/LOGO/12.jpg' },
+        { id: 21, title: 'Graphic 1', category: 'Graphical Work', image: '/graphics/1.png' },
+        { id: 22, title: 'Graphic 2', category: 'Graphical Work', image: '/graphics/2.png' },
+        { id: 23, title: 'Graphic 3', category: 'Graphical Work', image: '/graphics/3.png' },
+        { id: 24, title: 'Graphic 4', category: 'Graphical Work', image: '/graphics/4.png' },
+    ];
+
+    const filteredProjects = allProjects.filter(project => project.category === activeCategory);
+    const projectsData = filteredProjects;
+
     const getVisibleIndices = useCallback(() => {
         if (filteredProjects.length === 0) return [];
         const total = filteredProjects.length;
@@ -339,7 +369,8 @@ const LatestProjects = () => {
                                                 <img
                                                     src={project.image}
                                                     alt={project.title}
-                                                    className="w-full translate-y-0 group-hover/card:-translate-y-[60%] transition-transform duration-[10s] ease-in-out"
+                                                    className="w-full h-auto min-h-full object-cover object-top translate-y-0 group-hover/card:translate-y-[calc(-100%+560px)] md:group-hover/card:translate-y-[calc(-100%+560px)] transition-transform duration-[40s] ease-linear"
+                                                    style={{ display: 'block' }}
                                                 />
                                             </div>
                                         </div>

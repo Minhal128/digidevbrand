@@ -46,13 +46,13 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-const navLinks = [
-      { name: t('nav.home'), path: '/' },
-      { name: t('nav.about'), path: '/about' },
-      { name: t('nav.services'), path: '/services' },
-      { name: t('nav.contact'), path: '/contact' },
-      { name: t('nav.review'), path: '/review' },
-    ];
+  const navLinks = [
+    { name: t('nav.home'), path: '/' },
+    { name: t('nav.about'), path: '/about' },
+    { name: t('nav.services'), path: '/services' },
+    { name: t('nav.contact'), path: '/contact' },
+    { name: t('nav.review'), path: '/review' },
+  ];
 
   const toggleLanguage = (lang: 'en' | 'ar') => {
     setLanguage(lang);
@@ -84,7 +84,7 @@ const navLinks = [
                 <img
                   src="/logo.png"
                   alt="DigiDevBrand Logo"
-                  className="h-24 w-auto object-contain drop-shadow-[0_0_10px_rgba(70,40,120,0.3)]"
+                  className="h-32 w-auto object-contain drop-shadow-[0_0_10px_rgba(70,40,120,0.3)]"
                 />
               </motion.div>
             </a>
