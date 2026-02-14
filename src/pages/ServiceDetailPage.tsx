@@ -210,7 +210,7 @@ const ServiceDetailPage: React.FC = () => {
     return (
         <div className={`overflow-hidden ${isDark ? 'bg-[#0a0a0f]' : 'bg-white'}`}>
             {/* Hero Section */}
-            <section className="relative pt-40 pb-32 overflow-hidden">
+            <section className="relative pt-48 pb-32 overflow-hidden md:pt-60">
                 <div className="absolute inset-0">
                     <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-10`} />
                     <div className={`absolute -top-40 -left-40 w-96 h-96 bg-gradient-to-br ${service.color} rounded-full blur-[150px] opacity-20`} />
