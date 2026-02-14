@@ -19,6 +19,7 @@
   transform: translateY(0);
   transition: transform var(--scroll-speed) linear;
 }
+
 .slow-scroll-card:hover img.slow-scroll-img {
   transform: translateY(calc(-100% + 600px));
 }
@@ -95,6 +96,20 @@
 
   100% {
     transform: translateX(100%);
+  }
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
   }
 }
 
@@ -575,22 +590,26 @@ html.dark ::-webkit-scrollbar-thumb:hover {
 /* Mobile-first responsive typography */
 @media (max-width: 640px) {
   h1 {
-    font-size: 1.875rem; /* 30px */
+    font-size: 1.875rem;
+    /* 30px */
     line-height: 2.25rem;
   }
-  
+
   h2 {
-    font-size: 1.5rem; /* 24px */
+    font-size: 1.5rem;
+    /* 24px */
     line-height: 2rem;
   }
-  
+
   h3 {
-    font-size: 1.25rem; /* 20px */
+    font-size: 1.25rem;
+    /* 20px */
     line-height: 1.75rem;
   }
-  
+
   h4 {
-    font-size: 1.125rem; /* 18px */
+    font-size: 1.125rem;
+    /* 18px */
     line-height: 1.5rem;
   }
 }
@@ -605,7 +624,10 @@ html.dark ::-webkit-scrollbar-thumb:hover {
 
 /* Touch-friendly button sizes on mobile */
 @media (max-width: 768px) {
-  button, .btn, a[role="button"] {
+
+  button,
+  .btn,
+  a[role="button"] {
     min-height: 44px;
     min-width: 44px;
   }
@@ -618,6 +640,7 @@ body {
 
 /* Mobile-optimized animations */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -704,7 +727,7 @@ body {
   .swiper-slide {
     padding: 0.5rem;
   }
-  
+
   .swiper-pagination-bullet {
     width: 8px !important;
     height: 8px !important;
@@ -743,13 +766,15 @@ body {
 
 /* Mobile-friendly form inputs */
 @media (max-width: 768px) {
+
   input[type="text"],
   input[type="email"],
   input[type="tel"],
   input[type="password"],
   textarea,
   select {
-    font-size: 16px; /* Prevents zoom on iOS */
+    font-size: 16px;
+    /* Prevents zoom on iOS */
   }
 }
 
@@ -768,7 +793,7 @@ body {
     padding-left: 0;
     padding-right: 0;
   }
-  
+
   .MuiTimelineItem-root {
     min-height: auto;
   }
@@ -843,7 +868,7 @@ body {
   footer {
     text-align: center;
   }
-  
+
   footer .grid {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -855,7 +880,7 @@ body {
   .blog-card {
     margin-bottom: 1.5rem;
   }
-  
+
   .blog-card img {
     height: 200px;
     object-fit: cover;
@@ -867,11 +892,11 @@ body {
   .cta-section {
     padding: 3rem 1rem;
   }
-  
+
   .cta-section h2 {
     font-size: 1.75rem;
   }
-  
+
   .cta-section p {
     font-size: 1rem;
   }
@@ -883,7 +908,7 @@ body {
     justify-content: center;
     gap: 0.75rem;
   }
-  
+
   .social-icon {
     width: 40px;
     height: 40px;
@@ -902,7 +927,7 @@ body {
   .contact-form {
     padding: 1.5rem;
   }
-  
+
   .contact-form input,
   .contact-form textarea {
     padding: 0.75rem;
@@ -953,7 +978,7 @@ body {
   .navigation-dots {
     bottom: 1rem;
   }
-  
+
   .navigation-dot {
     width: 8px;
     height: 8px;
@@ -973,7 +998,7 @@ body {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
-  
+
   .tab {
     white-space: nowrap;
     padding: 0.5rem 1rem;
@@ -1026,7 +1051,7 @@ body {
   .pagination {
     gap: 0.25rem;
   }
-  
+
   .pagination-item {
     width: 32px;
     height: 32px;
@@ -1054,7 +1079,7 @@ body {
   .safe-area-top {
     padding-top: max(1rem, env(safe-area-inset-top));
   }
-  
+
   .safe-area-bottom {
     padding-bottom: max(1rem, env(safe-area-inset-bottom));
   }
@@ -1067,7 +1092,7 @@ body {
     padding-top: 1rem;
     padding-bottom: 1rem;
   }
-  
+
   .modal-content {
     max-height: 85vh;
   }

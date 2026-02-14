@@ -95,7 +95,7 @@ const Navbar: React.FC = () => {
                 <img
                   src="/logo.png"
                   alt="DigiDevBrand Logo"
-                  className="h-36 w-auto object-contain drop-shadow-[0_0_10px_rgba(70,40,120,0.3)]"
+                  className="h-32 md:h-40 w-auto object-contain drop-shadow-[0_0_10px_rgba(70,40,120,0.2)]"
                 />
               </motion.div>
             </a>
@@ -344,15 +344,16 @@ const Navbar: React.FC = () => {
                 initial={{ x: '100%' }}
                 animate={{ x: 0 }}
                 exit={{ x: '100%' }}
-                transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                className={`fixed top-0 right-0 h-full w-[85%] max-w-sm backdrop-blur-2xl border-l shadow-2xl z-[101] lg:hidden ${isDark ? 'bg-[#110B2E]/98 border-[#D6B166]/10' : 'bg-white/98 border-[#462878]/20'}`}
+                transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }}
+                className={`fixed top-0 right-0 h-full w-[85%] max-w-sm border-l shadow-2xl z-[101] lg:hidden ${isDark ? 'bg-[#110B2E] border-[#D6B166]/10' : 'bg-white border-[#462878]/20'}`}
               >
                 <div className="flex flex-col h-full">
                   <div className={`flex items-center justify-between p-6 border-b ${isDark ? 'border-white/10' : 'border-[#462878]/10'}`}>
-                    <div className="flex items-center gap-3">
-                      <img src="/logo.png" alt="Logo" className="h-10 w-auto" />
-                      <span className={`text-xl font-black tracking-tight ${isDark ? 'text-white' : 'text-[#281E5A]'}`}>MENU</span>
+                    <div className="flex items-center gap-4">
+                      <img src="/logo.png" alt="Logo" className="h-28 w-auto transition-all duration-300" />
+                      <span className={`text-2xl font-black tracking-tight ${isDark ? 'text-white' : 'text-[#281E5A]'}`}>MENU</span>
                     </div>
+
                     <button
                       onClick={() => setIsMobileMenuOpen(false)}
                       className={`h-10 w-10 rounded-full border flex items-center justify-center transition-all ${isDark ? 'border-white/20 bg-white/5 text-white' : 'border-[#462878]/20 bg-[#462878]/5 text-[#462878]'}`}
@@ -378,7 +379,7 @@ const Navbar: React.FC = () => {
                                   onClick={() => setIsMobileMenuOpen(false)}
                                   className={`flex-1 flex items-center px-5 py-4 text-lg font-bold rounded-l-2xl transition-all ${location.pathname === link.path || location.pathname.startsWith('/services/')
                                     ? 'text-[#D6B166] bg-[#4B2F7D] border-r-4 border-[#D6B166]'
-                                    : isDark ? 'text-white/80 hover:text-white hover:bg-white/5' : 'text-[#4B2F7D]/80 hover:text-[#4B2F7D] hover:bg-[#4B2F7D]/5'
+                                    : isDark ? 'text-white/80 hover:text-white hover:bg-white/20' : 'text-[#281E5A] hover:bg-[#4B2F7D]/10 hover:text-[#281E5A]'
                                     }`}
                                 >
                                   {link.name}
@@ -387,7 +388,7 @@ const Navbar: React.FC = () => {
                                   onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
                                   className={`px-4 py-4 rounded-r-2xl transition-all ${location.pathname === link.path || location.pathname.startsWith('/services/')
                                     ? 'text-[#D6B166] bg-[#4B2F7D]'
-                                    : isDark ? 'text-white/80 hover:text-white hover:bg-white/5' : 'text-[#4B2F7D]/80 hover:text-[#4B2F7D] hover:bg-[#4B2F7D]/5'
+                                    : isDark ? 'text-white/80 hover:text-white hover:bg-white/20' : 'text-[#281E5A] hover:bg-[#4B2F7D]/10 hover:text-[#281E5A]'
                                     }`}
                                 >
                                   <ChevronDown className={`h-5 w-5 transition-transform duration-300 ${isMobileServicesOpen ? 'rotate-180' : ''}`} />
@@ -428,7 +429,7 @@ const Navbar: React.FC = () => {
                               onClick={() => setIsMobileMenuOpen(false)}
                               className={`flex items-center justify-between px-5 py-4 text-lg font-bold rounded-2xl transition-all ${location.pathname === link.path
                                 ? 'text-[#D6B166] bg-[#4B2F7D] border-r-4 border-[#D6B166]'
-                                : isDark ? 'text-white/80 hover:text-white hover:bg-white/5' : 'text-[#4B2F7D]/80 hover:text-[#4B2F7D] hover:bg-[#4B2F7D]/5'
+                                : isDark ? 'text-white/80 hover:text-white hover:bg-white/20' : 'text-[#281E5A] hover:bg-[#4B2F7D]/10 hover:text-[#281E5A]'
                                 }`}
                             >
                               {link.name}
@@ -443,8 +444,8 @@ const Navbar: React.FC = () => {
                   <div className={`p-6 border-t space-y-6 ${isDark ? 'border-white/10' : 'border-[#462878]/10'}`}>
                     <div className={`flex items-center justify-between p-4 rounded-2xl ${isDark ? 'bg-white/5' : 'bg-black/5'}`}>
                       <div className="flex items-center gap-3">
-                        {theme === 'dark' ? <Moon className={`h-5 w-5 ${isDark ? 'text-white' : 'text-[#462878]'}`} /> : <Sun className={`h-5 w-5 ${isDark ? 'text-white' : 'text-[#462878]'}`} />}
-                        <span className={`text-sm font-bold ${isDark ? 'text-white' : 'text-[#281E5A]'}`}>Dark Mode</span>
+                        {theme === 'dark' ? <Moon className="h-5 w-5 text-[#D6B166]" /> : <Sun className="h-5 w-5 text-[#4B2F7D]" />}
+                        <span className={`text-sm font-bold ${isDark ? 'text-white' : 'text-[#281E5A]'}`}>{theme === 'dark' ? 'Dark Mode' : 'Light Mode'}</span>
                       </div>
                       <Switch
                         checked={theme === 'dark'}

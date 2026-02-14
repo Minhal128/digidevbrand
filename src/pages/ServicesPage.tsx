@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import {
@@ -19,7 +19,7 @@ const ServicesPage: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const serviceImages = ['/service1.png', '/service2.jpeg', '/service3.jpeg'];
+  const serviceImages = ['/service2.jpeg', '/service3.jpeg'];
 
   // Auto-advance slider every 3 seconds
   useEffect(() => {
@@ -321,51 +321,56 @@ const ServicesPage: React.FC = () => {
   return (
     <div className={`overflow-x-hidden ${isDark ? 'bg-[#0a0a0f]' : 'bg-white'}`}>
       {/* Hero Section with Full-Width Image Slider */}
-      <section className="relative min-h-screen overflow-hidden pt-[10rem]">
-        {/* Full-Width Image Slider Background */}
-        <div className="absolute inset-0 w-full h-full">
-          <motion.div
-            key={currentSlide}
-            className="relative w-full h-full"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            style={{
-              backgroundImage: `url('${serviceImages[currentSlide]}')`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat'
-            }}
-          />
-        </div>
+      <section className="relative overflow-hidden pt-[11rem] md:pt-[13rem] bg-black">
+        <div className="md:w-full">
+          <div className="container mx-auto px-4 md:px-0 md:max-w-none">
+            <div className="relative aspect-[16/9] md:aspect-[21/9] w-full rounded-2xl md:rounded-none overflow-hidden shadow-2xl">
+              {/* Full-Width Image Slider Background */}
+              <div className="absolute inset-0 w-full h-full">
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={currentSlide}
+                    src={serviceImages[currentSlide]}
+                    alt={`Service Banner ${currentSlide + 1}`}
+                    className="w-full h-full object-cover"
+                    initial={{ opacity: 0, scale: 1.1 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                  />
+                </AnimatePresence>
+              </div>
 
-        {/* Navigation Arrows */}
-        <button
-          onClick={prevSlide}
-          className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 group"
-        >
-          <ChevronLeft className="h-6 w-6 md:h-8 md:w-8 group-hover:scale-110 transition-transform" />
-        </button>
+              {/* Navigation Arrows */}
+              <button
+                onClick={prevSlide}
+                className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-16 md:h-16 rounded-full bg-black/30 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-black/50 transition-all duration-300 group"
+              >
+                <ChevronLeft className="h-5 w-5 md:h-8 md:w-8 group-hover:scale-110 transition-transform" />
+              </button>
 
-        <button
-          onClick={nextSlide}
-          className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 group"
-        >
-          <ChevronRight className="h-6 w-6 md:h-8 md:w-8 group-hover:scale-110 transition-transform" />
-        </button>
+              <button
+                onClick={nextSlide}
+                className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-16 md:h-16 rounded-full bg-black/30 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-black/50 transition-all duration-300 group"
+              >
+                <ChevronRight className="h-5 w-5 md:h-8 md:w-8 group-hover:scale-110 transition-transform" />
+              </button>
 
-        {/* Slide Indicators */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-20">
-          {serviceImages.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentSlide
-                ? 'bg-white scale-125'
-                : 'bg-white/40 hover:bg-white/60'
-                }`}
-            />
-          ))}
+              {/* Slide Indicators */}
+              <div className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 flex gap-2 md:gap-3 z-20">
+                {serviceImages.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentSlide(index)}
+                    className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${index === currentSlide
+                      ? 'bg-white scale-125 shadow-lg'
+                      : 'bg-white/40 hover:bg-white/60'
+                      }`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

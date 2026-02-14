@@ -88,7 +88,7 @@ const ContactPage: React.FC = () => {
   return (
     <div className={`overflow-hidden ${isDark ? 'bg-[#1a1235]' : 'bg-white'}`}>
       {/* Hero Section */}
-      <section className="relative pt-24 md:pt-32 pb-16 md:pb-24 overflow-hidden">
+      <section className="relative pt-40 md:pt-48 pb-16 md:pb-24 overflow-hidden">
         <div className="absolute inset-0">
           <div className={`absolute inset-0 ${isDark ? 'bg-gradient-to-b from-violet-500/10 via-transparent to-transparent' : 'bg-gradient-to-b from-violet-100/50 via-transparent to-transparent'}`} />
           <div className={`absolute inset-0 ${isDark ? 'bg-[linear-gradient(rgba(139,92,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.03)_1px,transparent_1px)]' : 'bg-[linear-gradient(rgba(139,92,246,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.08)_1px,transparent_1px)]'} bg-[size:40px_40px] md:bg-[size:50px_50px]`} />
