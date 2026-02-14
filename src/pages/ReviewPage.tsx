@@ -124,7 +124,7 @@ const ReviewPage: React.FC = () => {
   return (
     <div className={`overflow-hidden ${isDark ? 'bg-[#0a0a0f]' : 'bg-white'}`}>
       {/* Hero Section */}
-      <section className="relative w-full max-w-[1920px] mx-auto aspect-video overflow-hidden bg-gray-100 mt-[7rem]">
+      <section className="relative w-full max-w-[1920px] mx-auto aspect-video overflow-hidden bg-gray-100 mt-[9rem] md:mt-[11rem]">
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
