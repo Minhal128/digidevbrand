@@ -9,7 +9,6 @@ import {
   Facebook,
   Instagram,
   Linkedin,
-  Twitter,
   Globe,
   Shield,
   CheckCircle,
@@ -31,9 +30,8 @@ const Footer: React.FC = () => {
 
   const socialLinks = [
     { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61566042842637', label: 'Facebook', color: 'hover:text-blue-500' },
-    { icon: Instagram, href: 'https://www.instagram.com/digi.devbrand', label: 'Instagram', color: 'hover:text-pink-500' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn', color: 'hover:text-blue-700' },
-    { icon: Twitter, href: '#', label: 'Twitter', color: 'hover:text-sky-400' },
+    { icon: Instagram, href: 'https://www.instagram.com/digidevbrand_llc/', label: 'Instagram', color: 'hover:text-pink-500' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/digidevbrand/?viewAsMember=true', label: 'LinkedIn', color: 'hover:text-blue-700' },
   ];
 
   return (

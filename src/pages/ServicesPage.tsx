@@ -10,6 +10,7 @@ import {
   ChevronRight,
 } from 'lucide-react';
 import { useApp } from '@/context/AppContext';
+import LatestProjects from '@/components/LatestProjects';
 
 const ServicesPage: React.FC = () => {
   useTranslation();
@@ -64,7 +65,7 @@ const ServicesPage: React.FC = () => {
     },
     {
       name: 'Custom Brochures Design',
-      price: '$80',
+      price: '$100',
       features: [
         'Custom Design',
         'Up-to 7 Revisions',
@@ -103,7 +104,7 @@ const ServicesPage: React.FC = () => {
     },
     {
       name: 'Custom Card Design',
-      price: '$80',
+      price: '$100',
       features: [
         'Custom Design',
         'Up-to 7 Revisions',
@@ -142,7 +143,7 @@ const ServicesPage: React.FC = () => {
     },
     {
       name: 'Custom Letterhead Design',
-      price: '$80',
+      price: '$100',
       features: [
         'Custom Design',
         'Up-to 7 Revisions',
@@ -320,7 +321,7 @@ const ServicesPage: React.FC = () => {
   return (
     <div className={`overflow-x-hidden ${isDark ? 'bg-[#0a0a0f]' : 'bg-white'}`}>
       {/* Hero Section with Full-Width Image Slider */}
-      <section className="relative min-h-screen overflow-hidden">
+      <section className="relative min-h-screen overflow-hidden pt-[10rem]">
         {/* Full-Width Image Slider Background */}
         <div className="absolute inset-0 w-full h-full">
           <motion.div
@@ -853,102 +854,9 @@ const ServicesPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Recent Projects Portfolio */}
-      <section className="py-24">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <span className={`font-medium text-sm uppercase tracking-widest ${isDark ? 'text-violet-400' : 'text-violet-600'}`}>Our Work</span>
-            <h2 className={`text-4xl md:text-5xl font-bold mt-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>Recent Projects</h2>
-          </motion.div>
+      {/* Latest Projects Section */}
+      <LatestProjects />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { title: 'E-Commerce Platform', category: 'Web Development', image: '/1.jpeg' },
-              { title: 'Brand Identity Design', category: 'Branding', image: '/2.jpeg' },
-              { title: 'Mobile App UI', category: 'UI/UX Design', image: '/3.jpeg' },
-              { title: 'Corporate Website', category: 'Web Development', image: '/4.jpeg' },
-              { title: 'Social Media Campaign', category: 'Marketing', image: '/5.jpeg' },
-              { title: 'Logo Collection', category: 'Design', image: '/6.jpeg' },
-              { title: 'Business Cards Design', category: 'Print Design', image: '/7.jpeg' },
-              { title: 'Letterhead Design', category: 'Corporate Identity', image: '/8.jpeg' },
-              { title: 'Graphic Design Portfolio', category: 'Creative Design', image: '/9.jpeg' },
-            ].map((project, index) => (
-              <motion.div
-                key={project.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group cursor-pointer relative"
-              >
-                <div className={`relative overflow-hidden rounded-2xl border ${isDark ? 'border-white/[0.06]' : 'border-gray-200 shadow-lg shadow-gray-100/50'}`}>
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full aspect-[4/3] object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className={`absolute inset-0 ${isDark ? 'bg-gradient-to-t from-[#0a0a0f] via-[#0a0a0f]/50 to-transparent' : 'bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent'} opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end`}>
-                    <div className="p-6 text-white">
-                      <span className="text-sm text-violet-400">{project.category}</span>
-                      <h3 className="text-xl font-bold">{project.title}</h3>
-                    </div>
-                  </div>
-                </div>
-
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Logo Portfolio */}
-      <section className={`py-24 relative ${isDark ? 'bg-[#0d0d1a]' : 'bg-gray-50'}`}>
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(214,177,102,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(214,177,102,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <span className="font-medium text-sm uppercase tracking-widest text-[#D6B166]">Our Identity Work</span>
-            <h2 className={`text-4xl md:text-5xl font-bold mt-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>Logo <span className="text-[#D6B166]">Portfolio</span></h2>
-            <p className={`max-w-2xl mx-auto mt-4 ${isDark ? 'text-white/50' : 'text-gray-500'}`}>
-              Explore our collection of professionally crafted logos that define brand excellence.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((num, index) => (
-              <motion.div
-                key={num}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                className="group"
-              >
-                <div className="relative overflow-hidden rounded-2xl bg-white p-8 aspect-square flex items-center justify-center border border-white/10 hover:border-[#D6B166]/30 transition-all duration-300 shadow-xl shadow-black/5 group-hover:shadow-[#D6B166]/10">
-                  <img
-                    src={`/LOGO/${num}.jpg`}
-                    alt={`Logo ${num}`}
-                    className="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-[#D6B166]/0 group-hover:bg-[#D6B166]/5 transition-colors duration-300" />
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* FAQ Section */}
       <section className={`py-24 ${isDark ? 'bg-gradient-to-b from-transparent via-violet-500/5 to-transparent' : 'bg-gradient-to-b from-transparent via-violet-50 to-transparent'}`}>

@@ -124,8 +124,31 @@ const ContactPage: React.FC = () => {
               <motion.div
                 key={info.title}
                 initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
+                animate={{
+                  opacity: [1, 0.6, 1],
+                  y: [0, -15, 0],
+                  scale: [1, 1.08, 1],
+                }}
+                transition={{
+                  delay: index * 0.1,
+                  opacity: {
+                    duration: 0.2,
+                    repeat: Infinity,
+                    ease: "linear",
+                  },
+                  y: {
+                    duration: 2.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: index * 0.2
+                  },
+                  scale: {
+                    duration: 2.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: index * 0.2
+                  }
+                }}
               >
                 <div className={`h-full p-6 rounded-2xl backdrop-blur-sm transition-all duration-300 ${isDark ? 'bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.05] hover:border-violet-500/30' : 'bg-white border border-gray-200 hover:bg-gray-50 hover:border-violet-300 shadow-xl shadow-gray-100/50'}`}>
                   <div className="text-center">

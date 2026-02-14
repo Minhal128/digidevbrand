@@ -156,11 +156,7 @@ const serviceData = {
             'Scalable inventory and payment integrations.',
             'Conversion Rate Optimization (CRO) audits.',
         ],
-        packages: [
-            { name: 'BASIC TIER ECOMMERCE', price: '$1250', popular: false, features: ['Custom Home Page Design', 'Up-to 100 Products', 'CMS', 'Shopping Cart Integration', 'Payment Merchant Integration', 'Social Media Integration', 'Unlimited Revisions', '100% Satisfaction Guarantee'] },
-            { name: 'MID TIER ECOMMERCE', price: '$1450', popular: true, features: ['Custom Home Page Design', 'Multiple Page Website', '5 Stock Photos', '2-3 Stock Videos', 'Up-to 300 Products', 'CMS', 'Shopping Cart Integration', 'Payment Merchant Integration', '3 Banner Designs', 'Unlimited Revisions', '100% Satisfaction Guarantee'] },
-            { name: 'ELITE TIER ECOMMERCE', price: '$1650', popular: false, features: ['Highly Dynamic CUSTOM WEBSITE', 'Multiple Stock Photos & Videos', 'Up-to 500 Products', 'CMS', 'Shopping Cart Integration', 'Payment Merchant Integration', '5 Banner Designs', 'Dedicated designer & developer', 'Unlimited Revisions', '100% Satisfaction Guarantee'] },
-        ],
+        packages: [],
     },
     'app-development': {
         title: 'App Development',
@@ -180,11 +176,7 @@ const serviceData = {
             'Intuitive UI/UX designed for engagement.',
             'Backend API development and cloud integration.',
         ],
-        packages: [
-            { name: 'Basic App Package', price: '$2500', popular: false, features: ['Single Platform (iOS or Android)', 'Up to 5 Screens', 'Basic UI/UX Design', 'Push Notifications', 'API Integration', 'App Store Submission', '3 Months Support', '100% Satisfaction Guarantee'] },
-            { name: 'Professional App Package', price: '$5000', popular: true, features: ['Cross-Platform (iOS & Android)', 'Up to 15 Screens', 'Custom UI/UX Design', 'Push Notifications', 'Payment Integration', 'Admin Dashboard', 'API Integration', '6 Months Support', '100% Satisfaction Guarantee'] },
-            { name: 'Enterprise App Package', price: '$10000', popular: false, features: ['Cross-Platform (iOS & Android)', 'Unlimited Screens', 'Premium UI/UX Design', 'Real-time Features', 'Payment Integration', 'Advanced Admin Dashboard', 'Cloud Infrastructure', 'Analytics Dashboard', '12 Months Support', '100% Satisfaction Guarantee'] },
-        ],
+        packages: [],
     },
     'game-development': {
         title: 'Game Development',
@@ -204,11 +196,7 @@ const serviceData = {
             'Multiplayer and real-time game mechanics.',
             'In-app purchases and monetization strategy.',
         ],
-        packages: [
-            { name: 'Indie Game Package', price: '$3000', popular: false, features: ['2D Game Development', 'Up to 5 Levels', 'Basic Character Design', 'Sound Effects', 'Leaderboard Integration', 'App Store Submission', '100% Satisfaction Guarantee'] },
-            { name: 'Pro Game Package', price: '$7500', popular: true, features: ['2D/3D Game Development', 'Up to 15 Levels', 'Custom Character & Environment Design', 'Original Soundtrack', 'Multiplayer Support', 'In-App Purchases', 'Analytics Integration', '100% Satisfaction Guarantee'] },
-            { name: 'AAA Game Package', price: '$15000', popular: false, features: ['Full 3D Game Development', 'Unlimited Levels', 'Premium Art & Animation', 'Original Soundtrack & Voice Acting', 'Multiplayer Infrastructure', 'Cross-Platform Support', 'Live Ops & Updates', 'Dedicated Game Team', '100% Satisfaction Guarantee'] },
-        ],
+        packages: [],
     },
 };
 
@@ -315,50 +303,78 @@ const ServiceDetailPage: React.FC = () => {
             </section>
 
             {/* Packages Preview */}
-            <section className={`py-32 ${isDark ? 'bg-white/[0.02]' : 'bg-gray-50'}`}>
-                <div className="container mx-auto px-6 text-center">
-                    <h2 className="text-5xl font-black mb-16">Select Your <span className="text-fuchsia-500">Package</span></h2>
-                    <div className={`grid grid-cols-1 ${service.packages.length === 4 ? 'md:grid-cols-2 lg:grid-cols-4' : 'md:grid-cols-3'} gap-8`}>
-                        {service.packages.map((pkg, idx) => (
-                            <motion.div
-                                key={pkg.name}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: idx * 0.1 }}
-                                whileHover={{ y: -10 }}
-                                className={`p-8 rounded-3xl border transition-all relative ${pkg.popular ? (isDark ? 'bg-violet-500/10 border-violet-500/50 shadow-2xl shadow-violet-500/10' : 'bg-violet-50 border-violet-300 shadow-2xl shadow-violet-100') : (isDark ? 'bg-black border-white/5 hover:border-violet-500/50' : 'bg-white border-gray-100 hover:border-violet-300 shadow-xl')}`}
-                            >
-                                {pkg.popular && (
-                                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-violet-500 text-white text-xs font-bold rounded-full uppercase tracking-wider">
-                                        Most Popular
+            {service.packages.length > 0 ? (
+                <section className={`py-32 ${isDark ? 'bg-white/[0.02]' : 'bg-gray-50'}`}>
+                    <div className="container mx-auto px-6 text-center">
+                        <h2 className="text-5xl font-black mb-16">Select Your <span className="text-fuchsia-500">Package</span></h2>
+                        <div className={`grid grid-cols-1 ${service.packages.length === 4 ? 'md:grid-cols-2 lg:grid-cols-4' : 'md:grid-cols-3'} gap-8`}>
+                            {service.packages.map((pkg, idx) => (
+                                <motion.div
+                                    key={pkg.name}
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: idx * 0.1 }}
+                                    whileHover={{ y: -10 }}
+                                    className={`p-8 rounded-3xl border transition-all relative ${pkg.popular ? (isDark ? 'bg-violet-500/10 border-violet-500/50 shadow-2xl shadow-violet-500/10' : 'bg-violet-50 border-violet-300 shadow-2xl shadow-violet-100') : (isDark ? 'bg-black border-white/5 hover:border-violet-500/50' : 'bg-white border-gray-100 hover:border-violet-300 shadow-xl')}`}
+                                >
+                                    {pkg.popular && (
+                                        <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-violet-500 text-white text-xs font-bold rounded-full uppercase tracking-wider">
+                                            Most Popular
+                                        </div>
+                                    )}
+                                    <div className={`h-12 w-12 rounded-full flex items-center justify-center mb-6 mx-auto ${pkg.popular ? 'bg-violet-500 text-white' : 'bg-violet-500/10 text-violet-500'}`}>
+                                        {idx === 0 ? <Zap className="h-6 w-6" /> : idx === 1 ? <Briefcase className="h-6 w-6" /> : <Star className="h-6 w-6" />}
                                     </div>
-                                )}
-                                <div className={`h-12 w-12 rounded-full flex items-center justify-center mb-6 mx-auto ${pkg.popular ? 'bg-violet-500 text-white' : 'bg-violet-500/10 text-violet-500'}`}>
-                                    {idx === 0 ? <Zap className="h-6 w-6" /> : idx === 1 ? <Briefcase className="h-6 w-6" /> : <Star className="h-6 w-6" />}
-                                </div>
-                                <h3 className={`text-lg font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>{pkg.name}</h3>
-                                <div className="text-4xl font-black mb-6 text-violet-500">
-                                    {pkg.price}
-                                </div>
-                                <ul className="text-left space-y-3 mb-8">
-                                    {pkg.features.map((feature, fIdx) => (
-                                        <li key={fIdx} className={`flex items-start gap-2 text-sm ${isDark ? 'text-white/70' : 'text-gray-600'}`}>
-                                            <CheckCircle className="h-4 w-4 text-violet-500 flex-shrink-0 mt-0.5" />
-                                            {feature}
-                                        </li>
-                                    ))}
-                                </ul>
-                                <Link to="/contact">
-                                    <button className={`w-full py-4 rounded-2xl font-black transition-all ${pkg.popular ? 'bg-violet-500 text-white hover:bg-violet-600 shadow-xl shadow-violet-500/30' : 'border-2 border-violet-500 text-violet-500 hover:bg-violet-500 hover:text-white'}`}>
-                                        Order Now
-                                    </button>
-                                </Link>
-                            </motion.div>
-                        ))}
+                                    <h3 className={`text-lg font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>{pkg.name}</h3>
+                                    <div className="text-4xl font-black mb-6 text-violet-500">
+                                        {pkg.price}
+                                    </div>
+                                    <ul className="text-left space-y-3 mb-8">
+                                        {pkg.features.map((feature, fIdx) => (
+                                            <li key={fIdx} className={`flex items-start gap-2 text-sm ${isDark ? 'text-white/70' : 'text-gray-600'}`}>
+                                                <CheckCircle className="h-4 w-4 text-violet-500 flex-shrink-0 mt-0.5" />
+                                                {feature}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                    <Link to="/contact">
+                                        <button className={`w-full py-4 rounded-2xl font-black transition-all ${pkg.popular ? 'bg-violet-500 text-white hover:bg-violet-600 shadow-xl shadow-violet-500/30' : 'border-2 border-violet-500 text-violet-500 hover:bg-violet-500 hover:text-white'}`}>
+                                            Order Now
+                                        </button>
+                                    </Link>
+                                </motion.div>
+                            ))}
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            ) : (
+                <section className={`py-32 ${isDark ? 'bg-white/[0.02]' : 'bg-gray-50'}`}>
+                    <div className="container mx-auto px-6 text-center">
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className={`max-w-2xl mx-auto p-12 rounded-3xl border ${isDark ? 'bg-black border-white/5' : 'bg-white border-gray-100 shadow-2xl shadow-violet-100'}`}
+                        >
+                            <h2 className="text-4xl md:text-5xl font-black mb-6">Interested in <span className="text-fuchsia-500">{service.title}</span>?</h2>
+                            <p className={`text-lg mb-10 ${isDark ? 'text-white/60' : 'text-gray-600'}`}>
+                                Get a custom quote tailored to your project needs. Our team will work with you to deliver the perfect solution.
+                            </p>
+                            <Link to="/contact">
+                                <motion.button
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    className="px-10 py-5 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white font-black text-lg rounded-2xl shadow-xl shadow-violet-500/30 hover:shadow-2xl hover:shadow-violet-500/40 transition-all flex items-center gap-3 mx-auto"
+                                >
+                                    Contact Us
+                                    <ArrowRight className="h-5 w-5" />
+                                </motion.button>
+                            </Link>
+                        </motion.div>
+                    </div>
+                </section>
+            )}
 
             {/* CTA */}
             <section className="py-40 relative">

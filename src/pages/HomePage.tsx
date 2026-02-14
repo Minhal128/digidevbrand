@@ -1,21 +1,18 @@
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { useApp } from '@/context/AppContext';
 import {
   ArrowRight,
-  CheckCircle,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  Play,
-  Zap,
-  Target,
   Palette,
   Code,
   TrendingUp,
+  Zap,
+  Target,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
 
-// Swiper imports
+// Swiper imports for Blog section
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectCoverflow, Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
@@ -41,6 +38,8 @@ const HomePage: React.FC = () => {
   const { t } = useTranslation();
   const { theme } = useApp();
   const isDark = theme === 'dark';
+
+
 
   const testimonials = [
     {
@@ -119,136 +118,27 @@ const HomePage: React.FC = () => {
   ];
 
   return (
-    <div className={`overflow-hidden ${isDark ? 'bg-[#281E5A]' : 'bg-white'}`}>
+    <div className={`overflow-hidden ${isDark ? 'bg-[#110B2E]' : 'bg-white'}`}>
       {/* Hero Section with Slider */}
-      <section className="relative min-h-screen overflow-hidden pt-28">
-        <Swiper
-          spaceBetween={0}
-          slidesPerView={1}
-          loop={true}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-          }}
-          pagination={{
-            clickable: true,
-          }}
-          className="hero-slider h-[calc(100vh-7rem)]"
-          modules={[Autoplay, Pagination]}
+      <section className="relative h-[calc(100vh-7rem)] overflow-hidden pt-28">
+        {/* Background Video */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectPosition: 'center top' }}
         >
-          {/* Slide 1: Full Video Background - No Text */}
-          <SwiperSlide>
-            <div className="relative h-full w-full bg-white overflow-hidden">
-              {/* Full Screen Video Background */}
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-full object-cover"
-                style={{
-                  objectPosition: 'center center',
-                }}
-              >
-                <source src="/hero.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-          </SwiperSlide>
+          <source src="/hero.mp4" type="video/mp4" />
+        </video>
 
-          {/* Slide 2: Grid Background with Centered Content */}
-          <SwiperSlide>
-            <div className="relative h-full w-full bg-white">
-              {/* Grid Background Pattern */}
-              <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(0deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
-
-              {/* Centered Content */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="container mx-auto px-6 text-center">
-                  <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, delay: 0.2 }}
-                    className="max-w-4xl mx-auto"
-                  >
-                    <div className="mb-8">
-                      <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border bg-gray-100 border-gray-200 text-gray-500 text-xs font-bold uppercase tracking-[0.3em]">
-                        <span className="relative flex h-2 w-2">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"></span>
-                          <span className="relative inline-flex rounded-full h-2 w-2 bg-violet-500"></span>
-                        </span>
-                        {t('hero.tagline')}
-                      </div>
-                    </div>
-
-                    <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-6 md:mb-8 leading-tight text-gray-900 font-serif px-4">
-                      {t('hero.title').split(' ').slice(0, 2).join(' ')}
-                      <br />
-                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-violet-500 to-fuchsia-500">
-                        {t('hero.title').split(' ').slice(2).join(' ')}
-                      </span>
-                    </h1>
-
-                    <p className="text-base sm:text-lg md:text-xl mb-8 md:mb-10 leading-relaxed text-gray-600 max-w-2xl mx-auto px-4">
-                      {t('hero.subtitle')}
-                    </p>
-
-                    <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-4">
-                      <Link to="/contact" className="w-full sm:w-auto">
-                        <button className="group w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-black text-white font-bold text-sm md:text-base rounded-2xl hover:bg-violet-500 transition-all transform hover:scale-105 shadow-2xl flex items-center gap-2 md:gap-3 justify-center">
-                          {t('hero.cta')}
-                          <ArrowRight className="h-4 md:h-5 w-4 md:w-5 group-hover:translate-x-2 transition-transform" />
-                        </button>
-                      </Link>
-                      <Link to="/services" className="w-full sm:w-auto">
-                        <button className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 border-2 border-gray-900 text-gray-900 font-bold text-sm md:text-base rounded-2xl hover:bg-gray-900 hover:text-white transition-all flex items-center gap-2 md:gap-3 justify-center">
-                          <Play className="h-4 md:h-5 w-4 md:w-5" />
-                          {t('hero.ctaSecondary')}
-                        </button>
-                      </Link>
-                    </div>
-                  </motion.div>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-        </Swiper>
-
-        {/* Custom Slider Styles */}
-        <style>{`
-            .hero-slider .swiper-pagination {
-              bottom: 30px !important;
-            }
-            .hero-slider .swiper-pagination-bullet {
-              width: 12px;
-              height: 12px;
-              background-color: rgba(255,255,255,0.5) !important;
-              opacity: 1 !important;
-            }
-            .hero-slider .swiper-pagination-bullet-active {
-              background-color: white !important;
-              transform: scale(1.2);
-            }
-            
-            /* Mobile video optimization */
-            @media (max-width: 768px) {
-              .hero-slider {
-                height: calc(100vh - 7rem) !important;
-                height: calc(100dvh - 7rem) !important;
-              }
-              
-              .hero-slider video {
-                object-fit: cover !important;
-                width: 100% !important;
-                height: 100% !important;
-                object-position: center center !important;
-              }
-            }
-          `}</style>
+        {/* Dark overlay for ambient feel */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-[#110B2E]/30 to-[#110B2E]/60 z-10" />
       </section>
 
       {/* Trust Bar / Service Boxes */}
-      <section className={`py-12 md:py-20 ${isDark ? 'bg-[#281E5A]' : 'bg-[#E6E6E6]'}`}>
+      <section className={`py-12 md:py-20 ${isDark ? 'bg-[#110B2E]' : 'bg-[#f0f0f5]'}`}>
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-7xl mx-auto">
             <motion.div
@@ -269,8 +159,28 @@ const HomePage: React.FC = () => {
                   className="relative group rounded-3xl h-48 overflow-hidden transition-all duration-500 hover:-translate-y-3"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: [0.8, 1.07, 0.97, 1.03, 1] }}
+                  animate={{
+                    y: [0, -15, 0],
+                    scale: [1, 1.08, 1],
+                  }}
                   viewport={{ once: true, margin: "-50px" }}
-                  transition={{ delay: index * 0.15, duration: 0.8, ease: "easeOut" }}
+                  transition={{
+                    delay: index * 0.15,
+                    duration: 0.8,
+                    ease: "easeOut",
+                    y: {
+                      duration: 2.5,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: index * 0.2
+                    },
+                    scale: {
+                      duration: 2.5,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: index * 0.2
+                    }
+                  }}
                 >
                   {/* Animated Glow Behind Box */}
                   <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
@@ -286,31 +196,31 @@ const HomePage: React.FC = () => {
                   {/* Main Card Content */}
                   <div
                     className={`relative z-20 h-full w-full rounded-[22px] p-6 flex flex-col justify-center items-center text-center border-2 transition-all duration-500 overflow-hidden ${isDark
-                      ? 'bg-[#281E5A]/90 border-[#4B2F7D]/40 group-hover:border-[#D6B166]/60'
+                      ? 'bg-[#1a1040]/90 backdrop-blur-xl border-[#D6B166]/30 group-hover:border-[#D6B166]/70'
                       : 'bg-white border-[#4B2F7D]/10 group-hover:border-[#4B2F7D]/30'
                       }`}
                     style={{
                       boxShadow: isDark
-                        ? '0 10px 40px -10px rgba(0,0,0,0.5), inset 0 0 20px rgba(75, 47, 125, 0.2)'
+                        ? '0 10px 40px -10px rgba(0,0,0,0.6), 0 0 30px rgba(214,177,102,0.08), inset 0 1px 0 rgba(214,177,102,0.1)'
                         : '0 15px 35px -5px rgba(75, 47, 125, 0.1), inset 0 0 15px rgba(75, 47, 125, 0.02)',
                     }}
                   >
                     {/* Interactive Background Elements */}
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-[#4B2F7D]/5 rounded-full blur-2xl -translate-y-12 translate-x-12 group-hover:translate-y-0 group-hover:translate-x-0 transition-transform duration-700" />
-                    <div className="absolute bottom-0 left-0 w-20 h-20 bg-[#D6B166]/5 rounded-full blur-xl translate-y-10 -translate-x-10 group-hover:translate-y-0 group-hover:translate-x-0 transition-transform duration-700 delay-100" />
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-[#D6B166]/10 rounded-full blur-2xl -translate-y-12 translate-x-12 group-hover:translate-y-0 group-hover:translate-x-0 transition-transform duration-700" />
+                    <div className="absolute bottom-0 left-0 w-20 h-20 bg-[#D6B166]/8 rounded-full blur-xl translate-y-10 -translate-x-10 group-hover:translate-y-0 group-hover:translate-x-0 transition-transform duration-700 delay-100" />
 
                     <div className="relative z-30">
                       <motion.div
-                        className={`mb-3 md:mb-4 inline-flex p-2 md:p-3 rounded-xl md:rounded-2xl ${isDark ? 'bg-[#4B2F7D]/40' : 'bg-[#4B2F7D]/5'}`}
+                        className={`mb-3 md:mb-4 inline-flex p-3 md:p-4 rounded-xl md:rounded-2xl ${isDark ? 'bg-gradient-to-br from-[#D6B166]/20 to-[#4B2F7D]/30 ring-1 ring-[#D6B166]/20' : 'bg-[#4B2F7D]/5'}`}
                         whileHover={{ rotate: 15, scale: 1.1 }}
                       >
-                        {index === 0 && <Palette className={`h-5 md:h-6 w-5 md:w-6 ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`} />}
-                        {index === 1 && <Code className={`h-5 md:h-6 w-5 md:w-6 ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`} />}
-                        {index === 2 && <TrendingUp className={`h-5 md:h-6 w-5 md:w-6 ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`} />}
-                        {index === 3 && <Zap className={`h-5 md:h-6 w-5 md:w-6 ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`} />}
+                        {index === 0 && <Palette className={`h-6 md:h-7 w-6 md:w-7 ${isDark ? 'text-[#F5C542]' : 'text-[#4B2F7D]'}`} />}
+                        {index === 1 && <Code className={`h-6 md:h-7 w-6 md:w-7 ${isDark ? 'text-[#F5C542]' : 'text-[#4B2F7D]'}`} />}
+                        {index === 2 && <TrendingUp className={`h-6 md:h-7 w-6 md:w-7 ${isDark ? 'text-[#F5C542]' : 'text-[#4B2F7D]'}`} />}
+                        {index === 3 && <Zap className={`h-6 md:h-7 w-6 md:w-7 ${isDark ? 'text-[#F5C542]' : 'text-[#4B2F7D]'}`} />}
                       </motion.div>
-                      <h3 className={`text-base md:text-xl font-bold mb-1 md:mb-2 leading-tight group-hover:text-[#D6B166] transition-colors ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`}>{item.title}</h3>
-                      <p className={`text-xs md:text-sm font-medium tracking-wide uppercase transition-colors ${isDark ? 'text-white/40 group-hover:text-[#D6B166]/60' : 'text-[#4B2F7D]/50 group-hover:text-[#4B2F7D]/80'}`}>{item.subtitle}</p>
+                      <h3 className={`text-base md:text-xl font-bold mb-1 md:mb-2 leading-tight group-hover:text-[#F5C542] transition-colors ${isDark ? 'text-white' : 'text-[#4B2F7D]'}`}>{item.title}</h3>
+                      <p className={`text-xs md:text-sm font-medium tracking-wide uppercase transition-colors ${isDark ? 'text-[#D6B166]/80 group-hover:text-[#F5C542]' : 'text-[#4B2F7D]/50 group-hover:text-[#4B2F7D]/80'}`}>{item.subtitle}</p>
                     </div>
 
                     {/* Hover Decorative Line */}
@@ -327,7 +237,7 @@ const HomePage: React.FC = () => {
       <LatestProjects />
 
       {/* Process Section - Modern MUI Timeline - Royal Purple & Gold */}
-      <section className={`py-16 md:py-28 relative overflow-hidden ${isDark ? 'bg-gradient-to-b from-[#281E5A] via-[#4B2F7D] to-[#281E5A]' : 'bg-gradient-to-b from-[#E6E6E6] via-white to-[#E6E6E6]'}`}>
+      <section className={`py-16 md:py-28 relative overflow-hidden ${isDark ? 'bg-gradient-to-b from-[#110B2E] via-[#1a1040] to-[#110B2E]' : 'bg-gradient-to-b from-[#f0f0f5] via-white to-[#f0f0f5]'}`}>
         {/* Background decorative elements */}
         <div className={`absolute top-0 left-1/4 w-64 md:w-96 h-64 md:h-96 rounded-full blur-3xl ${isDark ? 'bg-[#D6B166]/10' : 'bg-[#D6B166]/20'}`} />
         <div className={`absolute bottom-0 right-1/4 w-64 md:w-96 h-64 md:h-96 rounded-full blur-3xl ${isDark ? 'bg-[#E6C882]/5' : 'bg-[#E6C882]/15'}`} />
@@ -346,8 +256,8 @@ const HomePage: React.FC = () => {
               <Zap className="h-4 w-4" />
               How We Work
             </span>
-            <h2 className={`text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 md:mb-6 ${isDark ? 'text-[#E6C882]' : 'text-[#281E5A]'}`}>Our Process</h2>
-            <p className={`max-w-2xl mx-auto text-base md:text-lg ${isDark ? 'text-white/60' : 'text-[#462878]/70'}`}>
+            <h2 className={`text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 md:mb-6 ${isDark ? 'text-white' : 'text-[#281E5A]'}`}>Our Process</h2>
+            <p className={`max-w-2xl mx-auto text-base md:text-lg ${isDark ? 'text-gray-300' : 'text-[#462878]/70'}`}>
               A streamlined approach to delivering exceptional results
             </p>
           </motion.div>
@@ -419,14 +329,14 @@ const HomePage: React.FC = () => {
                       className="group"
                     >
                       <div className={`p-6 rounded-2xl transition-all duration-500 hover:-translate-y-1 ${isDark
-                        ? 'bg-[#281E5A]/60 backdrop-blur-xl border border-[#4B2F7D]/30 hover:bg-[#281E5A]/80 hover:border-[#D6B166]/30 shadow-xl shadow-black/10'
+                        ? 'bg-[#1a1040]/80 backdrop-blur-xl border border-[#D6B166]/20 hover:border-[#D6B166]/50 shadow-xl shadow-black/20'
                         : 'bg-white/80 backdrop-blur-xl border border-[#4B2F7D]/20 hover:border-[#D6B166]/50 shadow-xl shadow-[#4B2F7D]/10 hover:shadow-[#4B2F7D]/20'
                         }`}>
-                        <h3 className={`text-xl font-bold mb-2 transition-colors group-hover:text-[#D6B166] ${isDark ? 'text-[#E6C882]' : 'text-[#281E5A]'
+                        <h3 className={`text-xl font-bold mb-2 transition-colors group-hover:text-[#F5C542] ${isDark ? 'text-white' : 'text-[#281E5A]'
                           }`}>
                           {step.title}
                         </h3>
-                        <p className={`text-sm leading-relaxed ${isDark ? 'text-white/60' : 'text-[#4B2F7D]/70'
+                        <p className={`text-sm leading-relaxed ${isDark ? 'text-gray-300' : 'text-[#4B2F7D]/70'
                           }`}>
                           {step.description}
                         </p>
@@ -442,7 +352,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Testimonials Section - Modern Carousel */}
-      <section className={`py-16 md:py-28 overflow-hidden ${isDark ? 'bg-[#281E5A]' : 'bg-gradient-to-b from-[#E6E6E6] to-white'}`}>
+      <section className={`py-16 md:py-28 overflow-hidden ${isDark ? 'bg-[#0d0820]' : 'bg-gradient-to-b from-[#f0f0f5] to-white'}`}>
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -453,7 +363,7 @@ const HomePage: React.FC = () => {
             <Shuffle
               text={t('testimonials.title')}
               tag="h2"
-              className={`text-3xl md:text-4xl lg:text-5xl font-bold ${isDark ? 'text-[#E6C882]' : 'text-[#281E5A]'}`}
+              className={`text-3xl md:text-4xl lg:text-5xl font-bold ${isDark ? 'text-white' : 'text-[#281E5A]'}`}
               shuffleDirection="right"
               duration={0.4}
               animationMode="evenodd"
@@ -505,7 +415,7 @@ const HomePage: React.FC = () => {
                 ? 'bg-[#4B2F7D]/30 border border-[#4B2F7D]/50 hover:bg-[#4B2F7D]/50 hover:border-[#D6B166]/30'
                 : 'bg-[#E6E6E6] border border-[#4B2F7D]/20 hover:bg-[#4B2F7D]/10 hover:border-[#4B2F7D]/40'
                 }`}>
-                <ChevronLeftIcon className={`h-5 w-5 ${isDark ? 'text-[#E6C882]/60' : 'text-[#4B2F7D]'}`} />
+                <ChevronLeft className={`h-5 w-5 ${isDark ? 'text-[#E6C882]/60' : 'text-[#4B2F7D]'}`} />
               </div>
             </div>
             <div className="testimonial-nav-next absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-16 z-10 cursor-pointer">
@@ -513,7 +423,7 @@ const HomePage: React.FC = () => {
                 ? 'bg-[#D6B166]/20 border border-[#D6B166]/30 hover:bg-[#D6B166]/30'
                 : 'bg-[#D6B166]/20 border border-[#D6B166]/40 hover:bg-[#D6B166]/30'
                 }`}>
-                <ChevronRightIcon className={`h-5 w-5 ${isDark ? 'text-[#E6C882]' : 'text-[#4B2F7D]'}`} />
+                <ChevronRight className={`h-5 w-5 ${isDark ? 'text-[#E6C882]' : 'text-[#4B2F7D]'}`} />
               </div>
             </div>
 
@@ -545,13 +455,13 @@ const HomePage: React.FC = () => {
                       </div>
                     </div>
 
-                    <p className={`text-base md:text-lg lg:text-xl leading-relaxed mb-8 md:mb-10 max-w-3xl mx-auto ${isDark ? 'text-white/80' : 'text-[#281E5A]/80'
+                    <p className={`text-base md:text-lg lg:text-xl leading-relaxed mb-8 md:mb-10 max-w-3xl mx-auto ${isDark ? 'text-gray-200' : 'text-[#281E5A]/80'
                       }`}>
                       {testimonial.content}
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3">
-                      <span className={`font-semibold text-sm md:text-base ${isDark ? 'text-[#E6C882]' : 'text-[#281E5A]'}`}>
+                      <span className={`font-semibold text-sm md:text-base ${isDark ? 'text-white' : 'text-[#281E5A]'}`}>
                         {testimonial.name}
                       </span>
                       <span className={`hidden sm:block w-px h-4 ${isDark ? 'bg-[#D6B166]/30' : 'bg-[#4B2F7D]/30'}`} />
@@ -568,7 +478,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Blog Section with Swiper Carousel */}
-      <section className={`py-16 md:py-28 overflow-hidden ${isDark ? 'bg-gradient-to-b from-[#281E5A] via-[#4B2F7D] to-[#281E5A]' : 'bg-[#E6E6E6]'}`}>
+      <section className={`py-16 md:py-28 overflow-hidden ${isDark ? 'bg-gradient-to-b from-[#110B2E] via-[#1a1040] to-[#110B2E]' : 'bg-[#f0f0f5]'}`}>
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -577,7 +487,7 @@ const HomePage: React.FC = () => {
             className="text-center mb-16"
           >
             <span className={`font-medium text-xs md:text-sm uppercase tracking-widest ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`}>{t('blog.subtitle')}</span>
-            <h2 className={`text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mt-3 md:mt-4 ${isDark ? 'text-[#E6C882]' : 'text-[#281E5A]'}`}>{t('blog.title')}</h2>
+            <h2 className={`text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mt-3 md:mt-4 ${isDark ? 'text-white' : 'text-[#281E5A]'}`}>{t('blog.title')}</h2>
           </motion.div>
 
           <style>{`
@@ -637,7 +547,7 @@ const HomePage: React.FC = () => {
               {blogPosts.map((post) => (
                 <SwiperSlide key={post.title}>
                   <div className={`h-full rounded-2xl overflow-hidden transition-all duration-500 cursor-pointer group ${isDark
-                    ? 'bg-gradient-to-b from-[#281E5A] to-[#4B2F7D]/50 border border-[#D6B166]/20'
+                    ? 'bg-gradient-to-b from-[#1a1040] to-[#110B2E] border border-[#D6B166]/30'
                     : 'bg-white border border-[#4B2F7D]/20 shadow-lg shadow-[#4B2F7D]/10'
                     }`}>
                     <div className="relative overflow-hidden h-44">
@@ -657,11 +567,11 @@ const HomePage: React.FC = () => {
                       <p className={`text-xs mb-2 ${isDark ? 'text-[#E6C882]/60' : 'text-[#4B2F7D]/60'}`}>
                         {post.date}
                       </p>
-                      <h3 className={`text-base font-semibold mb-2 group-hover:text-[#D6B166] transition-colors line-clamp-2 ${isDark ? 'text-[#E6C882]' : 'text-[#281E5A]'
+                      <h3 className={`text-base font-semibold mb-2 group-hover:text-[#F5C542] transition-colors line-clamp-2 ${isDark ? 'text-white' : 'text-[#281E5A]'
                         }`}>
                         {post.title}
                       </h3>
-                      <p className={`text-sm line-clamp-2 ${isDark ? 'text-white/60' : 'text-[#4B2F7D]/70'}`}>
+                      <p className={`text-sm line-clamp-2 ${isDark ? 'text-gray-300' : 'text-[#4B2F7D]/70'}`}>
                         {post.excerpt}
                       </p>
                       <button className={`mt-4 text-sm font-medium inline-flex items-center gap-1 group/btn hover:gap-2 transition-all ${isDark ? 'text-[#D6B166]' : 'text-[#4B2F7D]'}`}>
@@ -675,20 +585,20 @@ const HomePage: React.FC = () => {
               <div className="blog-swiper-next absolute right-2 top-1/2 -translate-y-1/2 z-10 cursor-pointer">
                 <div className={`h-10 w-10 rounded-full flex items-center justify-center transition-all ${isDark ? 'bg-[#D6B166]/20 hover:bg-[#D6B166]/30' : 'bg-[#4B2F7D]/10 hover:bg-[#4B2F7D]/20'
                   }`}>
-                  <ChevronRightIcon className={`h-5 w-5 ${isDark ? 'text-[#E6C882]' : 'text-[#4B2F7D]'}`} />
+                  <ChevronRight className={`h-5 w-5 ${isDark ? 'text-[#E6C882]' : 'text-[#4B2F7D]'}`} />
                 </div>
               </div>
               <div className="blog-swiper-prev absolute left-2 top-1/2 -translate-y-1/2 z-10 cursor-pointer">
                 <div className={`h-10 w-10 rounded-full flex items-center justify-center transition-all ${isDark ? 'bg-[#4B2F7D]/30 hover:bg-[#4B2F7D]/50' : 'bg-[#4B2F7D]/10 hover:bg-[#4B2F7D]/20'
                   }`}>
-                  <ChevronLeftIcon className={`h-5 w-5 ${isDark ? 'text-[#E6C882]' : 'text-[#4B2F7D]'}`} />
+                  <ChevronLeft className={`h-5 w-5 ${isDark ? 'text-[#E6C882]' : 'text-[#4B2F7D]'}`} />
                 </div>
               </div>
             </Swiper>
           </motion.div>
         </div>
       </section>
-    </div>
+    </div >
   );
 };
 
